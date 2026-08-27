@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\JsResponse;
+namespace Poncho\AdminBundle\Lib\JsResponse;
 
 class JsMessage implements \JsonSerializable
 {

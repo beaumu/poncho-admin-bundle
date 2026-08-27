@@ -7,7 +7,7 @@ php bin/console make:admin:security
 
 The following files will be updated :
  - `config/packages/security.yaml`
- - `config/packages/umbrella_admin.yaml`
+ - `config/packages/poncho_admin.yaml`
  - `config/routes.yaml`
  
 And the following files we be created :
@@ -24,7 +24,7 @@ public function buildMenu(MenuBuilder $builder, array $options)
     $builder->root()
         ->add('Users')
             ->icon('uil-user')
-            ->route('umbrella_admin_user_index');
+            ->route('poncho_admin_user_index');
 
 }
 ```
@@ -35,6 +35,6 @@ Et voila, now you have to be logged to access administration backends, moreover 
 
 Run following command to create a new admin user:
 ```bash
-php bin/console umbrella_admin:create:user
+php bin/console poncho_admin:create:user
 ```
 

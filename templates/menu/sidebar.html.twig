@@ -1,14 +1,14 @@
-{% use "@UmbrellaAdmin/menu/sidebar_block.html.twig" %}
+{% use "@PonchoAdmin/menu/sidebar_block.html.twig" %}
 
-<nav id="sidebar" class="sidebar" is="umbrella-sidebar">
+<nav id="sidebar" class="sidebar" is="poncho-sidebar">
     <div class="sidebar-content">
 
-        {% include "@UmbrellaAdmin/menu/head.html.twig" %}
+        {% include "@PonchoAdmin/menu/head.html.twig" %}
 
         {% if options.searchable %}
             <div class="sidebar-search">
                 <i class="mdi mdi-magnify"></i>
-                <input type="text" placeholder="{{ 'label.search...' | trans({}, 'UmbrellaAdmin') }}" class="form-control" autofocus>
+                <input type="text" placeholder="{{ 'label.search...' | trans({}, 'PonchoAdmin') }}" class="form-control" autofocus>
             </div>
         {% endif %}
 

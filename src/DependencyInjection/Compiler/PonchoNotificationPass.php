@@ -1,16 +1,16 @@
 <?php
 
-namespace Umbrella\AdminBundle\DependencyInjection\Compiler;
+namespace Poncho\AdminBundle\DependencyInjection\Compiler;
 
 use Knp\Bundle\TimeBundle\DateTimeFormatter;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use Umbrella\AdminBundle\Notification\BaseNotificationProvider;
-use Umbrella\AdminBundle\Notification\NotificationProviderInterface;
+use Poncho\AdminBundle\Notification\BaseNotificationProvider;
+use Poncho\AdminBundle\Notification\NotificationProviderInterface;
 
-class UmbrellaNotificationPass implements CompilerPassInterface
+class PonchoNotificationPass implements CompilerPassInterface
 {
     /**
      * You can modify the container here before it is dumped to PHP code.

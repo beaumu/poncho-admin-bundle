@@ -1,13 +1,13 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\Functional\DataTable;
+namespace Poncho\AdminBundle\Tests\Functional\DataTable;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Umbrella\AdminBundle\Lib\DataTable\Column\BooleanColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\ColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\DateColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableFactory;
+use Poncho\AdminBundle\Lib\DataTable\Column\BooleanColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Column\ColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Column\DateColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
+use Poncho\AdminBundle\Lib\DataTable\DataTableFactory;
 
 class ColumnTest extends KernelTestCase
 {

@@ -1,17 +1,17 @@
 export default class RowDetailsPlugin {
 
     constructor() {
-        this.umbrellaDatatable = null
+        this.ponchoDatatable = null
     }
 
     /**
-     * @param {UmbrellaDataTable} umbrellaDatatable
+     * @param {PonchoDataTable} ponchoDatatable
      */
-    configure(umbrellaDatatable) {
-        this.umbrellaDatatable = umbrellaDatatable
+    configure(ponchoDatatable) {
+        this.ponchoDatatable = ponchoDatatable
 
-        this.umbrellaDatatable.datatable.on('draw', () => {
-            this.umbrellaDatatable.tbody.querySelectorAll('.js-toggle-child-row-btn').forEach($btn => this._bind($btn))
+        this.ponchoDatatable.datatable.on('draw', () => {
+            this.ponchoDatatable.tbody.querySelectorAll('.js-toggle-child-row-btn').forEach($btn => this._bind($btn))
         })
 
     }
@@ -20,7 +20,7 @@ export default class RowDetailsPlugin {
         $btn.addEventListener('click', evt => {
             evt.preventDefault()
             const $row = $btn.closest('tr')
-            const row = this.umbrellaDatatable.datatable.row($row)
+            const row = this.ponchoDatatable.datatable.row($row)
 
             const html = $btn.firstElementChild.innerHTML
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\Functional\Controller;
+namespace Poncho\AdminBundle\Tests\Functional\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 
 class DefaultControllerTest extends WebTestCase
 {
@@ -13,7 +13,7 @@ class DefaultControllerTest extends WebTestCase
 
         $client->request('GET', '/');
 
-        $appName = $this->getContainer()->get(UmbrellaAdminConfiguration::class)->appName();
+        $appName = $this->getContainer()->get(PonchoAdminConfiguration::class)->appName();
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('title', $appName);

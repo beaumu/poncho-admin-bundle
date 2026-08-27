@@ -1,17 +1,17 @@
-# UmbrellaAdmin Configuration Reference
+# PonchoAdmin Configuration Reference
 
-To display the default values defined by UmbrellaAdmin on your own project, use :
+To display the default values defined by PonchoAdmin on your own project, use :
 ```bash
-php bin/console config:dump-reference UmbrellaAdminBundle
+php bin/console config:dump-reference PonchoAdminBundle
 ```
 
 Configuration reference :
 
 ```yaml
-umbrella_admin:
+poncho_admin:
 
     # Name of app (Used on mail, sidebar title, login page, ...)
-    app_name:             umbrella
+    app_name:             poncho
 
     # Path of logo
     app_logo:             null
@@ -20,27 +20,27 @@ umbrella_admin:
     container_class:      container-fluid
 
     # Name of menu to use on admin
-    menu:                 Umbrella\AdminBundle\Menu\BaseAdminMenu
+    menu:                 Poncho\AdminBundle\Menu\BaseAdminMenu
     user:
         enabled:              false
 
         # The class name of UserManager service.
-        manager:              Umbrella\AdminBundle\Service\UserManager
+        manager:              Poncho\AdminBundle\Service\UserManager
 
         # Entity class of Admin user.
         class:                App\Entity\AdminUser
 
         # DataTable Type class of Admin CRUD.
-        table:                Umbrella\AdminBundle\DataTable\UserTableType
+        table:                Poncho\AdminBundle\DataTable\UserTableType
 
         # Form Type class of Admin CRUD.
-        form:                 Umbrella\AdminBundle\Form\UserType
+        form:                 Poncho\AdminBundle\Form\UserType
 
         # Name of sender for password reset email.
         password_reset_from_name: ''
 
         # Email of sender for password reset email.
-        password_reset_from_email: no-reply@umbrella.dev
+        password_reset_from_email: no-reply@poncho.dev
 
         # Time to live (in s) for request password.
         password_reset_ttl:   86400
@@ -48,10 +48,10 @@ umbrella_admin:
             enabled:              true
 
             # Route of Profile view.
-            route:                umbrella_admin_profile_index
+            route:                poncho_admin_profile_index
 
             # Form Type class of Profile CRUD.
-            form:                 Umbrella\AdminBundle\Form\ProfileType
+            form:                 Poncho\AdminBundle\Form\ProfileType
     notification:
         enabled:              false
 

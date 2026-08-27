@@ -1,9 +1,9 @@
-{% extends '@UmbrellaAdmin/layout.html.twig' %}
+{% extends '@PonchoAdmin/layout.html.twig' %}
 
-{% trans_default_domain 'UmbrellaAdmin' %}
+{% trans_default_domain 'PonchoAdmin' %}
 
 {% block title %}
-    <title>{{ 'label.my_account' | trans  }} | {{ umbrella_admin.appName() }}</title>
+    <title>{{ 'label.my_account' | trans  }} | {{ poncho_admin.appName() }}</title>
 {% endblock %}
 
 {% block breadcrumb %}
@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block content %}
-    {{ umbrella_form_theme(settings_form) }}
+    {{ poncho_form_theme(settings_form) }}
     {{ form_start(settings_form) }}
         <div class="card card-body">
             {{ form_rest(settings_form) }}

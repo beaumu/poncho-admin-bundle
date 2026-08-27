@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Action;
+namespace Poncho\AdminBundle\Lib\DataTable\Action;
 
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -60,7 +60,7 @@ class LinkActionType extends ActionType
         $vars['text'] = $options['text'];
         $vars['translation_domain'] = $options['translation_domain'];
 
-        return $twig->render('@UmbrellaAdmin/lib/datatable/action/link.html.twig', $vars);
+        return $twig->render('@PonchoAdmin/lib/datatable/action/link.html.twig', $vars);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

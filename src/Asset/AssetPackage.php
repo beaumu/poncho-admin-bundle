@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Asset;
+namespace Poncho\AdminBundle\Asset;
 
 use Symfony\Component\Asset\Context\RequestStackContext;
 use Symfony\Component\Asset\PackageInterface;
@@ -19,14 +19,14 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 final class AssetPackage implements PackageInterface
 {
-    public const PACKAGE_NAME = 'umbrella_admin.assets.package';
+    public const PACKAGE_NAME = 'poncho_admin.assets.package';
 
     private PackageInterface $package;
 
     public function __construct(RequestStack $requestStack)
     {
         $this->package = new PathPackage(
-            '/bundles/umbrellaadmin',
+            '/bundles/ponchoadmin',
             new JsonManifestVersionStrategy(__DIR__ . '/../../public/manifest.json'),
             new RequestStackContext($requestStack)
         );

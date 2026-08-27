@@ -1,4 +1,4 @@
-import TRANSLATIONS from './umbrella-admin-translations.json'
+import TRANSLATIONS from './poncho-admin-translations.json'
 
 export default class Translator {
 

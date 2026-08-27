@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Form;
+namespace Poncho\AdminBundle\Lib\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -14,7 +14,7 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Constraints\Valid;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class UmbrellaCollectionType extends AbstractType
+class PonchoCollectionType extends AbstractType
 {
     public function __construct(private readonly TranslatorInterface $translator)
     {
@@ -31,7 +31,7 @@ class UmbrellaCollectionType extends AbstractType
                 $h = '<div>';
                 $h .= '<a class="js-add-item btn btn-light btn-sm" href="#">';
                 $h .= '<i class="mdi mdi-plus mr-1"></i>';
-                $h .= $this->translator->trans('action.add_item', [], 'UmbrellaAdmin');
+                $h .= $this->translator->trans('action.add_item', [], 'PonchoAdmin');
                 $h .= '</a>';
                 $h .= '</div>';
                 $view->vars['add_btn_template'] = $h;
@@ -124,6 +124,6 @@ class UmbrellaCollectionType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'umbrellacollection';
+        return 'ponchocollection';
     }
 }

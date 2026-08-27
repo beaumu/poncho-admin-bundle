@@ -1,12 +1,12 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\DTO;
+namespace Poncho\AdminBundle\Lib\DataTable\DTO;
 
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccess;
-use Umbrella\AdminBundle\Lib\DataTable\AdapterException;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
+use Poncho\AdminBundle\Lib\DataTable\AdapterException;
+use Poncho\AdminBundle\Lib\DataTable\DataTableType;
 
 class DataTable
 {

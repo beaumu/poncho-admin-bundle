@@ -4,9 +4,9 @@ labels: [bug]
 
 body:
   - type: input
-    id: affected-umbrella-versions
+    id: affected-poncho-versions
     attributes:
-      label: Umbrella version affected
+      label: Poncho version affected
       placeholder: x.y
     validations:
       required: true

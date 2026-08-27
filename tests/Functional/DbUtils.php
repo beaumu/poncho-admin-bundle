@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\Functional;
+namespace Poncho\AdminBundle\Tests\Functional;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;

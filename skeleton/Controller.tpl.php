@@ -8,7 +8,7 @@ use <?= $form->getFullName() ?>;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Umbrella\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\Lib\Controller\AdminController;
 <?php if ($tree_table) { ?>
 use <?= $repository->getFullName() ?>;
 <?php } ?>

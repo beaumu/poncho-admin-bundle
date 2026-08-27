@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Description: Regenerate docs/config/poncho_admin.md from Configuration.php
+## Usage: doc-update-config
+## Example: ddev doc-update-config
+
+set -e
+bin/update-doc-config

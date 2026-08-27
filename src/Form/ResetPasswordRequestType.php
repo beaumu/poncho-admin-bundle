@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Form;
+namespace Poncho\AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -12,7 +12,7 @@ class ResetPasswordRequestType extends AbstractType
     {
         $builder->add('email', EmailType::class, [
             'label' => 'label.email',
-            'translation_domain' => 'UmbrellaAdmin'
+            'translation_domain' => 'PonchoAdmin'
         ]);
     }
 }

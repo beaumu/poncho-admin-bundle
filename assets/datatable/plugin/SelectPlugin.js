@@ -15,30 +15,30 @@ export default class SelectPlugin {
     }
 
     /**
-     * @param {UmbrellaDataTable} umbrellaDatatable
+     * @param {PonchoDataTable} ponchoDatatable
      */
-    configure(umbrellaDatatable) {
-        this.umbrellaDatatable = umbrellaDatatable
+    configure(ponchoDatatable) {
+        this.ponchoDatatable = ponchoDatatable
 
-        this.$togglePageCheckbox = this.umbrellaDatatable.querySelector('.js-toggle-select-page')
-        this.$unselectAllbtn = this.umbrellaDatatable.querySelector('.js-unselect-all')
-        this.$selectPageBtn = this.umbrellaDatatable.querySelector('.js-select-page')
-        this.$unselectPageBtn = this.umbrellaDatatable.querySelector('.js-unselect-page')
-        this.$selectInfo = this.umbrellaDatatable.querySelector('.js-select-info')
+        this.$togglePageCheckbox = this.ponchoDatatable.querySelector('.js-toggle-select-page')
+        this.$unselectAllbtn = this.ponchoDatatable.querySelector('.js-unselect-all')
+        this.$selectPageBtn = this.ponchoDatatable.querySelector('.js-select-page')
+        this.$unselectPageBtn = this.ponchoDatatable.querySelector('.js-unselect-page')
+        this.$selectInfo = this.ponchoDatatable.querySelector('.js-select-info')
 
         this._initToolbar()
 
-        this.umbrellaDatatable.datatable.on('draw', () => this._onDraw())
+        this.ponchoDatatable.datatable.on('draw', () => this._onDraw())
 
         // register api
-        this.umbrellaDatatable.selectPage = this.selectPage.bind(this)
-        this.umbrellaDatatable.unselectPage = this.unselectPage.bind(this)
-        this.umbrellaDatatable.unselectAll = this.unselectAll.bind(this)
-        this.umbrellaDatatable.getSelectedIds = this.getSelectedIds.bind(this)
+        this.ponchoDatatable.selectPage = this.selectPage.bind(this)
+        this.ponchoDatatable.unselectPage = this.unselectPage.bind(this)
+        this.ponchoDatatable.unselectAll = this.unselectAll.bind(this)
+        this.ponchoDatatable.getSelectedIds = this.getSelectedIds.bind(this)
 
         // override api
-        this.umbrellaDatatable.getState = () => {
-            let state = this.umbrellaDatatable._getCurrentState()
+        this.ponchoDatatable.getState = () => {
+            let state = this.ponchoDatatable._getCurrentState()
             state['ids'] = this.getSelectedIds()
             state['count']['selected'] = state['ids'].length
             return state
@@ -88,7 +88,7 @@ export default class SelectPlugin {
         this.state.clearPageIds()
 
         // init rows
-        this.umbrellaDatatable.tbody.querySelectorAll('tr').forEach($row => {
+        this.ponchoDatatable.tbody.querySelectorAll('tr').forEach($row => {
             const selectable = $row.dataset.select !== 'false'
 
             if (selectable) {
@@ -157,17 +157,17 @@ export default class SelectPlugin {
         const c = this.state.count()
 
         if (c === 0) {
-            this.$selectInfo.textContent = umbrella.translator.trans('datatable.no_item_selected')
+            this.$selectInfo.textContent = poncho.translator.trans('datatable.no_item_selected')
         } else if (c === 1) {
-            this.$selectInfo.textContent = umbrella.translator.trans('datatable.one_item_selected')
+            this.$selectInfo.textContent = poncho.translator.trans('datatable.one_item_selected')
         } else {
-            this.$selectInfo.textContent = umbrella.translator.trans('datatable.many_item_selected', {'{c}': c})
+            this.$selectInfo.textContent = poncho.translator.trans('datatable.many_item_selected', {'{c}': c})
         }
 
         this.$unselectAllbtn.hidden = c === 0
 
-        this.umbrellaDatatable.querySelectorAll('[data-display=selection]').forEach($elt => $elt.hidden = c === 0)
-        this.umbrellaDatatable.querySelectorAll('[data-display=no_selection]').forEach($elt => $elt.hidden = c > 0)
+        this.ponchoDatatable.querySelectorAll('[data-display=selection]').forEach($elt => $elt.hidden = c === 0)
+        this.ponchoDatatable.querySelectorAll('[data-display=no_selection]').forEach($elt => $elt.hidden = c > 0)
 
         const pageState = this.state.getPageState()
 

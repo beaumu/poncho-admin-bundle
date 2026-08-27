@@ -1,13 +1,13 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu;
+namespace Poncho\AdminBundle\Lib\Menu;
 
-use Umbrella\AdminBundle\Lib\Menu\Visitor\MenuVisitor;
+use Poncho\AdminBundle\Lib\Menu\Visitor\MenuVisitor;
 
 class MenuRegistry
 {
-    public const TAG_TYPE = 'umbrella.menu.type';
-    public const TAG_VISITOR = 'umbrella.menu.visitor';
+    public const TAG_TYPE = 'poncho.menu.type';
+    public const TAG_VISITOR = 'poncho.menu.visitor';
 
     /**
      * @var MenuType[]

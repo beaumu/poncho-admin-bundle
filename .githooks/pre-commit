@@ -1,0 +1,30 @@
+#!/bin/sh
+# Fixes code style on staged PHP/JS files before commit, using the tools
+# installed in the DDEV web container (so results match CI exactly).
+#
+# Activated once per clone via: git config core.hooksPath .githooks
+
+set -e
+
+cd "$(git rev-parse --show-toplevel)"
+
+if ! ddev describe >/dev/null 2>&1; then
+    echo "error: DDEV project is not running. Run 'ddev start' before committing (or 'git commit --no-verify' to skip this check)." >&2
+    exit 1
+fi
+
+php_files=$(git diff --cached --name-only --diff-filter=ACMR -- '*.php')
+if [ -n "$php_files" ]; then
+    echo "==> php-cs-fixer on staged PHP files"
+    ddev exec ./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --path-mode=intersection -- $php_files
+    git add -- $php_files
+fi
+
+js_files=$(git diff --cached --name-only --diff-filter=ACMR -- 'assets/*.js' 'assets/**/*.js')
+if [ -n "$js_files" ]; then
+    echo "==> eslint --fix on staged JS files"
+    ddev exec yarn eslint --fix -- $js_files
+    git add -- $js_files
+fi
+
+exit 0

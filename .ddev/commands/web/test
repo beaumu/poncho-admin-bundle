@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Description: Run the PHPUnit test suite
+## Usage: test [flags] [--] [<phpunit args>]
+## Example: "ddev test" or "ddev test --filter testMethodName tests/Functional/DataTable/SomeTest.php"
+
+set -e
+./vendor/bin/simple-phpunit "$@"

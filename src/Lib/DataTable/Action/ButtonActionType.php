@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Action;
+namespace Poncho\AdminBundle\Lib\DataTable\Action;
 
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Utils\Utils;
+use Poncho\AdminBundle\Utils\Utils;
 
 class ButtonActionType extends LinkActionType
 {

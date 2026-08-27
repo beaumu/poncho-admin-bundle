@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\App\DataFixtures;
+namespace Poncho\AdminBundle\Tests\App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Umbrella\AdminBundle\Tests\App\Entity\AdminUser;
+use Poncho\AdminBundle\Tests\App\Entity\AdminUser;
 
 class AppFixtures extends Fixture
 {

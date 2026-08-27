@@ -2,14 +2,14 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Umbrella\AdminBundle\Command\CreateAdminUserCommand;
-use Umbrella\AdminBundle\Controller\SecurityController;
-use Umbrella\AdminBundle\Controller\UserController;
-use Umbrella\AdminBundle\DataTable\UserTableType;
-use Umbrella\AdminBundle\Form\ChangePasswordType;
-use Umbrella\AdminBundle\Form\UserType;
-use Umbrella\AdminBundle\Security\UserChecker;
-use Umbrella\AdminBundle\Service\UserManager;
+use Poncho\AdminBundle\Command\CreateAdminUserCommand;
+use Poncho\AdminBundle\Controller\SecurityController;
+use Poncho\AdminBundle\Controller\UserController;
+use Poncho\AdminBundle\DataTable\UserTableType;
+use Poncho\AdminBundle\Form\ChangePasswordType;
+use Poncho\AdminBundle\Form\UserType;
+use Poncho\AdminBundle\Security\UserChecker;
+use Poncho\AdminBundle\Service\UserManager;
 
 return static function (ContainerConfigurator $configurator): void {
 
@@ -32,7 +32,7 @@ return static function (ContainerConfigurator $configurator): void {
 
     $services->set(UserChecker::class);
     $services->set(UserTableType::class)
-        ->tag('umbrella.datatable.type');
+        ->tag('poncho.datatable.type');
 
     $services->set(UserManager::class);
 

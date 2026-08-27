@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Description: Fix PHP files with php-cs-fixer
+## Usage: fix-php
+## Example: ddev fix-php
+
+set -e
+./vendor/bin/php-cs-fixer fix

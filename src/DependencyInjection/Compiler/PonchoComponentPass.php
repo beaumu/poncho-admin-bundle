@@ -1,15 +1,15 @@
 <?php
 
-namespace Umbrella\AdminBundle\DependencyInjection\Compiler;
+namespace Poncho\AdminBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableRegistry;
-use Umbrella\AdminBundle\Lib\Menu\MenuRegistry;
+use Poncho\AdminBundle\Lib\DataTable\DataTableRegistry;
+use Poncho\AdminBundle\Lib\Menu\MenuRegistry;
 
-class UmbrellaComponentPass implements CompilerPassInterface
+class PonchoComponentPass implements CompilerPassInterface
 {
     /**
      * You can modify the container here before it is dumped to PHP code.

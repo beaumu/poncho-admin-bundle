@@ -1,25 +1,25 @@
 security:
     password_hashers:
-        Umbrella\AdminBundle\Tests\App\Entity\AdminUser: 'sodium'
+        Poncho\AdminBundle\Tests\App\Entity\AdminUser: 'sodium'
 
     providers:
         entity_provider:
             entity:
-                class: Umbrella\AdminBundle\Tests\App\Entity\AdminUser
+                class: Poncho\AdminBundle\Tests\App\Entity\AdminUser
                 property: email
 
     firewalls:
         main:
             pattern: ^/
-            user_checker: Umbrella\AdminBundle\Security\UserChecker
-            entry_point: Umbrella\AdminBundle\Security\AuthenticationEntryPoint
+            user_checker: Poncho\AdminBundle\Security\UserChecker
+            entry_point: Poncho\AdminBundle\Security\AuthenticationEntryPoint
             provider: entity_provider
             lazy: true
             form_login:
-                login_path: umbrella_admin_login
-                check_path: umbrella_admin_login
+                login_path: poncho_admin_login
+                check_path: poncho_admin_login
                 default_target_path: test.home
                 enable_csrf: true
             logout:
-                path: umbrella_admin_logout
-                target: umbrella_admin_login
+                path: poncho_admin_logout
+                target: poncho_admin_login

@@ -1,6 +1,6 @@
 import dragula from 'dragula';
 
-export default class UmbrellaCollection extends HTMLElement {
+export default class PonchoCollection extends HTMLElement {
 
     constructor() {
         super();

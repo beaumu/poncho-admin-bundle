@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Maker\Utils;
+namespace Poncho\AdminBundle\Maker\Utils;
 
 class MakeValidator
 {

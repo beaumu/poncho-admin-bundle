@@ -15,5 +15,5 @@
     - [Notifications](component/notification)
     - Form
         - [Theme](component/form/theme)
-- [Configuration reference](config/umbrella_admin)
+- [Configuration reference](config/poncho_admin)
 

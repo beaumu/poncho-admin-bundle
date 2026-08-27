@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Entity;
+namespace Poncho\AdminBundle\Entity;
 
 class BaseNotification
 {

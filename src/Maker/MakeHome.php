@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Maker;
+namespace Poncho\AdminBundle\Maker;
 
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\DependencyBuilder;
@@ -11,7 +11,7 @@ use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Bundle\MakerBundle\Util\YamlSourceManipulator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Umbrella\AdminBundle\Maker\Utils\MakeHelper;
+use Poncho\AdminBundle\Maker\Utils\MakeHelper;
 
 class MakeHome extends AbstractMaker
 {
@@ -81,16 +81,16 @@ class MakeHome extends AbstractMaker
 
     private function updateMenuConfig(ConsoleStyle $io, Generator $generator, string $menuClass): void
     {
-        $configPath = 'config/packages/umbrella_admin.yaml';
+        $configPath = 'config/packages/poncho_admin.yaml';
 
         $configContent = $this->helper->fileExists($configPath)
             ? $this->helper->getFileContents($configPath)
-            : 'umbrella_admin:';
+            : 'poncho_admin:';
 
         $manipulator = new YamlSourceManipulator($configContent);
         $data = $manipulator->getData();
-        $data['umbrella_admin']['app_name'] = 'Admin';
-        $data['umbrella_admin']['menu'] = $menuClass;
+        $data['poncho_admin']['app_name'] = 'Admin';
+        $data['poncho_admin']['menu'] = $menuClass;
         $manipulator->setData($data);
 
         $generator->dumpFile($configPath, $manipulator->getContents());

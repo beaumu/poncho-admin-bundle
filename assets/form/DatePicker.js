@@ -6,7 +6,7 @@ export default class DatePicker extends HTMLInputElement {
     constructor() {
         super();
         this.options = JSON.parse(this.dataset.options);
-        this.options['locale'] = umbrella.locale;
+        this.options['locale'] = poncho.locale;
     }
 
     connectedCallback() {

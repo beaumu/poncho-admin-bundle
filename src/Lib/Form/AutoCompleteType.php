@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Form;
+namespace Poncho\AdminBundle\Lib\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\DataMapperInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Umbrella\AdminBundle\Lib\Form\Subscriber\AutocompleteTypeSubscriber;
+use Poncho\AdminBundle\Lib\Form\Subscriber\AutocompleteTypeSubscriber;
 
 final class AutoCompleteType extends AbstractType implements DataMapperInterface
 {
@@ -21,7 +21,7 @@ final class AutoCompleteType extends AbstractType implements DataMapperInterface
     public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         // Add a custom block prefix to inner field to ease theming:
-        array_splice($view['autocomplete']->vars['block_prefixes'], -1, 0, 'umbrella_autocomplete_inner');
+        array_splice($view['autocomplete']->vars['block_prefixes'], -1, 0, 'poncho_autocomplete_inner');
         // this IS A compound (i.e. has children) field
         // however, we only render the child "autocomplete" field. So for rendering, fake NOT compound
         // This is a hack and we should check into removing it in the future
@@ -32,7 +32,7 @@ final class AutoCompleteType extends AbstractType implements DataMapperInterface
 
         $attr = $view->vars['attr'] ?? [];
 
-        $attr['is'] = 'umbrella-autocomplete';
+        $attr['is'] = 'poncho-autocomplete';
 
         $attr['data-tom-select-settings'] = json_encode($options['tom_select_settings']);
 
@@ -96,7 +96,7 @@ final class AutoCompleteType extends AbstractType implements DataMapperInterface
 
     public function getBlockPrefix(): string
     {
-        return 'umbrella_autocomplete';
+        return 'poncho_autocomplete';
     }
 
     public function mapDataToForms(mixed $viewData, \Traversable $forms): void

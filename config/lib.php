@@ -3,21 +3,21 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Doctrine\ORM\Events;
-use Umbrella\AdminBundle\Command\IndexEntityCommand;
-use Umbrella\AdminBundle\Lib\DataTable\ActionRenderer;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableFactory;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableRegistry;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableRenderer;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
-use Umbrella\AdminBundle\Lib\DataTable\Twig\DataTableExtension;
-use Umbrella\AdminBundle\Lib\Form\Extension\AutoCompleteExtension;
-use Umbrella\AdminBundle\Lib\Form\Extension\FormTypeExtension;
-use Umbrella\AdminBundle\Lib\JsResponse\JsResponseFactory;
-use Umbrella\AdminBundle\Lib\Menu\MenuProvider;
-use Umbrella\AdminBundle\Lib\Menu\MenuRegistry;
-use Umbrella\AdminBundle\Lib\Menu\Twig\MenuExtension;
-use Umbrella\AdminBundle\Lib\Menu\Visitor\MenuCurrentVisitor;
-use Umbrella\AdminBundle\Lib\Menu\Visitor\MenuVisibilityVisitor;
+use Poncho\AdminBundle\Command\IndexEntityCommand;
+use Poncho\AdminBundle\Lib\DataTable\ActionRenderer;
+use Poncho\AdminBundle\Lib\DataTable\DataTableFactory;
+use Poncho\AdminBundle\Lib\DataTable\DataTableRegistry;
+use Poncho\AdminBundle\Lib\DataTable\DataTableRenderer;
+use Poncho\AdminBundle\Lib\DataTable\DataTableType;
+use Poncho\AdminBundle\Lib\DataTable\Twig\DataTableExtension;
+use Poncho\AdminBundle\Lib\Form\Extension\AutoCompleteExtension;
+use Poncho\AdminBundle\Lib\Form\Extension\FormTypeExtension;
+use Poncho\AdminBundle\Lib\JsResponse\JsResponseFactory;
+use Poncho\AdminBundle\Lib\Menu\MenuProvider;
+use Poncho\AdminBundle\Lib\Menu\MenuRegistry;
+use Poncho\AdminBundle\Lib\Menu\Twig\MenuExtension;
+use Poncho\AdminBundle\Lib\Menu\Visitor\MenuCurrentVisitor;
+use Poncho\AdminBundle\Lib\Menu\Visitor\MenuVisibilityVisitor;
 
 return static function (ContainerConfigurator $configurator): void {
 
@@ -32,9 +32,9 @@ return static function (ContainerConfigurator $configurator): void {
     $services->set(MenuRegistry::class);
     $services->set(MenuProvider::class);
     $services->set(MenuVisibilityVisitor::class)
-        ->tag('umbrella.menu.visitor');
+        ->tag('poncho.menu.visitor');
     $services->set(MenuCurrentVisitor::class)
-        ->tag('umbrella.menu.visitor');
+        ->tag('poncho.menu.visitor');
     $services->set(MenuExtension::class)
         ->tag('twig.extension');
 
@@ -52,17 +52,17 @@ return static function (ContainerConfigurator $configurator): void {
     $services->set(DataTableExtension::class)
         ->tag('twig.extension');
 
-    $services->load('Umbrella\\AdminBundle\\Lib\\DataTable\\Adapter\\', '../src/Lib/DataTable/Adapter/*')
+    $services->load('Poncho\\AdminBundle\\Lib\\DataTable\\Adapter\\', '../src/Lib/DataTable/Adapter/*')
         ->tag(DataTableRegistry::TAG_ADAPTER_TYPE);
 
-    $services->load('Umbrella\\AdminBundle\\Lib\\DataTable\\Column\\', '../src/Lib/DataTable/Column/*')
+    $services->load('Poncho\\AdminBundle\\Lib\\DataTable\\Column\\', '../src/Lib/DataTable/Column/*')
         ->tag(DataTableRegistry::TAG_COLUMN_TYPE);
 
-    $services->load('Umbrella\\AdminBundle\\Lib\\DataTable\\Action\\', '../src/Lib/DataTable/Action/*')
+    $services->load('Poncho\\AdminBundle\\Lib\\DataTable\\Action\\', '../src/Lib/DataTable/Action/*')
         ->tag(DataTableRegistry::TAG_ACTION_TYPE);
 
     // -- Form -- //
-    $services->load('Umbrella\\AdminBundle\\Lib\\Form\\', '../src/Lib/Form/*')
+    $services->load('Poncho\\AdminBundle\\Lib\\Form\\', '../src/Lib/Form/*')
         ->tag('form.type');
 
     $services->set(FormTypeExtension::class)

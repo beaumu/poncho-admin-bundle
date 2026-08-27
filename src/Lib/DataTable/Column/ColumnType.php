@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Column;
+namespace Poncho\AdminBundle\Lib\DataTable\Column;
 
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Utils\Utils;
+use Poncho\AdminBundle\Utils\Utils;
 
 class ColumnType
 {

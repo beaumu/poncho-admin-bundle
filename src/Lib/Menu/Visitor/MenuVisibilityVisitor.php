@@ -1,9 +1,9 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu\Visitor;
+namespace Poncho\AdminBundle\Lib\Menu\Visitor;
 
-use Umbrella\AdminBundle\Lib\Menu\DTO\Menu;
-use Umbrella\AdminBundle\Lib\Menu\DTO\MenuItem;
+use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
+use Poncho\AdminBundle\Lib\Menu\DTO\MenuItem;
 
 class MenuVisibilityVisitor implements MenuVisitor
 {

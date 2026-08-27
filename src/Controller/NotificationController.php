@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Controller;
+namespace Poncho\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Umbrella\AdminBundle\Lib\Controller\AdminController;
-use Umbrella\AdminBundle\Notification\NotificationProviderInterface;
+use Poncho\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\Notification\NotificationProviderInterface;
 
 class NotificationController extends AdminController
 {
@@ -16,7 +16,7 @@ class NotificationController extends AdminController
         if (0 === \count($notifications)) {
             return new JsonResponse([
                 'count' => 0,
-                'html' => $this->renderView('@UmbrellaAdmin/notification/empty.html.twig')
+                'html' => $this->renderView('@PonchoAdmin/notification/empty.html.twig')
             ]);
         }
 

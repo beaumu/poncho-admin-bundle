@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Form\Extension;
+namespace Poncho\AdminBundle\Lib\Form\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\FormType;

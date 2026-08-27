@@ -4,7 +4,7 @@
 use Symfony\Component\Config\Definition\Dumper\YamlReferenceDumper;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Umbrella\AdminBundle\DependencyInjection\UmbrellaAdminExtension;
+use Poncho\AdminBundle\DependencyInjection\PonchoAdminExtension;
 
 require './vendor/autoload.php';
 
@@ -34,4 +34,4 @@ function dumpConfig(ExtensionInterface $extension, string $filename): void
     file_put_contents($mdFile, $newMdContent);
 }
 
-dumpConfig(new UmbrellaAdminExtension(), 'umbrella_admin');
+dumpConfig(new PonchoAdminExtension(), 'poncho_admin');

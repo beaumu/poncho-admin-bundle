@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\JsResponse;
+namespace Poncho\AdminBundle\Lib\JsResponse;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
@@ -186,17 +186,17 @@ class JsResponse extends Response
         ]);
     }
 
-    public function unselectTable(string $cssSelector = 'umbrella-datatable'): self
+    public function unselectTable(string $cssSelector = 'poncho-datatable'): self
     {
         return $this->callTable('unselectAll', [], $cssSelector);
     }
 
-    public function reloadTable(array $options = [], string $cssSelector = 'umbrella-datatable'): self
+    public function reloadTable(array $options = [], string $cssSelector = 'poncho-datatable'): self
     {
         return $this->callTable('reload', [$options], $cssSelector);
     }
 
-    public function callTable(string $method, array $methodParams = [], string $cssSelector = 'umbrella-datatable'): self
+    public function callTable(string $method, array $methodParams = [], string $cssSelector = 'poncho-datatable'): self
     {
         return $this->call($method, $methodParams, $cssSelector);
     }

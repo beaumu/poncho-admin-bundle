@@ -9,8 +9,9 @@ Requirements
 Before your first contribution, make sure you'll meet these requirements:
 
 * You have a user account on [GitHub](https://github.com/).
-* You have installed in your computer a working environment to develop PHP
-  applications.
+* You have [DDEV](https://ddev.com/) installed, and have started the project once (`ddev start`).
+* After cloning, run `git config core.hooksPath .githooks` once — this enables a local
+  pre-commit hook that runs php-cs-fixer/eslint on staged files via DDEV.
 
 Proposing New Features
 ----------------------
@@ -26,9 +27,7 @@ This project follows the same contribution workflow used by the Symfony project.
 First you must clone the repository, then create a feature branch and finally,
 submit a pull request via GitHub.
 
-To check your code before submit you can :
- - run phpunit  ```vendor/bin/simple-phpunit```
- - run php code analyser `/vendor/bin/phpstan`, `/vendor/bin/psalm`
+To check your code before submit you can run `ddev check` (or individually: `ddev test`, `ddev analyse`, `ddev fix-all`).
 
 Read the [Symfony contribution guide][sf-contribution] for more details.
 
@@ -40,7 +39,7 @@ Further information
 
 [gh-help]: https://help.github.com
 [gh-pr]: https://help.github.com/send-pull-requests
-[umbrella-issues]: https://github.com/acantepie/umbrella-admin-bundle/labels/Bug
-[create-issue]: https://github.com/acantepie/umbrella-admin-bundle/issues/new?assignees=&labels=Bug&template=1_Bug_report.yaml
-[propose-feature]: https://github.com/acantepie/umbrella-admin-bundle/issues/new?assignees=&labels=Feature&template=2_Feature_request.yaml
+[poncho-issues]: https://github.com/beaumu/poncho-admin-bundle/labels/Bug
+[create-issue]: https://github.com/beaumu/poncho-admin-bundle/issues/new?assignees=&labels=Bug&template=1_Bug_report.yaml
+[propose-feature]: https://github.com/beaumu/poncho-admin-bundle/issues/new?assignees=&labels=Feature&template=2_Feature_request.yaml
 [sf-contribution]: http://symfony.com/doc/current/contributing/documentation/overview.html#your-first-documentation-contribution

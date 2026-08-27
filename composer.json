@@ -1,18 +1,18 @@
 {
-    "name": "umbrella2/admin-bundle",
+    "name": "poncho/admin-bundle",
     "type": "symfony-bundle",
-    "description": "Umbrella Admin Symfony bundle.",
+    "description": "Poncho Admin Symfony bundle.",
     "keywords": [
         "backend",
         "admin",
-        "umbrella"
+        "poncho"
     ],
-    "homepage": "https://github.com/acantepie/umbrella-admin-bundle",
+    "homepage": "https://github.com/beaumu/poncho-admin-bundle",
     "license": "MIT",
     "authors": [
         {
-            "name": "Adrien Cantepie",
-            "email": "adrien.cantepie@gmail.com"
+            "name": "Beau Muylle",
+            "email": "poncho-admin@beaumuylle.be"
         }
     ],
     "require": {
@@ -64,13 +64,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Umbrella\\AdminBundle\\": "src/"
+            "Poncho\\AdminBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Umbrella\\AdminBundle\\Tests\\": "tests/",
-            "Umbrella\\AdminBundle\\Tests\\App\\": "tests/App/src/"
+            "Poncho\\AdminBundle\\Tests\\": "tests/",
+            "Poncho\\AdminBundle\\Tests\\App\\": "tests/App/src/"
         }
     }
 }

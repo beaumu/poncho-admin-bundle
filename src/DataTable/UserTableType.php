@@ -1,26 +1,26 @@
 <?php
 
-namespace Umbrella\AdminBundle\DataTable;
+namespace Poncho\AdminBundle\DataTable;
 
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Routing\RouterInterface;
-use Umbrella\AdminBundle\Entity\BaseAdminUser;
-use Umbrella\AdminBundle\Lib\DataTable\Action\ButtonAddActionType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\ActionColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\BooleanColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\ColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\DateColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\ColumnActionBuilder;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableBuilder;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
-use Umbrella\AdminBundle\Lib\Form\SearchType;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
-use Umbrella\AdminBundle\Utils\DoctrineUtils;
+use Poncho\AdminBundle\Entity\BaseAdminUser;
+use Poncho\AdminBundle\Lib\DataTable\Action\ButtonAddActionType;
+use Poncho\AdminBundle\Lib\DataTable\Column\ActionColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Column\BooleanColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Column\ColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Column\DateColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
+use Poncho\AdminBundle\Lib\DataTable\ColumnActionBuilder;
+use Poncho\AdminBundle\Lib\DataTable\DataTableBuilder;
+use Poncho\AdminBundle\Lib\DataTable\DataTableType;
+use Poncho\AdminBundle\Lib\Form\SearchType;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
+use Poncho\AdminBundle\Utils\DoctrineUtils;
 
 class UserTableType extends DataTableType
 {
-    public function __construct(protected UmbrellaAdminConfiguration $config, protected RouterInterface $router)
+    public function __construct(protected PonchoAdminConfiguration $config, protected RouterInterface $router)
     {
     }
 
@@ -28,44 +28,44 @@ class UserTableType extends DataTableType
     {
         $builder->addFilter('search', SearchType::class);
         $builder->addAction('add', ButtonAddActionType::class, [
-            'route' => 'umbrella_admin_user_edit',
+            'route' => 'poncho_admin_user_edit',
             'text' => 'action.add_user',
             'xhr' => true,
-            'translation_domain' => 'UmbrellaAdmin'
+            'translation_domain' => 'PonchoAdmin'
         ]);
 
         $builder->add('name', ColumnType::class, [
             'render_html' => fn (BaseAdminUser $user) => \sprintf(
                 '<a href data-xhr="%s">%s</a>',
-                $this->router->generate('umbrella_admin_user_edit', ['id' => $user->id]),
+                $this->router->generate('poncho_admin_user_edit', ['id' => $user->id]),
                 htmlspecialchars($user->getFullName())
             ),
             'order' => 'ASC',
             'order_by' => ['firstname', 'lastname'],
             'label' => 'label.name',
-            'translation_domain' => 'UmbrellaAdmin'
+            'translation_domain' => 'PonchoAdmin'
         ]);
         $builder->add('email', PropertyColumnType::class, [
             'label' => 'label.email',
-            'translation_domain' => 'UmbrellaAdmin'
+            'translation_domain' => 'PonchoAdmin'
         ]);
         $builder->add('createdAt', DateColumnType::class, [
             'label' => 'label.created_at',
-            'translation_domain' => 'UmbrellaAdmin'
+            'translation_domain' => 'PonchoAdmin'
         ]);
         $builder->add('active', BooleanColumnType::class, [
             'label' => 'label.active',
-            'translation_domain' => 'UmbrellaAdmin'
+            'translation_domain' => 'PonchoAdmin'
         ]);
         $builder->add('__action__', ActionColumnType::class, [
             'build' => function (ColumnActionBuilder $builder, BaseAdminUser $e) {
                 $builder->editLink([
-                    'route' => 'umbrella_admin_user_edit',
+                    'route' => 'poncho_admin_user_edit',
                     'route_params' => ['id' => $e->id],
                     'xhr' => true
                 ]);
                 $builder->deleteLink([
-                    'route' => 'umbrella_admin_user_delete',
+                    'route' => 'poncho_admin_user_delete',
                     'route_params' => ['id' => $e->id]
                 ]);
             }

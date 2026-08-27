@@ -1,9 +1,9 @@
 <?php
 
-namespace Umbrella\AdminBundle\Service;
+namespace Poncho\AdminBundle\Service;
 
-use Umbrella\AdminBundle\Entity\BaseAdminUser;
-use Umbrella\AdminBundle\Exception\ResetPasswordException;
+use Poncho\AdminBundle\Entity\BaseAdminUser;
+use Poncho\AdminBundle\Exception\ResetPasswordException;
 
 interface UserManagerInterface
 {

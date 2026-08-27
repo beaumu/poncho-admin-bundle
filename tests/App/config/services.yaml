@@ -3,12 +3,12 @@ services:
         autowire: true
         autoconfigure: true
 
-    Umbrella\AdminBundle\Tests\App\:
+    Poncho\AdminBundle\Tests\App\:
         resource: '../src/*'
         exclude:
             - '../src/Entity'
             - '../src/Kernel.php'
 
-    Umbrella\AdminBundle\Tests\App\Controller\:
+    Poncho\AdminBundle\Tests\App\Controller\:
         resource: '../src/Controller/'
         tags: [ 'controller.service_arguments' ]

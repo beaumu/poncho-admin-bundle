@@ -1,0 +1,3 @@
+poncho_admin:
+    user:
+        class: Poncho\AdminBundle\Tests\App\Entity\AdminUser

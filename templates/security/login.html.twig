@@ -1,13 +1,13 @@
-{% extends '@UmbrellaAdmin/security/layout.html.twig' %}
+{% extends '@PonchoAdmin/security/layout.html.twig' %}
 
-{% trans_default_domain 'UmbrellaAdmin' %}
+{% trans_default_domain 'PonchoAdmin' %}
 
 {% block title %}
-    <title>{{ 'login.title' | trans }} | {{ umbrella_admin.appName() }}</title>
+    <title>{{ 'login.title' | trans }} | {{ poncho_admin.appName() }}</title>
 {% endblock %}
 
 {% block content %}
-    {% include '@UmbrellaAdmin/security/head.html.twig' %}
+    {% include '@PonchoAdmin/security/head.html.twig' %}
 
     <div class="card p-3">
         <div class="card-body">
@@ -20,7 +20,7 @@
                 </div>
             {% endif %}
 
-            <form action="{{ path(constant('Umbrella\\AdminBundle\\Controller\\SecurityController::LOGIN_ROUTE')) }}" method="post">
+            <form action="{{ path(constant('Poncho\\AdminBundle\\Controller\\SecurityController::LOGIN_ROUTE')) }}" method="post">
 
                 <div class="mb-3">
                     <label for="username" class="form-label">{{ 'label.email' | trans }}</label>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <a href="{{ path('umbrella_admin_security_passwordresetrequest') }}" class="float-end">
+                    <a href="{{ path('poncho_admin_security_passwordresetrequest') }}" class="float-end">
                         <small>{{ 'login.forget_password' | trans }}</small>
                     </a>
                     <label for="password" class="form-label">{{ 'label.password' | trans }}</label>

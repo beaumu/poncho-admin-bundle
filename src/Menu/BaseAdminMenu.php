@@ -1,31 +1,31 @@
 <?php
 
-namespace Umbrella\AdminBundle\Menu;
+namespace Poncho\AdminBundle\Menu;
 
 use Twig\Environment;
-use Umbrella\AdminBundle\Lib\Menu\Builder\MenuBuilder;
-use Umbrella\AdminBundle\Lib\Menu\DTO\Breadcrumb;
-use Umbrella\AdminBundle\Lib\Menu\DTO\Menu;
-use Umbrella\AdminBundle\Lib\Menu\MenuType;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
+use Poncho\AdminBundle\Lib\Menu\Builder\MenuBuilder;
+use Poncho\AdminBundle\Lib\Menu\DTO\Breadcrumb;
+use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
+use Poncho\AdminBundle\Lib\Menu\MenuType;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 
 class BaseAdminMenu extends MenuType
 {
     protected array $defaultRenderOptions;
     protected array $defaultBreadcrumbRenderOptions;
 
-    public function __construct(protected Environment $twig, protected UmbrellaAdminConfiguration $configuration)
+    public function __construct(protected Environment $twig, protected PonchoAdminConfiguration $configuration)
     {
         $this->defaultRenderOptions = [
             'logo_route' => null,
             'logo' => $this->configuration->appLogo(),
             'title' => $this->configuration->appName(),
             'searchable' => false,
-            'template' => '@UmbrellaAdmin/menu/sidebar.html.twig'
+            'template' => '@PonchoAdmin/menu/sidebar.html.twig'
         ];
 
         $this->defaultBreadcrumbRenderOptions = [
-            'template' => '@UmbrellaAdmin/menu/breadcrumb.html.twig'
+            'template' => '@PonchoAdmin/menu/breadcrumb.html.twig'
         ];
     }
 

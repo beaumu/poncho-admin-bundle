@@ -1,9 +1,9 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\Functional\Controller;
+namespace Poncho\AdminBundle\Tests\Functional\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Umbrella\AdminBundle\Tests\Functional\DbUtils;
+use Poncho\AdminBundle\Tests\Functional\DbUtils;
 
 class SecurityControllerTest extends WebTestCase
 {

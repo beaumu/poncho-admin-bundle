@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Umbrella\AdminBundle\Entity\Trait\IdTrait;
+use Poncho\AdminBundle\Entity\Trait\IdTrait;
 
 #[ORM\Entity(repositoryClass: <?= $repository->getShortName() ?>::class)]
 #[Gedmo\Tree(type: 'nested')]

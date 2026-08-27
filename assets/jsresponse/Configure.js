@@ -3,16 +3,16 @@ import {Modal, Offcanvas} from 'bootstrap';
 
 export default function configureHandler(handler) {
     handler.registerAction('toast', (params) => {
-        umbrella.toast.show(params['type'], params['text'], params['title'], params['options']);
+        poncho.toast.show(params['type'], params['text'], params['title'], params['options']);
     });
 
     handler.registerAction('show_modal', (params) => {
 
         const template = document.createElement('div')
         template.innerHTML = params.value.trim()
-        template.firstChild.id = 'umbrella-modal'
+        template.firstChild.id = 'poncho-modal'
 
-        let modalElement = document.getElementById('umbrella-modal')
+        let modalElement = document.getElementById('poncho-modal')
 
         if (modalElement) {
             modalElement.innerHTML = template.firstChild.innerHTML
@@ -26,7 +26,7 @@ export default function configureHandler(handler) {
     });
 
     handler.registerAction('close_modal', (params) => {
-        const modalElement = document.getElementById('umbrella-modal')
+        const modalElement = document.getElementById('poncho-modal')
         if (modalElement) {
             const modal = Modal.getInstance(modalElement)
             if (modal) {
@@ -39,9 +39,9 @@ export default function configureHandler(handler) {
 
         const template = document.createElement('div')
         template.innerHTML = params.value.trim()
-        template.firstChild.id = 'umbrella-offcanvas'
+        template.firstChild.id = 'poncho-offcanvas'
 
-        let offcanvasElement = document.getElementById('umbrella-offcanvas')
+        let offcanvasElement = document.getElementById('poncho-offcanvas')
 
         if (offcanvasElement) {
             offcanvasElement.innerHTML = template.firstChild.innerHTML
@@ -55,7 +55,7 @@ export default function configureHandler(handler) {
     });
 
     handler.registerAction('close_offcanvas', (params) => {
-        const offcanvasElement = document.getElementById('umbrella-offcanvas')
+        const offcanvasElement = document.getElementById('poncho-offcanvas')
         if (offcanvasElement) {
             const offcanvas = Offcanvas.getInstance(offcanvasElement)
             if (offcanvas) {
@@ -116,16 +116,16 @@ export default function configureHandler(handler) {
 
     handler.setErrorHandler((requestObject, error, errorThrown) => {
         if (requestObject.status === 401) {
-            umbrella.toast.warning('401 - ' + umbrella.translator.trans('toast.error401'));
+            poncho.toast.warning('401 - ' + poncho.translator.trans('toast.error401'));
 
         } else if (requestObject.status === 403) {
-            umbrella.toast.warning('403 - ' + umbrella.translator.trans('toast.error403'));
+            poncho.toast.warning('403 - ' + poncho.translator.trans('toast.error403'));
 
         } else if (requestObject.status === 404) {
-            umbrella.toast.warning('404 - ' + umbrella.translator.trans('toast.error404'));
+            poncho.toast.warning('404 - ' + poncho.translator.trans('toast.error404'));
 
         } else {
-            umbrella.toast.error(umbrella.translator.trans('toast.error'));
+            poncho.toast.error(poncho.translator.trans('toast.error'));
         }
     })
 

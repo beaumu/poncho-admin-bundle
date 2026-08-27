@@ -53,14 +53,14 @@ export default class AjaxUtils {
         }
 
         if ('spinner' in options && true === options['spinner']) {
-            umbrella.spinner.show({text: options['spinner']});
+            poncho.spinner.show({text: options['spinner']});
         }
 
         options['success'] = (response) => {
-            umbrella.jsResponseHandler.success(response);
+            poncho.jsResponseHandler.success(response);
         };
         options['error'] = (requestObject, error, errorThrown) => {
-            umbrella.jsResponseHandler.error(requestObject, error, errorThrown);
+            poncho.jsResponseHandler.error(requestObject, error, errorThrown);
         };
         options['complete'] = () => {
 
@@ -70,7 +70,7 @@ export default class AjaxUtils {
                 });
             }
 
-            umbrella.spinner.hide();
+            poncho.spinner.hide();
         };
 
         // mark request with cutom headers to allow server to identify it
@@ -80,7 +80,7 @@ export default class AjaxUtils {
         options['headers']['xhr-request'] = 'js';
 
         if ('confirm' in options && false !== options['confirm']) {
-            umbrella.confirmModal.show({
+            poncho.confirmModal.show({
                 'text': options['confirm'],
                 'confirm': () => $.ajax(options)
             });

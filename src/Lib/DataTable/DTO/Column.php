@@ -1,8 +1,8 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\DTO;
+namespace Poncho\AdminBundle\Lib\DataTable\DTO;
 
-use Umbrella\AdminBundle\Lib\DataTable\Column\ColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Column\ColumnType;
 
 class Column
 {

@@ -1,13 +1,13 @@
-{% block umbrellacollection_widget %}
+{% block ponchocollection_widget %}
     {% set attr = attr|merge({
         'data-index': form | length,
         'data-sortable' : form.vars.sortable ? 'true' : 'false',
-        'data-prototype': block('umbrellacollection_prototype_widget'),
+        'data-prototype': block('ponchocollection_prototype_widget'),
         'data-prototype-name' : prototype.vars.name,
         'data-max-length' : form.vars.max_length
     }) %}
 
-    <umbrella-collection {{ block('widget_container_attributes') }}>
+    <poncho-collection {{ block('widget_container_attributes') }}>
         <table class="table table-md mb-2">
             {# never show head if entry_type is not compound (most of time label was not initialized) #}
             {% if not headless and prototype.vars.compound %}
@@ -18,7 +18,7 @@
                     {% endif %}
 
                     {% for item_form in prototype %}
-                        {{ block('umbrellacollection_item_label') }}
+                        {{ block('ponchocollection_item_label') }}
                     {% endfor %}
 
                     {% if not form.vars.disabled and form.vars.allow_delete %}
@@ -29,7 +29,7 @@
             {% endif %}
             <tbody class="js-item-container">
             {% for entry_form in form %}
-                {{ block('umbrellacollection_entry') }}
+                {{ block('ponchocollection_entry') }}
             {% endfor %}
             </tbody>
         </table>
@@ -38,15 +38,15 @@
             {{ form.vars.add_btn_template | raw }}
         {% endif %}
 
-    </umbrella-collection>
+    </poncho-collection>
 {% endblock %}
 
-{%- block umbrellacollection_prototype_widget -%}
+{%- block ponchocollection_prototype_widget -%}
     {%- set entry_form = prototype -%}
-    {{- block('umbrellacollection_entry') -}}
+    {{- block('ponchocollection_entry') -}}
 {%- endblock -%}
 
-{% block umbrellacollection_entry %}
+{% block ponchocollection_entry %}
     <tr class="js-item" data-idx="{{ entry_form.vars.name }}">
 
         {% if not form.vars.disabled and form.vars.sortable %}
@@ -57,11 +57,11 @@
 
         {% if entry_form.vars.compound %}
             {% for item_form in entry_form %}
-                {{ block('umbrellacollection_item') }}
+                {{ block('ponchocollection_item') }}
             {% endfor %}
         {% else %}
             {% set item_form = entry_form %}
-            {{ block('umbrellacollection_item') }}
+            {{ block('ponchocollection_item') }}
         {% endif %}
 
         {% if not form.vars.disabled and form.vars.allow_delete %}
@@ -74,14 +74,14 @@
     </tr>
 {% endblock %}
 
-{% block umbrellacollection_item %}
+{% block ponchocollection_item %}
     <td>
         {{ form_widget(item_form) }}
         {{ form_errors(item_form) }}
     </td>
 {% endblock %}
 
-{%- block umbrellacollection_item_label -%}
+{%- block ponchocollection_item_label -%}
     {% set label = item_form.vars.label %}
     {% set label_format = item_form.vars.label_format %}
     {% set label_html = item_form.vars.label_html %}

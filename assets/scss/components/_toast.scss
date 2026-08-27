@@ -1,34 +1,34 @@
 @use "sass:color";
 
-$umbrella-toast-grad0: 3%;
-$umbrella-toast-grad1: 2%;
+$poncho-toast-grad0: 3%;
+$poncho-toast-grad1: 2%;
 
-.umbrella-toast {
+.poncho-toast {
   display : flex;
   align-items: center;
   max-width: 300px;
 
-  .umbrella-toast-wrapper {
+  .poncho-toast-wrapper {
     min-width: 150px;
 
-    .umbrella-toast-head {
+    .poncho-toast-head {
       font-weight: bold;
     }
   }
 
-  &.umbrella-toast-success {
-    background: linear-gradient(135deg, color.adjust($success, $lightness: $umbrella-toast-grad0), color.adjust($success, $lightness: -$umbrella-toast-grad1));
+  &.poncho-toast-success {
+    background: linear-gradient(135deg, color.adjust($success, $lightness: $poncho-toast-grad0), color.adjust($success, $lightness: -$poncho-toast-grad1));
   }
 
-  &.umbrella-toast-error {
-    background: linear-gradient(135deg, color.adjust($danger, $lightness: $umbrella-toast-grad0), color.adjust($danger, $lightness: -$umbrella-toast-grad1));
+  &.poncho-toast-error {
+    background: linear-gradient(135deg, color.adjust($danger, $lightness: $poncho-toast-grad0), color.adjust($danger, $lightness: -$poncho-toast-grad1));
   }
 
-  &.umbrella-toast-warning {
-    background: linear-gradient(135deg, color.adjust($warning, $lightness: $umbrella-toast-grad0), color.adjust($warning, $lightness: -$umbrella-toast-grad1));
+  &.poncho-toast-warning {
+    background: linear-gradient(135deg, color.adjust($warning, $lightness: $poncho-toast-grad0), color.adjust($warning, $lightness: -$poncho-toast-grad1));
   }
 
-  &.umbrella-toast-info {
-    background: linear-gradient(135deg, color.adjust($primary, $lightness: $umbrella-toast-grad0), color.adjust($primary, $lightness: -$umbrella-toast-grad1));
+  &.poncho-toast-info {
+    background: linear-gradient(135deg, color.adjust($primary, $lightness: $poncho-toast-grad0), color.adjust($primary, $lightness: -$poncho-toast-grad1));
   }
 }

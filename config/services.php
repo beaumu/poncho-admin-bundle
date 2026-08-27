@@ -2,17 +2,17 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Umbrella\AdminBundle\Asset\AssetPackage;
-use Umbrella\AdminBundle\Maker\MakeAdminSecurity;
-use Umbrella\AdminBundle\Maker\MakeHome;
-use Umbrella\AdminBundle\Maker\MakeNotification;
-use Umbrella\AdminBundle\Maker\MakeTable;
-use Umbrella\AdminBundle\Maker\MakeTree;
-use Umbrella\AdminBundle\Maker\Utils\MakeHelper;
-use Umbrella\AdminBundle\Menu\BaseAdminMenu;
-use Umbrella\AdminBundle\Security\AuthenticationEntryPoint;
-use Umbrella\AdminBundle\Twig\UmbrellaAdminTwigExtension;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
+use Poncho\AdminBundle\Asset\AssetPackage;
+use Poncho\AdminBundle\Maker\MakeAdminSecurity;
+use Poncho\AdminBundle\Maker\MakeHome;
+use Poncho\AdminBundle\Maker\MakeNotification;
+use Poncho\AdminBundle\Maker\MakeTable;
+use Poncho\AdminBundle\Maker\MakeTree;
+use Poncho\AdminBundle\Maker\Utils\MakeHelper;
+use Poncho\AdminBundle\Menu\BaseAdminMenu;
+use Poncho\AdminBundle\Security\AuthenticationEntryPoint;
+use Poncho\AdminBundle\Twig\PonchoAdminTwigExtension;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 
 return static function (ContainerConfigurator $configurator): void {
 
@@ -32,13 +32,13 @@ return static function (ContainerConfigurator $configurator): void {
 
     // Menu
     $services->set(BaseAdminMenu::class)
-        ->tag('umbrella.menu.type');
+        ->tag('poncho.menu.type');
 
     // Admin
-    $services->set(UmbrellaAdminTwigExtension::class)
+    $services->set(PonchoAdminTwigExtension::class)
         ->arg(0, service('twig.form.renderer'))
         ->tag('twig.extension');
-    $services->set(UmbrellaAdminConfiguration::class)
+    $services->set(PonchoAdminConfiguration::class)
         ->bind('$logoutUrlGenerator', service('security.logout_url_generator'));
 
     // Maker

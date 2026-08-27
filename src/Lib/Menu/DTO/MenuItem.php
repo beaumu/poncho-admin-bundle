@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu\DTO;
+namespace Poncho\AdminBundle\Lib\Menu\DTO;
 
 use function Symfony\Component\String\u;
 
-use Umbrella\AdminBundle\Utils\Utils;
+use Poncho\AdminBundle\Utils\Utils;
 
 class MenuItem implements \Countable, \IteratorAggregate
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Controller;
+namespace Poncho\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,16 +8,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function Symfony\Component\Translation\t;
 
-use Umbrella\AdminBundle\Entity\BaseAdminUser;
-use Umbrella\AdminBundle\Lib\Controller\AdminController;
-use Umbrella\AdminBundle\Service\UserManagerInterface;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
+use Poncho\AdminBundle\Entity\BaseAdminUser;
+use Poncho\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\Service\UserManagerInterface;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 
 class ProfileController extends AdminController
 {
-    public const PROFILE_ROUTE = 'umbrella_admin_profile_index';
+    public const PROFILE_ROUTE = 'poncho_admin_profile_index';
 
-    public function __construct(protected readonly UserManagerInterface $userManager, protected readonly UmbrellaAdminConfiguration $config)
+    public function __construct(protected readonly UserManagerInterface $userManager, protected readonly PonchoAdminConfiguration $config)
     {
     }
 
@@ -36,12 +36,12 @@ class ProfileController extends AdminController
             $this->userManager->updatePassword($user);
             $this->userManager->save($user);
 
-            $this->toastSuccess(t('message.account_updated', [], 'UmbrellaAdmin'));
+            $this->toastSuccess(t('message.account_updated', [], 'PonchoAdmin'));
 
             return $this->redirectToRoute(self::PROFILE_ROUTE);
         }
 
-        return $this->render('@UmbrellaAdmin/profile/index.html.twig', [
+        return $this->render('@PonchoAdmin/profile/index.html.twig', [
             'user' => $user,
             'settings_form' => $settingsForm->createView(),
         ]);

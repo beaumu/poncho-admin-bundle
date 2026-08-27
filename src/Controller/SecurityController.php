@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Controller;
+namespace Poncho\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,21 +8,21 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use function Symfony\Component\Translation\t;
 
-use Umbrella\AdminBundle\Exception\ResetPasswordException;
-use Umbrella\AdminBundle\Form\ChangePasswordType;
-use Umbrella\AdminBundle\Form\ResetPasswordRequestType;
-use Umbrella\AdminBundle\Lib\Controller\AdminController;
-use Umbrella\AdminBundle\Service\UserManagerInterface;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
+use Poncho\AdminBundle\Exception\ResetPasswordException;
+use Poncho\AdminBundle\Form\ChangePasswordType;
+use Poncho\AdminBundle\Form\ResetPasswordRequestType;
+use Poncho\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\Service\UserManagerInterface;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 
 class SecurityController extends AdminController
 {
-    public const LOGIN_ROUTE = 'umbrella_admin_login';
-    public const LOGOUT_ROUTE = 'umbrella_admin_logout';
+    public const LOGIN_ROUTE = 'poncho_admin_login';
+    public const LOGOUT_ROUTE = 'poncho_admin_logout';
 
     public function __construct(
         protected readonly UserManagerInterface $userManager,
-        protected readonly UmbrellaAdminConfiguration $config
+        protected readonly PonchoAdminConfiguration $config
     ) {
     }
 
@@ -34,7 +34,7 @@ class SecurityController extends AdminController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('@UmbrellaAdmin/security/login.html.twig', [
+        return $this->render('@PonchoAdmin/security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
@@ -59,17 +59,17 @@ class SecurityController extends AdminController
                 // proceed as success
             }
 
-            return $this->redirectToRoute('umbrella_admin_security_passwordresetcheckemail');
+            return $this->redirectToRoute('poncho_admin_security_passwordresetcheckemail');
         }
 
-        return $this->render('@UmbrellaAdmin/security/password_reset_request.html.twig', [
+        return $this->render('@PonchoAdmin/security/password_reset_request.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
     public function passwordRequestCheckEmail(): Response
     {
-        return $this->render('@UmbrellaAdmin/security/password_reset_check_email.html.twig');
+        return $this->render('@PonchoAdmin/security/password_reset_check_email.html.twig');
     }
 
     public function passwordReset(Request $request, string $token): Response
@@ -77,7 +77,7 @@ class SecurityController extends AdminController
         try {
             $user = $this->userManager->validateResetPasswordTokenAndFetchUser($token);
         } catch (ResetPasswordException $e) {
-            return $this->render('@UmbrellaAdmin/security/password_reset_error.html.twig');
+            return $this->render('@PonchoAdmin/security/password_reset_error.html.twig');
         }
 
         $form = $this->createForm(ChangePasswordType::class, $user);
@@ -87,11 +87,11 @@ class SecurityController extends AdminController
             $this->userManager->updatePassword($user);
             $this->userManager->save($user);
 
-            $this->toastSuccess(t('message.password_resetted', [], 'UmbrellaAdmin'));
+            $this->toastSuccess(t('message.password_resetted', [], 'PonchoAdmin'));
             return $this->redirectToRoute(self::LOGIN_ROUTE);
         }
 
-        return $this->render('@UmbrellaAdmin/security/password_reset.html.twig', [
+        return $this->render('@PonchoAdmin/security/password_reset.html.twig', [
             'form' => $form->createView(),
         ]);
     }

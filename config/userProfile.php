@@ -2,8 +2,8 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Umbrella\AdminBundle\Controller\ProfileController;
-use Umbrella\AdminBundle\Form\ProfileType;
+use Poncho\AdminBundle\Controller\ProfileController;
+use Poncho\AdminBundle\Form\ProfileType;
 
 return static function (ContainerConfigurator $configurator): void {
 

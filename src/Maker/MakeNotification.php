@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Maker;
+namespace Poncho\AdminBundle\Maker;
 
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\DependencyBuilder;
@@ -11,7 +11,7 @@ use Symfony\Bundle\MakerBundle\Util\YamlSourceManipulator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Umbrella\AdminBundle\Maker\Utils\MakeHelper;
+use Poncho\AdminBundle\Maker\Utils\MakeHelper;
 
 class MakeNotification extends AbstractMaker
 {
@@ -69,7 +69,7 @@ class MakeNotification extends AbstractMaker
         );
 
         $this->updateRouteConfig($io, $generator);
-        $this->updateUmbrellaAdminConfig($io, $generator, $provider->getFullName());
+        $this->updatePonchoAdminConfig($io, $generator, $provider->getFullName());
 
         $generator->writeChanges();
         $this->successMessage($io, $provider->getFullName());
@@ -82,8 +82,8 @@ class MakeNotification extends AbstractMaker
         if (!$this->helper->fileExists($configPath)) {
             $io->warning('The file "config/routes.yaml" does not exist. PHP & XML configuration formats are currently not supported. You have to register routes manually :');
             $io->text([
-                'umbrella_admin_notification_:',
-                '    resource: \'@UmbrellaAdminBundle/config/routes/notification.php\'',
+                'poncho_admin_notification_:',
+                '    resource: \'@PonchoAdminBundle/config/routes/notification.php\'',
                 '    prefix: /admin',
                 ''
             ]);
@@ -94,8 +94,8 @@ class MakeNotification extends AbstractMaker
         $manipulator = new YamlSourceManipulator($this->helper->getFileContents($configPath));
         $data = $manipulator->getData();
 
-        $data['umbrella_admin_notification_'] = [
-            'resource' => '@UmbrellaAdminBundle/config/routes/notification.php',
+        $data['poncho_admin_notification_'] = [
+            'resource' => '@PonchoAdminBundle/config/routes/notification.php',
             'prefix' => '/admin'
         ];
 
@@ -103,18 +103,18 @@ class MakeNotification extends AbstractMaker
         $generator->dumpFile($configPath, $manipulator->getContents());
     }
 
-    private function updateUmbrellaAdminConfig(SymfonyStyle $io, Generator $generator, string $providerClass): void
+    private function updatePonchoAdminConfig(SymfonyStyle $io, Generator $generator, string $providerClass): void
     {
-        $configPath = 'config/packages/umbrella_admin.yaml';
+        $configPath = 'config/packages/poncho_admin.yaml';
 
         $configContent = $this->helper->fileExists($configPath)
             ? $this->helper->getFileContents($configPath)
-            : 'umbrella_admin:';
+            : 'poncho_admin:';
 
         $manipulator = new YamlSourceManipulator($configContent);
         $data = $manipulator->getData();
-        $data['umbrella_admin']['notification']['provider'] = $providerClass;
-        $data['umbrella_admin']['notification']['poll_interval'] = 10;
+        $data['poncho_admin']['notification']['provider'] = $providerClass;
+        $data['poncho_admin']['notification']['poll_interval'] = 10;
 
         $manipulator->setData($data);
         $generator->dumpFile($configPath, $manipulator->getContents());
@@ -132,7 +132,7 @@ class MakeNotification extends AbstractMaker
         ]);
 
         $io->newLine();
-        $io->writeln('Read more about it on <href=https://acantepie.github.io/umbrella-admin-bundle/#/component/notification>Documentation</>');
+        $io->writeln('Read more about it on <href=https://beaumu.github.io/poncho-admin-bundle/#/component/notification>Documentation</>');
         $io->newLine();
     }
 }

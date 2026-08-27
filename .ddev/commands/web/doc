@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Description: Serve the docsify documentation site
+## Usage: doc
+## Example: ddev doc
+
+echo "Docs will be served at: https://${DDEV_HOSTNAME}:8881 (or http://${DDEV_HOSTNAME}:8880)"
+yarn doc

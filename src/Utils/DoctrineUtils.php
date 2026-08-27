@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Utils;
+namespace Poncho\AdminBundle\Utils;
 
 use Doctrine\ORM\Query\Expr\Orx;
 use Doctrine\ORM\QueryBuilder;

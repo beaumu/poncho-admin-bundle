@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Adapter;
+namespace Poncho\AdminBundle\Lib\DataTable\Adapter;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTableResult;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTableState;
+use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableResult;
+use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableState;
 
 class CallableAdapterType extends AdapterType
 {

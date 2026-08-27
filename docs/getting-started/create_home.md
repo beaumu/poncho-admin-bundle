@@ -15,7 +15,7 @@ Files generated are :
 namespace App\Controller\Admin;
 
 use Symfony\Component\Routing\Attribute\Route;
-use Umbrella\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\Lib\Controller\AdminController;
 
 #[Route('/admin')]
 class HomeController extends AdminController
@@ -32,15 +32,15 @@ class HomeController extends AdminController
 The `/admin` URL is only a default value, so you can change it.
 There's no need to define an explicit name for this route. Symfony autogenerates a route name (`app_admin_home_index` for this action) but you can define an explicit route name to simplify your code.
 
-The super class `AdminController` provides some helper to use Umbrella Components (`DataTable`, `JsResponse` ...), this is not mandatory to extend it.
+The super class `AdminController` provides some helper to use Poncho Components (`DataTable`, `JsResponse` ...), this is not mandatory to extend it.
 
 
 #### Twig template
 ```twig
 {# templates/admin/home/index.html.twig #}
-{% extends "@UmbrellaAdmin/layout.html.twig" %}
+{% extends "@PonchoAdmin/layout.html.twig" %}
 ```
-All your admin view must extend `@UmbrellaAdmin/layout.html.twig`.
+All your admin view must extend `@PonchoAdmin/layout.html.twig`.
 
 #### Admin Menu
 
@@ -50,8 +50,8 @@ All your admin view must extend `@UmbrellaAdmin/layout.html.twig`.
 
 namespace App\Menu;
 
-use Umbrella\AdminBundle\Menu\BaseAdminMenu;
-use Umbrella\AdminBundle\Lib\Menu\Builder\MenuBuilder;
+use Poncho\AdminBundle\Menu\BaseAdminMenu;
+use Poncho\AdminBundle\Lib\Menu\Builder\MenuBuilder;
 
 class AdminMenu extends BaseAdminMenu
 {
@@ -71,7 +71,7 @@ class AdminMenu extends BaseAdminMenu
 ```
 
 ```yaml
-# app/config/packages/umbrella_admin.yaml
-umbrella_admin:
+# app/config/packages/poncho_admin.yaml
+poncho_admin:
   menu: App\Menu\AdminMenu
 ```

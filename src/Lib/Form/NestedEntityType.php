@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Form;
+namespace Poncho\AdminBundle\Lib\Form;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -12,7 +12,7 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
-use Umbrella\AdminBundle\Lib\Form\Extension\AutoCompleteExtension;
+use Poncho\AdminBundle\Lib\Form\Extension\AutoCompleteExtension;
 
 class NestedEntityType extends AbstractType
 {

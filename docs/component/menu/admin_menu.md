@@ -20,14 +20,14 @@ class MyAdminMenu extends BaseAdminMenu
 
 Specify FQCN on config :
 ```yaml
-# config/packages/umbrella_admin.yaml
-umbrella_admin:
+# config/packages/poncho_admin.yaml
+poncho_admin:
   menu: App\Menu\MyAdminMenu
 ```
 
 This is an example about how customize menu with the admin template :
 ```twig
-{% extends "@UmbrellaAdmin/layout.html.twig" %}
+{% extends "@PonchoAdmin/layout.html.twig" %}
 
 {% set admin_menu = get_menu('App\\Menu\\MyMenu', { ... your custom build options }) %}
 

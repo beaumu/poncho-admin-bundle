@@ -1,11 +1,11 @@
 {
   "entrypoints": {
-    "umbrella_admin": {
+    "poncho_admin": {
       "css": [
-        "./umbrella_admin.85a1baf4.css"
+        "./poncho_admin.7dbc432a.css"
       ],
       "js": [
-        "./umbrella_admin.57db8f89.js"
+        "./poncho_admin.5f49dcaf.js"
       ]
     }
   }

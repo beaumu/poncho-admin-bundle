@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Exception;
+namespace Poncho\AdminBundle\Exception;
 
 final class ResetPasswordException extends \Exception
 {

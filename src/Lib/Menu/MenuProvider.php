@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu;
+namespace Poncho\AdminBundle\Lib\Menu;
 
-use Umbrella\AdminBundle\Lib\Menu\Builder\MenuBuilder;
-use Umbrella\AdminBundle\Lib\Menu\DTO\Breadcrumb;
-use Umbrella\AdminBundle\Lib\Menu\DTO\BreadcrumbItem;
-use Umbrella\AdminBundle\Lib\Menu\DTO\Menu;
+use Poncho\AdminBundle\Lib\Menu\Builder\MenuBuilder;
+use Poncho\AdminBundle\Lib\Menu\DTO\Breadcrumb;
+use Poncho\AdminBundle\Lib\Menu\DTO\BreadcrumbItem;
+use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
 
 class MenuProvider
 {

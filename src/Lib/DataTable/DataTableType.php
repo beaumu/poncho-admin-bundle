@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable;
+namespace Poncho\AdminBundle\Lib\DataTable;
 
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTable;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\RowView;
+use Poncho\AdminBundle\Lib\DataTable\DTO\DataTable;
+use Poncho\AdminBundle\Lib\DataTable\DTO\RowView;
 
 class DataTableType
 {
@@ -48,7 +48,7 @@ class DataTableType
             ->setRequired('dom')
             ->setAllowedTypes('dom', 'string')
 
-            ->setDefault('template', '@UmbrellaAdmin/lib/datatable/datatable.html.twig')
+            ->setDefault('template', '@PonchoAdmin/lib/datatable/datatable.html.twig')
             ->setAllowedTypes('template', 'string');
 
         $resolver
@@ -84,7 +84,7 @@ class DataTableType
             ])
             ->setAllowedTypes('toolbar_form_options', 'array')
 
-            ->setDefault('toolbar_template', '@UmbrellaAdmin/lib/datatable/toolbar.html.twig')
+            ->setDefault('toolbar_template', '@PonchoAdmin/lib/datatable/toolbar.html.twig')
             ->setAllowedTypes('toolbar_template', 'string')
 
             ->setDefault('toolbar_form_data', null);

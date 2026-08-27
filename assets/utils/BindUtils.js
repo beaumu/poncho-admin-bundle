@@ -5,7 +5,7 @@ export default class BindUtils {
 
     static enableToast(selector = '[data-toggle=toast]') {
         document.querySelectorAll(selector).forEach((el) => {
-            umbrella.toast.show(
+            poncho.toast.show(
                 el.getAttribute('data-type'),
                 el.getAttribute('data-text'),
                 el.getAttribute('data-title')

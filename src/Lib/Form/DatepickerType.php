@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Form;
+namespace Poncho\AdminBundle\Lib\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
@@ -15,7 +15,7 @@ class DatepickerType extends AbstractType
 {
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
-        $view->vars['attr']['is'] = 'umbrella-datepicker';
+        $view->vars['attr']['is'] = 'poncho-datepicker';
         $view->vars['attr']['autocomplete'] = 'off';
 
         $jsOptions = [

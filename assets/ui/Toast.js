@@ -3,7 +3,7 @@ class Toast {
     defaultOptions = {
         close: true,
         duration: 3000, // -1 for debug
-        className: 'umbrella-toast',
+        className: 'poncho-toast',
         escapeMarkup: false,
         gravity: 'top',
         position: 'right',
@@ -16,18 +16,18 @@ class Toast {
         // toast can be closed ?
         const close = options['close']
 
-        options['className'] += ' umbrella-toast-' + type
+        options['className'] += ' poncho-toast-' + type
 
-        let html = '<div class="umbrella-toast-wrapper">'
+        let html = '<div class="poncho-toast-wrapper">'
         if (title) {
-            html += '<div class="umbrella-toast-head">' + title + '</div>';
+            html += '<div class="poncho-toast-head">' + title + '</div>';
         }
-        html += '<div class="umbrella-toast-body">' + text + '</div>'
+        html += '<div class="poncho-toast-body">' + text + '</div>'
         html += '</div>'
 
         // use custom template for close btn
         if (close) {
-            html += '<div class="umbrella-toast-close"><i class="mdi mdi-close"></i></div>'
+            html += '<div class="poncho-toast-close"><i class="mdi mdi-close"></i></div>'
         }
 
         options['close'] = false // don't use ugly library close btn
@@ -36,7 +36,7 @@ class Toast {
 
         // add event listener for close btn
         if (close) {
-            t.toastElement.querySelector('.umbrella-toast-close').addEventListener('click', () => t.hideToast())
+            t.toastElement.querySelector('.poncho-toast-close').addEventListener('click', () => t.hideToast())
         }
     }
 

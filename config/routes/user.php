@@ -2,16 +2,16 @@
 
 namespace Symfony\Component\Routing\Loader\Configurator;
 
-use Umbrella\AdminBundle\Controller\UserController;
+use Poncho\AdminBundle\Controller\UserController;
 
 return function (RoutingConfigurator $routes) {
 
     $routes
-        ->add('umbrella_admin_user_index', '/user')
+        ->add('poncho_admin_user_index', '/user')
         ->controller([UserController::class, 'index']);
 
     $routes
-        ->add('umbrella_admin_user_edit', '/user/edit/{id}')
+        ->add('poncho_admin_user_edit', '/user/edit/{id}')
         ->requirements([
             'id' => '\d+'
         ])
@@ -21,7 +21,7 @@ return function (RoutingConfigurator $routes) {
         ->controller([UserController::class, 'edit']);
 
     $routes
-        ->add('umbrella_admin_user_delete', '/user/delete/{id}')
+        ->add('poncho_admin_user_delete', '/user/delete/{id}')
         ->requirements([
             'id' => '\d+'
         ])

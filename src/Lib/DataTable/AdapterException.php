@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable;
+namespace Poncho\AdminBundle\Lib\DataTable;
 
 class AdapterException extends \Exception
 {

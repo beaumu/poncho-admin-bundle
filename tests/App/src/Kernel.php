@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\App;
+namespace Poncho\AdminBundle\Tests\App;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
@@ -11,8 +11,8 @@ use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as SymfonyKernel;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableFactory;
-use Umbrella\AdminBundle\UmbrellaAdminBundle;
+use Poncho\AdminBundle\Lib\DataTable\DataTableFactory;
+use Poncho\AdminBundle\PonchoAdminBundle;
 
 class Kernel extends SymfonyKernel implements CompilerPassInterface
 {
@@ -35,18 +35,18 @@ class Kernel extends SymfonyKernel implements CompilerPassInterface
             new DoctrineFixturesBundle(),
             new SecurityBundle(),
             new TwigBundle(),
-            new UmbrellaAdminBundle()
+            new PonchoAdminBundle()
         ];
     }
 
     public function getCacheDir(): string
     {
-        return sys_get_temp_dir() . '/umbrella_admin_bundle/tests/var/' . $this->environment . '/cache';
+        return sys_get_temp_dir() . '/poncho_admin_bundle/tests/var/' . $this->environment . '/cache';
     }
 
     public function getLogDir(): string
     {
-        return sys_get_temp_dir() . '/umbrella_admin_bundle/tests/var/' . $this->environment . '/log';
+        return sys_get_temp_dir() . '/poncho_admin_bundle/tests/var/' . $this->environment . '/log';
     }
 
     public function getProjectDir(): string
