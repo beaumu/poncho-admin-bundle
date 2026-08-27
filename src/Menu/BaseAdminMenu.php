@@ -2,12 +2,12 @@
 
 namespace Poncho\AdminBundle\Menu;
 
-use Twig\Environment;
 use Poncho\AdminBundle\Lib\Menu\Builder\MenuBuilder;
 use Poncho\AdminBundle\Lib\Menu\DTO\Breadcrumb;
 use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
 use Poncho\AdminBundle\Lib\Menu\MenuType;
 use Poncho\AdminBundle\PonchoAdminConfiguration;
+use Twig\Environment;
 
 class BaseAdminMenu extends MenuType
 {

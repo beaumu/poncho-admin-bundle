@@ -2,12 +2,12 @@
 
 namespace Poncho\AdminBundle\DependencyInjection\Compiler;
 
+use Poncho\AdminBundle\Lib\DataTable\DataTableRegistry;
+use Poncho\AdminBundle\Lib\Menu\MenuRegistry;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
-use Poncho\AdminBundle\Lib\DataTable\DataTableRegistry;
-use Poncho\AdminBundle\Lib\Menu\MenuRegistry;
 
 class PonchoComponentPass implements CompilerPassInterface
 {

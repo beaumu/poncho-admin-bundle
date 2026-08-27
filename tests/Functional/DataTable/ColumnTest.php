@@ -2,12 +2,12 @@
 
 namespace Poncho\AdminBundle\Tests\Functional\DataTable;
 
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Poncho\AdminBundle\Lib\DataTable\Column\BooleanColumnType;
 use Poncho\AdminBundle\Lib\DataTable\Column\ColumnType;
 use Poncho\AdminBundle\Lib\DataTable\Column\DateColumnType;
 use Poncho\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
 use Poncho\AdminBundle\Lib\DataTable\DataTableFactory;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class ColumnTest extends KernelTestCase
 {
@@ -28,7 +28,7 @@ class ColumnTest extends KernelTestCase
 
         // test render option
         $c = $this->factory->createColumn('foo', ColumnType::class, [
-            'render' => function ($obj) {
+            'render' => static function ($obj) {
                 return $obj->foo;
             }
         ]);
@@ -36,7 +36,7 @@ class ColumnTest extends KernelTestCase
 
         // test render_html option
         $c = $this->factory->createColumn('foo', ColumnType::class, [
-            'render_html' => function ($obj) {
+            'render_html' => static function ($obj) {
                 return $obj->foo;
             }
         ]);

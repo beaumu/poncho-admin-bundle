@@ -2,6 +2,7 @@
 
 namespace Poncho\AdminBundle\Lib\Form;
 
+use Poncho\AdminBundle\Lib\Form\Subscriber\AutocompleteTypeSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\DataMapperInterface;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,7 +10,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Poncho\AdminBundle\Lib\Form\Subscriber\AutocompleteTypeSubscriber;
 
 final class AutoCompleteType extends AbstractType implements DataMapperInterface
 {

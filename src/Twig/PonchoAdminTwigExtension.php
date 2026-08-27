@@ -2,13 +2,13 @@
 
 namespace Poncho\AdminBundle\Twig;
 
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 use Symfony\Component\Form\FormRendererInterface;
 use Symfony\Component\Form\FormView;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 use Twig\TwigFunction;
 use Twig\TwigTest;
-use Poncho\AdminBundle\PonchoAdminConfiguration;
 
 class PonchoAdminTwigExtension extends AbstractExtension implements GlobalsInterface
 {

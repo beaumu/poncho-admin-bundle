@@ -2,6 +2,7 @@
 
 namespace Poncho\AdminBundle\Maker;
 
+use Poncho\AdminBundle\Maker\Utils\MakeHelper;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\DependencyBuilder;
 use Symfony\Bundle\MakerBundle\Generator;
@@ -11,7 +12,6 @@ use Symfony\Bundle\MakerBundle\Util\YamlSourceManipulator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Poncho\AdminBundle\Maker\Utils\MakeHelper;
 
 class MakeAdminSecurity extends AbstractMaker
 {

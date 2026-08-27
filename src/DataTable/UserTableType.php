@@ -3,7 +3,6 @@
 namespace Poncho\AdminBundle\DataTable;
 
 use Doctrine\ORM\QueryBuilder;
-use Symfony\Component\Routing\RouterInterface;
 use Poncho\AdminBundle\Entity\BaseAdminUser;
 use Poncho\AdminBundle\Lib\DataTable\Action\ButtonAddActionType;
 use Poncho\AdminBundle\Lib\DataTable\Column\ActionColumnType;
@@ -17,6 +16,7 @@ use Poncho\AdminBundle\Lib\DataTable\DataTableType;
 use Poncho\AdminBundle\Lib\Form\SearchType;
 use Poncho\AdminBundle\PonchoAdminConfiguration;
 use Poncho\AdminBundle\Utils\DoctrineUtils;
+use Symfony\Component\Routing\RouterInterface;
 
 class UserTableType extends DataTableType
 {
@@ -58,7 +58,7 @@ class UserTableType extends DataTableType
             'translation_domain' => 'PonchoAdmin'
         ]);
         $builder->add('__action__', ActionColumnType::class, [
-            'build' => function (ColumnActionBuilder $builder, BaseAdminUser $e) {
+            'build' => static function (ColumnActionBuilder $builder, BaseAdminUser $e) {
                 $builder->editLink([
                     'route' => 'poncho_admin_user_edit',
                     'route_params' => ['id' => $e->id],
@@ -73,7 +73,7 @@ class UserTableType extends DataTableType
 
         $builder->useEntityAdapter([
             'class' => $this->config->userClass(),
-            'query' => function (QueryBuilder $qb, $formData) {
+            'query' => static function (QueryBuilder $qb, $formData) {
                 if (isset($formData['search'])) {
                     DoctrineUtils::matchAll($qb, ['e.firstname', 'e.lastname', 'e.email'], $formData['search']);
                 }

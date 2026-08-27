@@ -3,10 +3,10 @@
 namespace Poncho\AdminBundle\Lib\DataTable\DTO;
 
 use Doctrine\ORM\QueryBuilder;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 use Poncho\AdminBundle\Lib\DataTable\AdapterException;
 use Poncho\AdminBundle\Lib\DataTable\DataTableType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 
 class DataTable
 {

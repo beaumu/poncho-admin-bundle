@@ -3,11 +3,11 @@
 namespace Poncho\AdminBundle\Tests\Unit\Menu;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
 use Poncho\AdminBundle\Lib\Menu\DTO\MenuItem;
 use Poncho\AdminBundle\Lib\Menu\Visitor\MenuCurrentVisitor;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class MenuCurrentVisitorTest extends TestCase
 {

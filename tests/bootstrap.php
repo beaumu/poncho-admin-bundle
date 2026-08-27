@@ -1,7 +1,7 @@
 <?php
 
-use Symfony\Component\Filesystem\Filesystem;
 use Poncho\AdminBundle\Tests\App\Kernel;
+use Symfony\Component\Filesystem\Filesystem;
 
 // needed to avoid encoding issues when running tests on different platforms
 setlocale(\LC_ALL, 'en_US.UTF-8');

@@ -2,9 +2,9 @@
 
 namespace Poncho\AdminBundle\Lib\DataTable\Adapter;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableResult;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableState;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CallableAdapterType extends AdapterType
 {

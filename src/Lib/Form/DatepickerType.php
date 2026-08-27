@@ -34,7 +34,7 @@ class DatepickerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->addModelTransformer(new CallbackTransformer(
-            function ($value) use ($options) {
+            static function ($value) use ($options) {
                 if (is_a($value, \DateTimeInterface::class)) {
                     return $value->format($options['format']);
                 }
@@ -42,7 +42,7 @@ class DatepickerType extends AbstractType
                 return '';
             },
 
-            function ($value) use ($options) {
+            static function ($value) use ($options) {
                 $date = \DateTime::createFromFormat($options['format'], $value);
 
                 return false === $date ? null : $date;
@@ -67,7 +67,7 @@ class DatepickerType extends AbstractType
             ->setDefault('allow_input', true)
             ->setAllowedTypes('allow_input', 'bool')
 
-            ->setDefault('format', fn (Options $options) => $options['enable_time'] ? 'd/m/Y H:i' : 'd/m/Y')
+            ->setDefault('format', static fn (Options $options) => $options['enable_time'] ? 'd/m/Y H:i' : 'd/m/Y')
             ->setAllowedTypes('format', 'string');
     }
 

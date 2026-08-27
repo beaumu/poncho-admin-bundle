@@ -2,8 +2,8 @@
 
 namespace Poncho\AdminBundle\Tests\Functional\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Poncho\AdminBundle\Tests\Functional\DbUtils;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class SecurityControllerTest extends WebTestCase
 {

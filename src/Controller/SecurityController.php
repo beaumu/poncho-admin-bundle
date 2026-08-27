@@ -2,18 +2,17 @@
 
 namespace Poncho\AdminBundle\Controller;
 
+use Poncho\AdminBundle\Exception\ResetPasswordException;
+use Poncho\AdminBundle\Form\ChangePasswordType;
+use Poncho\AdminBundle\Form\ResetPasswordRequestType;
+use Poncho\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
+use Poncho\AdminBundle\Service\UserManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use function Symfony\Component\Translation\t;
-
-use Poncho\AdminBundle\Exception\ResetPasswordException;
-use Poncho\AdminBundle\Form\ChangePasswordType;
-use Poncho\AdminBundle\Form\ResetPasswordRequestType;
-use Poncho\AdminBundle\Lib\Controller\AdminController;
-use Poncho\AdminBundle\Service\UserManagerInterface;
-use Poncho\AdminBundle\PonchoAdminConfiguration;
 
 class SecurityController extends AdminController
 {

@@ -66,7 +66,7 @@ class PonchoCollectionType extends AbstractType
         if ($options['sort_by']) {
             $orders = [];
 
-            $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) use (&$orders) {
+            $builder->addEventListener(FormEvents::PRE_SUBMIT, static function (FormEvent $event) use (&$orders) {
                 $data = $event->getData();
 
                 if (is_iterable($data)) {
@@ -77,7 +77,7 @@ class PonchoCollectionType extends AbstractType
                 }
             }, 50);
 
-            $builder->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) use (&$orders, $options) {
+            $builder->addEventListener(FormEvents::SUBMIT, static function (FormEvent $event) use (&$orders, $options) {
                 $data = $event->getData();
 
                 if (is_iterable($data)) {

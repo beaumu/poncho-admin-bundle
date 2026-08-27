@@ -3,12 +3,12 @@
 namespace Poncho\AdminBundle\DependencyInjection\Compiler;
 
 use Knp\Bundle\TimeBundle\DateTimeFormatter;
+use Poncho\AdminBundle\Notification\BaseNotificationProvider;
+use Poncho\AdminBundle\Notification\NotificationProviderInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use Poncho\AdminBundle\Notification\BaseNotificationProvider;
-use Poncho\AdminBundle\Notification\NotificationProviderInterface;
 
 class PonchoNotificationPass implements CompilerPassInterface
 {

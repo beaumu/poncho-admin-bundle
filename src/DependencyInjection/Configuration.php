@@ -2,15 +2,15 @@
 
 namespace Poncho\AdminBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Poncho\AdminBundle\Controller\ProfileController;
 use Poncho\AdminBundle\DataTable\UserTableType;
 use Poncho\AdminBundle\Form\ProfileType;
 use Poncho\AdminBundle\Form\UserType;
 use Poncho\AdminBundle\Menu\BaseAdminMenu;
 use Poncho\AdminBundle\Service\UserManager;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * This is the class that validates and merges configuration from your app/config files.

@@ -4,6 +4,8 @@ namespace Poncho\AdminBundle\Tests\App;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
+use Poncho\AdminBundle\Lib\DataTable\DataTableFactory;
+use Poncho\AdminBundle\PonchoAdminBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
@@ -11,8 +13,6 @@ use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as SymfonyKernel;
-use Poncho\AdminBundle\Lib\DataTable\DataTableFactory;
-use Poncho\AdminBundle\PonchoAdminBundle;
 
 class Kernel extends SymfonyKernel implements CompilerPassInterface
 {

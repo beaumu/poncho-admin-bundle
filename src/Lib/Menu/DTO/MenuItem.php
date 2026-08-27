@@ -2,9 +2,9 @@
 
 namespace Poncho\AdminBundle\Lib\Menu\DTO;
 
-use function Symfony\Component\String\u;
-
 use Poncho\AdminBundle\Utils\Utils;
+
+use function Symfony\Component\String\u;
 
 class MenuItem implements \Countable, \IteratorAggregate
 {

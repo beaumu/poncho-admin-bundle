@@ -2,8 +2,8 @@
 
 namespace Poncho\AdminBundle\Tests\Functional\DataTable;
 
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableResult;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class DataTableResultTest extends KernelTestCase
 {

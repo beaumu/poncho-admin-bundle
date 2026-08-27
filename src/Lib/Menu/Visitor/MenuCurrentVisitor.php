@@ -2,10 +2,10 @@
 
 namespace Poncho\AdminBundle\Lib\Menu\Visitor;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
 use Poncho\AdminBundle\Lib\Menu\DTO\MenuItem;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class MenuCurrentVisitor implements MenuVisitor
 {

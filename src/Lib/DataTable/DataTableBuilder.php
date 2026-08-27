@@ -2,10 +2,6 @@
 
 namespace Poncho\AdminBundle\Lib\DataTable;
 
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Poncho\AdminBundle\Lib\DataTable\Action\ActionType;
 use Poncho\AdminBundle\Lib\DataTable\Adapter\CallableAdapterType;
 use Poncho\AdminBundle\Lib\DataTable\Adapter\EntityAdapterType;
@@ -16,6 +12,10 @@ use Poncho\AdminBundle\Lib\DataTable\DTO\Column;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTable;
 use Poncho\AdminBundle\Lib\DataTable\DTO\Toolbar;
 use Poncho\AdminBundle\Utils\Utils;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DataTableBuilder
 {
@@ -44,7 +44,7 @@ class DataTableBuilder
         );
     }
 
-    private function resolveOptions(array $options)
+    private function resolveOptions(array $options): void
     {
         $resolver = new OptionsResolver();
         DataTableType::defaultConfigureOptions($resolver);
@@ -193,7 +193,7 @@ class DataTableBuilder
             'class' => 'js-toggle-select row-select',
             'translation_domain' => false,
             'label' => null,
-            'render_html' => fn ($rowData) => '<input class="form-check-input" type="checkbox">',
+            'render_html' => static fn ($rowData) => '<input class="form-check-input" type="checkbox">',
             'width' => '60px'
         ]);
     }

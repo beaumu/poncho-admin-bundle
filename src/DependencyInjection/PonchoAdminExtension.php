@@ -2,11 +2,6 @@
 
 namespace Poncho\AdminBundle\DependencyInjection;
 
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader;
 use Poncho\AdminBundle\Lib\DataTable\Adapter\AdapterType;
 use Poncho\AdminBundle\Lib\DataTable\Column\ColumnType;
 use Poncho\AdminBundle\Lib\DataTable\DataTableConfiguration;
@@ -17,8 +12,13 @@ use Poncho\AdminBundle\Lib\Menu\MenuRegistry;
 use Poncho\AdminBundle\Lib\Menu\MenuType;
 use Poncho\AdminBundle\Lib\Menu\Visitor\MenuVisitor;
 use Poncho\AdminBundle\Notification\NotificationProviderInterface;
-use Poncho\AdminBundle\Service\UserManagerInterface;
 use Poncho\AdminBundle\PonchoAdminConfiguration;
+use Poncho\AdminBundle\Service\UserManagerInterface;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader;
 
 /**
  * This is the class that loads and manages your bundle configuration.

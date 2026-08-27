@@ -2,8 +2,8 @@
 
 namespace Poncho\AdminBundle\Tests\Functional\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Poncho\AdminBundle\PonchoAdminConfiguration;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {

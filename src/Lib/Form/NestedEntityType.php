@@ -3,6 +3,7 @@
 namespace Poncho\AdminBundle\Lib\Form;
 
 use Doctrine\ORM\EntityRepository;
+use Poncho\AdminBundle\Lib\Form\Extension\AutoCompleteExtension;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\View\ChoiceView;
@@ -12,7 +13,6 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
-use Poncho\AdminBundle\Lib\Form\Extension\AutoCompleteExtension;
 
 class NestedEntityType extends AbstractType
 {
@@ -85,7 +85,7 @@ class NestedEntityType extends AbstractType
 
         $resolver->setDefault('option_template', '<div data-lvl="{{ lvl }}" class="tree-item"> {{ text }}</div>');
 
-        $resolver->setDefault('query_builder', fn (Options $options) => function (EntityRepository $er) use ($options) {
+        $resolver->setDefault('query_builder', static fn (Options $options) => static function (EntityRepository $er) use ($options) {
             return $er->createQueryBuilder('e')
                 ->andWhere(\sprintf('e.%s >= :min_level', $options['level_path']))
                 ->setParameter('min_level', $options['min_level'])

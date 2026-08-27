@@ -2,10 +2,10 @@
 
 namespace Poncho\AdminBundle\Controller;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Poncho\AdminBundle\Lib\Controller\AdminController;
 use Poncho\AdminBundle\Notification\NotificationProviderInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class NotificationController extends AdminController
 {

@@ -4,13 +4,13 @@ namespace Poncho\AdminBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
+use Poncho\AdminBundle\Entity\BaseAdminUser;
+use Poncho\AdminBundle\Exception\ResetPasswordException;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Poncho\AdminBundle\Entity\BaseAdminUser;
-use Poncho\AdminBundle\Exception\ResetPasswordException;
-use Poncho\AdminBundle\PonchoAdminConfiguration;
 
 class UserManager implements UserManagerInterface
 {

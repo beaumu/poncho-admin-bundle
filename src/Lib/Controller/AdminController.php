@@ -5,15 +5,15 @@ namespace Poncho\AdminBundle\Lib\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Translation\TranslatableMessage;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Poncho\AdminBundle\Lib\DataTable\DataTableBuilder;
 use Poncho\AdminBundle\Lib\DataTable\DataTableFactory;
 use Poncho\AdminBundle\Lib\DataTable\DataTableType;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTable;
 use Poncho\AdminBundle\Lib\JsResponse\JsResponse;
 use Poncho\AdminBundle\Lib\JsResponse\JsResponseFactory;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 abstract class AdminController extends AbstractController
 {

@@ -2,9 +2,9 @@
 
 namespace Poncho\AdminBundle\Tests\App\Controller;
 
+use Poncho\AdminBundle\Lib\Controller\AdminController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Poncho\AdminBundle\Lib\Controller\AdminController;
 
 #[Route('/')]
 class DefaultController extends AdminController

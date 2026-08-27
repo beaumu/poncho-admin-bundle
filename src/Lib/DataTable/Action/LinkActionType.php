@@ -84,7 +84,7 @@ class LinkActionType extends ActionType
         $resolver
             ->setDefault('translation_domain', null)
             ->setAllowedTypes('translation_domain', ['null', 'string', 'bool'])
-            ->setNormalizer('translation_domain', fn (Options $options, $value) => true === $value ? null : $value);
+            ->setNormalizer('translation_domain', static fn (Options $options, $value) => true === $value ? null : $value);
 
         $resolver
             ->setDefault('route', null)

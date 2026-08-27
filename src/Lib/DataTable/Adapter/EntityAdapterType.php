@@ -6,9 +6,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\CountWalker;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableResult;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableState;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EntityAdapterType extends DoctrineAdapterType
 {

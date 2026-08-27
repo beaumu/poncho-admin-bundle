@@ -2,10 +2,10 @@
 
 namespace Poncho\AdminBundle\Lib\DataTable\Twig;
 
-use Twig\Extension\AbstractExtension;
-use Twig\TwigFunction;
 use Poncho\AdminBundle\Lib\DataTable\ActionRenderer;
 use Poncho\AdminBundle\Lib\DataTable\DataTableRenderer;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 class DataTableExtension extends AbstractExtension
 {

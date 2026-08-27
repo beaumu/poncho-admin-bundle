@@ -46,8 +46,8 @@ class AutoCompleteExtension extends AbstractTypeExtension
             ->setAllowedTypes('input_template', ['null', 'string']);
 
         $resolver
-            ->setNormalizer('expanded', fn (Options $options) => false)
-            ->setNormalizer('placeholder', fn (Options $options, $value) => $value);
+            ->setNormalizer('expanded', static fn (Options $options) => false)
+            ->setNormalizer('placeholder', static fn (Options $options, $value) => $value);
 
         $resolver
             ->setDefault('tom_select_settings', [])

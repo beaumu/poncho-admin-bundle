@@ -2,10 +2,10 @@
 
 namespace Poncho\AdminBundle\Lib\DataTable;
 
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTable;
 use Poncho\AdminBundle\Lib\DataTable\DTO\RowView;
+use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DataTableType
 {
@@ -27,7 +27,7 @@ class DataTableType
             ->setDefault('selectable', false)
             ->setAllowedTypes('selectable', 'bool')
 
-            ->setDefault('paging', fn (Options $options) => !$options['tree'])
+            ->setDefault('paging', static fn (Options $options) => !$options['tree'])
             ->setAllowedTypes('paging', 'bool')
 
             ->setDefault('length_change', false)
@@ -42,7 +42,7 @@ class DataTableType
             ->setDefault('scroll_y', null)
             ->setAllowedTypes('scroll_y', ['int', 'null'])
 
-            ->setDefault('orderable', fn (Options $options) => !$options['tree'])
+            ->setDefault('orderable', static fn (Options $options) => !$options['tree'])
             ->setAllowedTypes('orderable', 'bool')
 
             ->setRequired('dom')
@@ -73,7 +73,7 @@ class DataTableType
             ->setAllowedTypes('load_route_params', 'array');
 
         $resolver
-            ->setDefault('toolbar_form_name', fn (Options $options) => \sprintf('%s_tbf', $options['id']))
+            ->setDefault('toolbar_form_name', static fn (Options $options) => \sprintf('%s_tbf', $options['id']))
             ->setAllowedTypes('toolbar_form_name', 'string')
 
             ->setDefault('toolbar_form_options', [

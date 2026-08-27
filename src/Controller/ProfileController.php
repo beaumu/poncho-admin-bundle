@@ -2,16 +2,15 @@
 
 namespace Poncho\AdminBundle\Controller;
 
+use Poncho\AdminBundle\Entity\BaseAdminUser;
+use Poncho\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
+use Poncho\AdminBundle\Service\UserManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function Symfony\Component\Translation\t;
-
-use Poncho\AdminBundle\Entity\BaseAdminUser;
-use Poncho\AdminBundle\Lib\Controller\AdminController;
-use Poncho\AdminBundle\Service\UserManagerInterface;
-use Poncho\AdminBundle\PonchoAdminConfiguration;
 
 class ProfileController extends AdminController
 {

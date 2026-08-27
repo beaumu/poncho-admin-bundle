@@ -3,8 +3,8 @@
 namespace Poncho\AdminBundle\Notification;
 
 use Knp\Bundle\TimeBundle\DateTimeFormatter;
-use Twig\Environment;
 use Poncho\AdminBundle\Entity\BaseNotification;
+use Twig\Environment;
 
 abstract class BaseNotificationProvider implements NotificationProviderInterface
 {

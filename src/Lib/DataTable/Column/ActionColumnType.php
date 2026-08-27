@@ -2,9 +2,9 @@
 
 namespace Poncho\AdminBundle\Lib\DataTable\Column;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Poncho\AdminBundle\Lib\DataTable\ActionRenderer;
 use Poncho\AdminBundle\Lib\DataTable\DataTableFactory;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ActionColumnType extends ColumnType
 {

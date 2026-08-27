@@ -14,17 +14,26 @@ if ! ddev describe >/dev/null 2>&1; then
 fi
 
 php_files=$(git diff --cached --name-only --diff-filter=ACMR -- '*.php')
+js_files=$(git diff --cached --name-only --diff-filter=ACMR -- 'assets/*.js' 'assets/**/*.js')
+
 if [ -n "$php_files" ]; then
     echo "==> php-cs-fixer on staged PHP files"
     ddev exec ./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --path-mode=intersection -- $php_files
-    git add -- $php_files
 fi
 
-js_files=$(git diff --cached --name-only --diff-filter=ACMR -- 'assets/*.js' 'assets/**/*.js')
 if [ -n "$js_files" ]; then
     echo "==> eslint --fix on staged JS files"
     ddev exec yarn eslint --fix -- $js_files
-    git add -- $js_files
 fi
+
+if [ -n "$php_files" ] || [ -n "$js_files" ]; then
+    # DDEV uses Mutagen to sync the web container's filesystem back to the
+    # host asynchronously — without an explicit flush, `git add` below can
+    # read stale (pre-fix) content and silently commit unfixed files.
+    ddev mutagen sync >/dev/null 2>&1 || true
+fi
+
+[ -n "$php_files" ] && git add -- $php_files
+[ -n "$js_files" ] && git add -- $js_files
 
 exit 0

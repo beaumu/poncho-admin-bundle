@@ -2,9 +2,9 @@
 
 namespace Poncho\AdminBundle\Lib\DataTable\Column;
 
+use Poncho\AdminBundle\Utils\Utils;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Poncho\AdminBundle\Utils\Utils;
 
 class ColumnType
 {
@@ -15,13 +15,13 @@ class ColumnType
             ->setAllowedTypes('name', 'string');
 
         $resolver
-            ->setDefault('label', fn (Options $options) => Utils::humanize($options['name']))
+            ->setDefault('label', static fn (Options $options) => Utils::humanize($options['name']))
             ->setAllowedTypes('label', ['null', 'string']);
 
         $resolver
             ->setDefault('translation_domain', null)
             ->setAllowedTypes('translation_domain', ['null', 'string', 'bool'])
-            ->setNormalizer('translation_domain', fn (Options $options, $value) => true === $value ? null : $value);
+            ->setNormalizer('translation_domain', static fn (Options $options, $value) => true === $value ? null : $value);
 
         $resolver
             ->setDefault('order', false)
@@ -42,7 +42,7 @@ class ColumnType
         $resolver
             ->setDefault('render', null)
             ->setAllowedTypes('render', ['null', 'callable'])
-            ->setNormalizer('render', function (Options $options, $value) {
+            ->setNormalizer('render', static function (Options $options, $value) {
                 return $options['render_html'] ?? $value;
             });
 
@@ -53,7 +53,7 @@ class ColumnType
         $resolver
             ->setDefault('is_safe_html', false)
             ->setAllowedTypes('is_safe_html', 'bool')
-            ->setNormalizer('is_safe_html', function (Options $options, $value) {
+            ->setNormalizer('is_safe_html', static function (Options $options, $value) {
                 return $options['render_html'] ? true : $value;
             });
     }

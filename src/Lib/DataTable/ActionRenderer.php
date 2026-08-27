@@ -2,8 +2,8 @@
 
 namespace Poncho\AdminBundle\Lib\DataTable;
 
-use Twig\Environment;
 use Poncho\AdminBundle\Lib\DataTable\DTO\Action;
+use Twig\Environment;
 
 class ActionRenderer
 {

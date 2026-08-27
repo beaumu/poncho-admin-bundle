@@ -2,14 +2,14 @@
 
 namespace Poncho\AdminBundle\Lib\DataTable;
 
-use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Poncho\AdminBundle\Lib\DataTable\Action\ActionType;
 use Poncho\AdminBundle\Lib\DataTable\Column\ColumnType;
 use Poncho\AdminBundle\Lib\DataTable\DTO\Action;
 use Poncho\AdminBundle\Lib\DataTable\DTO\Adapter;
 use Poncho\AdminBundle\Lib\DataTable\DTO\Column;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTable;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DataTableFactory
 {

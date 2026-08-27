@@ -31,13 +31,13 @@ class PropertyColumnType extends ColumnType
             ->setAllowedTypes('property_accessor', PropertyAccessorInterface::class);
 
         $resolver
-            ->setDefault('property_path', fn (Options $options) => $options['name']);
+            ->setDefault('property_path', static fn (Options $options) => $options['name']);
 
         $resolver
             ->setAllowedTypes('property_path', 'string');
 
         $resolver
             ->setDefault('order', null)
-            ->setDefault('order_by', fn (Options $options) => $options['property_path']);
+            ->setDefault('order_by', static fn (Options $options) => $options['property_path']);
     }
 }

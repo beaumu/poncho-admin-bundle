@@ -2,6 +2,7 @@
 
 namespace Poncho\AdminBundle\Maker;
 
+use Poncho\AdminBundle\Maker\Utils\MakeHelper;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\DependencyBuilder;
 use Symfony\Bundle\MakerBundle\Generator;
@@ -10,7 +11,6 @@ use Symfony\Bundle\MakerBundle\Maker\AbstractMaker;
 use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Poncho\AdminBundle\Maker\Utils\MakeHelper;
 
 class MakeTable extends AbstractMaker
 {
