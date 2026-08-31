@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable;
+namespace Poncho\AdminBundle\Lib\DataTable;
 
+use Poncho\AdminBundle\Lib\DataTable\DTO\DataTable;
+use Poncho\AdminBundle\Lib\DataTable\DTO\RowView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTable;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\RowView;
 
 class DataTableType
 {
@@ -27,7 +27,7 @@ class DataTableType
             ->setDefault('selectable', false)
             ->setAllowedTypes('selectable', 'bool')
 
-            ->setDefault('paging', fn (Options $options) => !$options['tree'])
+            ->setDefault('paging', static fn (Options $options) => !$options['tree'])
             ->setAllowedTypes('paging', 'bool')
 
             ->setDefault('length_change', false)
@@ -42,13 +42,13 @@ class DataTableType
             ->setDefault('scroll_y', null)
             ->setAllowedTypes('scroll_y', ['int', 'null'])
 
-            ->setDefault('orderable', fn (Options $options) => !$options['tree'])
+            ->setDefault('orderable', static fn (Options $options) => !$options['tree'])
             ->setAllowedTypes('orderable', 'bool')
 
             ->setRequired('dom')
             ->setAllowedTypes('dom', 'string')
 
-            ->setDefault('template', '@UmbrellaAdmin/lib/datatable/datatable.html.twig')
+            ->setDefault('template', '@PonchoAdmin/lib/datatable/datatable.html.twig')
             ->setAllowedTypes('template', 'string');
 
         $resolver
@@ -73,7 +73,7 @@ class DataTableType
             ->setAllowedTypes('load_route_params', 'array');
 
         $resolver
-            ->setDefault('toolbar_form_name', fn (Options $options) => \sprintf('%s_tbf', $options['id']))
+            ->setDefault('toolbar_form_name', static fn (Options $options) => \sprintf('%s_tbf', $options['id']))
             ->setAllowedTypes('toolbar_form_name', 'string')
 
             ->setDefault('toolbar_form_options', [
@@ -84,7 +84,7 @@ class DataTableType
             ])
             ->setAllowedTypes('toolbar_form_options', 'array')
 
-            ->setDefault('toolbar_template', '@UmbrellaAdmin/lib/datatable/toolbar.html.twig')
+            ->setDefault('toolbar_template', '@PonchoAdmin/lib/datatable/toolbar.html.twig')
             ->setAllowedTypes('toolbar_template', 'string')
 
             ->setDefault('toolbar_form_data', null);

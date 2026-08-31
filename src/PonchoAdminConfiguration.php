@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle;
+namespace Poncho\AdminBundle;
 
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Security\Http\Logout\LogoutUrlGenerator;
 
-class UmbrellaAdminConfiguration
+class PonchoAdminConfiguration
 {
     public function __construct(
         private readonly array $config,

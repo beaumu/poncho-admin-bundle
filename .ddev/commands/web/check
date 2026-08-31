@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Description: Fix all files, then run analysis and the test suite (the full CI gate)
+## Usage: check
+## Example: ddev check
+
+set -e
+./vendor/bin/php-cs-fixer fix
+yarn lint-fix
+./vendor/bin/phpstan
+./vendor/bin/simple-phpunit

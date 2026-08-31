@@ -1,13 +1,13 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Adapter;
+namespace Poncho\AdminBundle\Lib\DataTable\Adapter;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableState;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTableState;
 
 abstract class DoctrineAdapterType extends AdapterType
 {

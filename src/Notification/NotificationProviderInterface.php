@@ -1,8 +1,8 @@
 <?php
 
-namespace Umbrella\AdminBundle\Notification;
+namespace Poncho\AdminBundle\Notification;
 
-use Umbrella\AdminBundle\Entity\BaseNotification;
+use Poncho\AdminBundle\Entity\BaseNotification;
 
 interface NotificationProviderInterface
 {

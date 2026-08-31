@@ -1,20 +1,20 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable;
+namespace Poncho\AdminBundle\Lib\DataTable;
 
-use Umbrella\AdminBundle\Lib\DataTable\Action\ActionType;
-use Umbrella\AdminBundle\Lib\DataTable\Adapter\AdapterType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\ColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Action\ActionType;
+use Poncho\AdminBundle\Lib\DataTable\Adapter\AdapterType;
+use Poncho\AdminBundle\Lib\DataTable\Column\ColumnType;
 
 /**
  * Registry used for Columns / adapter and DataTableType
  */
 class DataTableRegistry
 {
-    public const TAG_TYPE = 'umbrella.datatable.type';
-    public const TAG_COLUMN_TYPE = 'umbrella.datatable.columntype';
-    public const TAG_ACTION_TYPE = 'umbrella.datatable.actiontype';
-    public const TAG_ADAPTER_TYPE = 'umbrella.datatable.adaptertype';
+    public const TAG_TYPE = 'poncho.datatable.type';
+    public const TAG_COLUMN_TYPE = 'poncho.datatable.columntype';
+    public const TAG_ACTION_TYPE = 'poncho.datatable.actiontype';
+    public const TAG_ADAPTER_TYPE = 'poncho.datatable.adaptertype';
 
     /**
      * @var DataTableType[]

@@ -6,18 +6,18 @@ import ConfirmModal from './ui/ConfirmModal'
 import Toast from './ui/Toast'
 import JsResponseHandler from './jsresponse/JsResponseHandler';
 import configureHandler from './jsresponse/Configure'
-import UmbrellaDataTable from './datatable/UmbrellaDataTable';
-import UmbrellaCollection from './form/UmbrellaCollection';
+import PonchoDataTable from './datatable/PonchoDataTable';
+import PonchoCollection from './form/PonchoCollection';
 import DatePicker from './form/DatePicker';
 import PasswordTogglable from './form/PasswordTogglable';
 import BindUtils from './utils/BindUtils';
-import UmbrellaNotification from './UmbrellaNotification';
-import UmbrellaSidebar from './UmbrellaSidebar';
-import UmbrellaAutocomplete from './form/UmbrellaAutocomplete';
+import PonchoNotification from './PonchoNotification';
+import PonchoSidebar from './PonchoSidebar';
+import PonchoAutocomplete from './form/PonchoAutocomplete';
 
 const locale = document.querySelector('html').getAttribute('lang') || 'en'
 
-window.umbrella = {
+window.poncho = {
     locale,
     translator: new Translator(locale),
     spinner: Spinner,
@@ -27,20 +27,20 @@ window.umbrella = {
 }
 
 // --- Configure jsResponseHandler
-configureHandler(umbrella.jsResponseHandler);
+configureHandler(poncho.jsResponseHandler);
 
 // --- DataTable.js
-customElements.define('umbrella-datatable', UmbrellaDataTable);
+customElements.define('poncho-datatable', PonchoDataTable);
 
 // --- Forms
-customElements.define('umbrella-datepicker', DatePicker, {extends: 'input'});
-customElements.define('umbrella-collection', UmbrellaCollection);
-customElements.define('umbrella-autocomplete', UmbrellaAutocomplete, {extends: 'select'});
+customElements.define('poncho-datepicker', DatePicker, {extends: 'input'});
+customElements.define('poncho-collection', PonchoCollection);
+customElements.define('poncho-autocomplete', PonchoAutocomplete, {extends: 'select'});
 customElements.define('password-togglable', PasswordTogglable, {extends: 'div'});
 
 // --- Admin components
-customElements.define('umbrella-notification', UmbrellaNotification, {extends: 'li'});
-customElements.define('umbrella-sidebar', UmbrellaSidebar, {extends: 'nav'});
+customElements.define('poncho-notification', PonchoNotification, {extends: 'li'});
+customElements.define('poncho-sidebar', PonchoSidebar, {extends: 'nav'});
 
 
 // --- Bind some elements

@@ -1,9 +1,9 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\Functional\DataTable;
+namespace Poncho\AdminBundle\Tests\Functional\DataTable;
 
+use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableResult;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTableResult;
 
 class DataTableResultTest extends KernelTestCase
 {

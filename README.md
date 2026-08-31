@@ -1,11 +1,12 @@
 <h1 align="center" style="border-bottom: none">
-    <img src="./docs/umbrella.svg" width="25" height="25" alt="Umbrella logo"/> Umbrella Admin Bundle
+    <img src="./docs/poncho.svg" width="25" height="25" alt="Poncho logo"/> Poncho Admin Bundle
 </h1>
 
 <p align="center">
     Easiest way to create beautiful administration backends with Symfony.
 </p>
 
+> Fork of [Umbrella Admin Bundle](https://github.com/acantepie/umbrella-admin-bundle) by Adrien Cantepie, now maintained here as Poncho Admin Bundle.
 
 <div align="center">
 
@@ -17,13 +18,12 @@
 
 <div align="center">
 
-![test umbrella workflow](https://github.com/acantepie/umbrella-admin-bundle/actions/workflows/phpunit.yaml/badge.svg)
+![test poncho workflow](https://github.com/beaumu/poncho-admin-bundle/actions/workflows/phpunit.yaml/badge.svg)
 
 </div>
 
 <p align="center">
-    <a href="https://umbrella-corp.dev"><b>Online demo</b></a> •
-    <a href="https://acantepie.github.io/umbrella-admin-bundle/"><b>Documentation</b></a>
+    <a href="https://beaumu.github.io/poncho-admin-bundle/"><b>Documentation</b></a>
 </p> 
 
 
@@ -33,22 +33,18 @@
 </p>
 
 ## Installation
-UmbrellaAdmin requires PHP 8.2 or higher and Symfony 6.4 or higher. Run the
+PonchoAdmin requires PHP 8.2 or higher and Symfony 6.4 or higher. Run the
 following command to install it in your application:
 
 ```
- $ composer require umbrella2/admin-bundle
+ $ composer require poncho/admin-bundle
  ```
 
 ## Documentation
-Read [Documentation](https://acantepie.github.io/umbrella-admin-bundle/) to getting started.
-
-## Demo application
-A demo application showcasing all the features of UmbrellaAdmin is available [here](https://umbrella-corp.dev).<br>
-You can view the demo application's code in this [github repository](https://github.com/acantepie/umbrella-admin-demo).
+Read [Documentation](https://beaumu.github.io/poncho-admin-bundle/) to getting started.
 
 ## Contributing
-Want to contribute ? Check out the [contributing guidelines](https://acantepie.github.io/umbrella-admin-bundle//#/contributing) to get involved.
+Want to contribute ? Check out the [contributing guidelines](https://beaumu.github.io/poncho-admin-bundle//#/contributing) to get involved.
 
 ## License
 This software is published under the [MIT License](LICENSE.md)

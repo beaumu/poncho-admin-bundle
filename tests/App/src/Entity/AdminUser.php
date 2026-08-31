@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\App\Entity;
+namespace Poncho\AdminBundle\Tests\App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Poncho\AdminBundle\Entity\BaseAdminUser;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Umbrella\AdminBundle\Entity\BaseAdminUser;
 
 #[ORM\Entity]
 #[UniqueEntity('email')]

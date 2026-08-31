@@ -7,7 +7,7 @@ module.exports = {
         jquery: true,
     },
     'globals': {
-        'umbrella': true
+        'poncho': true
     },
     'parserOptions': {
         'requireConfigFile': false,

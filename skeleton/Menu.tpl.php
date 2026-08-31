@@ -2,8 +2,8 @@
 
 namespace <?= $namespace ?>;
 
-use Umbrella\AdminBundle\Menu\BaseAdminMenu;
-use Umbrella\AdminBundle\Lib\Menu\Builder\MenuBuilder;
+use Poncho\AdminBundle\Menu\BaseAdminMenu;
+use Poncho\AdminBundle\Lib\Menu\Builder\MenuBuilder;
 
 class AdminMenu extends BaseAdminMenu
 {

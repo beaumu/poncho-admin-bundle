@@ -1,4 +1,4 @@
-export default class UmbrellaNotification extends HTMLLIElement {
+export default class PonchoNotification extends HTMLLIElement {
 
     constructor() {
         super()

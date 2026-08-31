@@ -1,7 +1,8 @@
 <?php
 
-namespace Umbrella\AdminBundle\Maker;
+namespace Poncho\AdminBundle\Maker;
 
+use Poncho\AdminBundle\Maker\Utils\MakeHelper;
 use Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\DependencyBuilder;
@@ -11,7 +12,6 @@ use Symfony\Bundle\MakerBundle\Maker\AbstractMaker;
 use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Umbrella\AdminBundle\Maker\Utils\MakeHelper;
 
 class MakeTree extends AbstractMaker
 {
@@ -68,7 +68,7 @@ class MakeTree extends AbstractMaker
             'tree_table' => true,
             'controller' => $controller,
             'route' => $routeConfig,
-            'index_template' => '@UmbrellaAdmin/datatable.html.twig',
+            'index_template' => '@PonchoAdmin/datatable.html.twig',
             'edit_view_type' => $editViewType,
             'edit_template' => Str::asFilePath($controller->getRelativeNameWithoutSuffix()) . '/edit.html.twig'
         ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Form;
+namespace Poncho\AdminBundle\Lib\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\DataTransformerInterface;
@@ -24,7 +24,7 @@ class SearchType extends AbstractType implements DataTransformerInterface
             'required' => false,
             'input_addon_container_class' => 'input-icon',
             'input_prefix' => '<span class="input-icon-addon"><i class="mdi mdi-magnify"></i></span>',
-            'translation_domain' => 'UmbrellaAdmin',
+            'translation_domain' => 'PonchoAdmin',
             'attr' => [
                 'placeholder' => 'label.search...',
             ],

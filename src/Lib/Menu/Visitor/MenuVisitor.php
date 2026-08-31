@@ -1,8 +1,8 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu\Visitor;
+namespace Poncho\AdminBundle\Lib\Menu\Visitor;
 
-use Umbrella\AdminBundle\Lib\Menu\DTO\Menu;
+use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
 
 interface MenuVisitor
 {

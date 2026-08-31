@@ -1,9 +1,9 @@
-{% extends "@UmbrellaAdmin/lib/modal/form.html.twig" %}
+{% extends "@PonchoAdmin/lib/modal/form.html.twig" %}
 
 {% block modal_title %}
     {% if title is defined %}
         {{ parent() }}
     {% elseif entity is defined and entity %}
-        <h4 class="modal-title">{{ (entity.id ? 'action.edit' : 'action.add') | trans({}, 'UmbrellaAdmin') }}</h4>
+        <h4 class="modal-title">{{ (entity.id ? 'action.edit' : 'action.add') | trans({}, 'PonchoAdmin') }}</h4>
     {% endif %}
 {% endblock %}

@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu\Twig;
+namespace Poncho\AdminBundle\Lib\Menu\Twig;
 
+use Poncho\AdminBundle\Lib\Menu\MenuProvider;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Umbrella\AdminBundle\Lib\Menu\MenuProvider;
 
 class MenuExtension extends AbstractExtension
 {

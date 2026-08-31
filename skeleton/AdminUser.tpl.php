@@ -5,7 +5,7 @@ namespace <?= $namespace ?>;
 use <?= $repository->getFullName() ?>;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Umbrella\AdminBundle\Entity\BaseAdminUser;
+use Poncho\AdminBundle\Entity\BaseAdminUser;
 
 #[ORM\Entity(repositoryClass: <?= $repository->getShortName() ?>::class)]
 #[UniqueEntity('email')]

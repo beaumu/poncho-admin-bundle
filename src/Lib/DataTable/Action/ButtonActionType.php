@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Action;
+namespace Poncho\AdminBundle\Lib\DataTable\Action;
 
+use Poncho\AdminBundle\Utils\Utils;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Utils\Utils;
 
 class ButtonActionType extends LinkActionType
 {
@@ -14,6 +14,6 @@ class ButtonActionType extends LinkActionType
 
         $resolver
             ->setDefault('class', 'btn btn-primary')
-            ->setDefault('text', fn (Options $options) => Utils::humanize($options['name']));
+            ->setDefault('text', static fn (Options $options) => Utils::humanize($options['name']));
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable;
+namespace Poncho\AdminBundle\Lib\DataTable;
 
+use Poncho\AdminBundle\Lib\DataTable\DTO\Action;
 use Twig\Environment;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\Action;
 
 class ActionRenderer
 {

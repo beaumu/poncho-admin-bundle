@@ -4,13 +4,13 @@ app_:
     prefix: /
 
 admin_security_:
-    resource: "@UmbrellaAdminBundle/config/routes/security.php"
+    resource: "@PonchoAdminBundle/config/routes/security.php"
     prefix: /
 
 admin_user_:
-    resource: "@UmbrellaAdminBundle/config/routes/user.php"
+    resource: "@PonchoAdminBundle/config/routes/user.php"
     prefix: /
 
 admin_profile_:
-    resource: "@UmbrellaAdminBundle/config/routes/profile.php"
+    resource: "@PonchoAdminBundle/config/routes/profile.php"
     prefix: /

@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu\Visitor;
+namespace Poncho\AdminBundle\Lib\Menu\Visitor;
 
+use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
+use Poncho\AdminBundle\Lib\Menu\DTO\MenuItem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Umbrella\AdminBundle\Lib\Menu\DTO\Menu;
-use Umbrella\AdminBundle\Lib\Menu\DTO\MenuItem;
 
 class MenuCurrentVisitor implements MenuVisitor
 {

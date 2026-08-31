@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Notification;
+namespace Poncho\AdminBundle\Notification;
 
 use Knp\Bundle\TimeBundle\DateTimeFormatter;
+use Poncho\AdminBundle\Entity\BaseNotification;
 use Twig\Environment;
-use Umbrella\AdminBundle\Entity\BaseNotification;
 
 abstract class BaseNotificationProvider implements NotificationProviderInterface
 {
@@ -32,6 +32,6 @@ abstract class BaseNotificationProvider implements NotificationProviderInterface
             'date' => $this->timeFormatter->formatDiff($notification->createdAt, new \DateTime())
         ];
 
-        return $this->twig->render('@UmbrellaAdmin/notification/notification.html.twig', $data);
+        return $this->twig->render('@PonchoAdmin/notification/notification.html.twig', $data);
     }
 }

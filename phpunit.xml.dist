@@ -15,11 +15,11 @@
         <server name="APP_DEBUG" value="true" force="true" />
         <server name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
         <server name="SHELL_VERBOSITY" value="-1" />
-        <server name="KERNEL_CLASS" value="Umbrella\AdminBundle\Tests\App\Kernel" />
+        <server name="KERNEL_CLASS" value="Poncho\AdminBundle\Tests\App\Kernel" />
     </php>
 
     <testsuites>
-        <testsuite name="Umbrella Test Suite">
+        <testsuite name="Poncho Test Suite">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

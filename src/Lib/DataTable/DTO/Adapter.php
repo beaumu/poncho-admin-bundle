@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\DTO;
+namespace Poncho\AdminBundle\Lib\DataTable\DTO;
 
 use Doctrine\ORM\QueryBuilder;
-use Umbrella\AdminBundle\Lib\DataTable\Adapter\AdapterType;
-use Umbrella\AdminBundle\Lib\DataTable\Adapter\DoctrineAdapterType;
-use Umbrella\AdminBundle\Lib\DataTable\AdapterException;
+use Poncho\AdminBundle\Lib\DataTable\Adapter\AdapterType;
+use Poncho\AdminBundle\Lib\DataTable\Adapter\DoctrineAdapterType;
+use Poncho\AdminBundle\Lib\DataTable\AdapterException;
 
 class Adapter
 {

@@ -10,7 +10,7 @@ Encore
     .setPublicPath('.')
     .setManifestKeyPrefix('')
 
-    .addEntry('umbrella_admin', './assets/admin.js')
+    .addEntry('poncho_admin', './assets/admin.js')
     
     .enableSassLoader((options) => {
         options.sassOptions = {

@@ -1,5 +1,5 @@
 // datatable
-umbrella-datatable {
+poncho-datatable {
   display: block;
 }
 
@@ -7,7 +7,7 @@ umbrella-datatable {
   padding-bottom: $card-spacer-y;
   padding-top: $card-spacer-y;
 
-  umbrella-datatable {
+  poncho-datatable {
     .inline-toolbar {
       padding-right: $card-spacer-x;
       padding-left: $card-spacer-x;
@@ -24,7 +24,7 @@ umbrella-datatable {
   padding-bottom: $modal-inner-padding;
   padding-top: $modal-inner-padding;
 
-  umbrella-datatable {
+  poncho-datatable {
     .inline-toolbar {
       padding-right: $modal-inner-padding;
       padding-left: $modal-inner-padding;
@@ -37,7 +37,7 @@ umbrella-datatable {
   }
 }
 
-umbrella-datatable {
+poncho-datatable {
 
   table.dataTable {
     width: 100% !important;

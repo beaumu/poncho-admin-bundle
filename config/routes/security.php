@@ -2,7 +2,7 @@
 
 namespace Symfony\Component\Routing\Loader\Configurator;
 
-use Umbrella\AdminBundle\Controller\SecurityController;
+use Poncho\AdminBundle\Controller\SecurityController;
 
 return function (RoutingConfigurator $routes) {
 
@@ -16,14 +16,14 @@ return function (RoutingConfigurator $routes) {
         ->controller([SecurityController::class, 'logout']);
 
     $routes
-        ->add('umbrella_admin_security_passwordresetrequest', '/password-reset')
+        ->add('poncho_admin_security_passwordresetrequest', '/password-reset')
         ->controller([SecurityController::class, 'passwordResetRequest']);
 
     $routes
-        ->add('umbrella_admin_security_passwordresetcheckemail', '/password-reset/check-email')
+        ->add('poncho_admin_security_passwordresetcheckemail', '/password-reset/check-email')
         ->controller([SecurityController::class, 'passwordRequestCheckEmail']);
 
     $routes
-        ->add('umbrella_admin_security_passwordreset', '/password-reset/{token}')
+        ->add('poncho_admin_security_passwordreset', '/password-reset/{token}')
         ->controller([SecurityController::class, 'passwordReset']);
 };

@@ -1,12 +1,12 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable;
+namespace Poncho\AdminBundle\Lib\DataTable;
 
+use Poncho\AdminBundle\Lib\DataTable\DTO\Column;
+use Poncho\AdminBundle\Lib\DataTable\DTO\DataTable;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\Column;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTable;
 
 class DataTableRenderer
 {

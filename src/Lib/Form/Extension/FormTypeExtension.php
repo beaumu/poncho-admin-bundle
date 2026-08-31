@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Form\Extension;
+namespace Poncho\AdminBundle\Lib\Form\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -47,7 +47,7 @@ class FormTypeExtension extends AbstractTypeExtension
 
             ->setDefault('input_prefix', null)
             ->setAllowedTypes('input_prefix', ['null', 'string'])
-            ->setNormalizer('input_prefix', function (Options $options, $value) {
+            ->setNormalizer('input_prefix', static function (Options $options, $value) {
                 if ($options['input_prefix_text']) {
                     return \sprintf('<span class="input-group-text">%s</span>', $options['input_prefix_text']);
                 }
@@ -57,7 +57,7 @@ class FormTypeExtension extends AbstractTypeExtension
 
             ->setDefault('input_suffix', null)
             ->setAllowedTypes('input_suffix', ['null', 'string'])
-            ->setNormalizer('input_suffix', function (Options $options, $value) {
+            ->setNormalizer('input_suffix', static function (Options $options, $value) {
                 if ($options['input_suffix_text']) {
                     return \sprintf('<span class="input-group-text">%s</span>', $options['input_suffix_text']);
                 }

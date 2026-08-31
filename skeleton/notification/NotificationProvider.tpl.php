@@ -4,7 +4,7 @@ namespace <?= $namespace ?>;
 
 use <?= $entity->getFullName() ?>;
 use Doctrine\ORM\EntityManagerInterface;
-use Umbrella\AdminBundle\Notification\BaseNotificationProvider;
+use Poncho\AdminBundle\Notification\BaseNotificationProvider;
 
 class <?= $class_name ?> extends BaseNotificationProvider
 {

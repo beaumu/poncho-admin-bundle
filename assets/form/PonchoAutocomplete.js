@@ -1,7 +1,7 @@
 import TomSelect from 'tom-select'
 import mustache from 'mustache'
 
-export default class UmbrellaAutocomplete extends HTMLSelectElement {
+export default class PonchoAutocomplete extends HTMLSelectElement {
 
     constructor() {
         super()
@@ -35,10 +35,10 @@ export default class UmbrellaAutocomplete extends HTMLSelectElement {
         }
 
         settings.render = {
-            loading_more: () => `<div class="loading-more-results text-muted">${umbrella.translator.trans('autocomplete.loading_more')}</div>`,
+            loading_more: () => `<div class="loading-more-results text-muted">${poncho.translator.trans('autocomplete.loading_more')}</div>`,
             no_more_results: () => null,
-            no_results: () => `<div class="no-results">${umbrella.translator.trans('autocomplete.no_results')}</div>`,
-            option_create: (data, escape) => `<div class="create">${umbrella.translator.trans('action.add')} <strong>${escape(data.input)}</strong>&hellip;</div>`
+            no_results: () => `<div class="no-results">${poncho.translator.trans('autocomplete.no_results')}</div>`,
+            option_create: (data, escape) => `<div class="create">${poncho.translator.trans('action.add')} <strong>${escape(data.input)}</strong>&hellip;</div>`
         };
 
         //settings.plugins['input_autogrow'] = {}

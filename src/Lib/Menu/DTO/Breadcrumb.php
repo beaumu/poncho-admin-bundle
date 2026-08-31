@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu\DTO;
+namespace Poncho\AdminBundle\Lib\Menu\DTO;
 
 class Breadcrumb implements \IteratorAggregate, \Countable
 {

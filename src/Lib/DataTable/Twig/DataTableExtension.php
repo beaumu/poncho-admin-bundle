@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Twig;
+namespace Poncho\AdminBundle\Lib\DataTable\Twig;
 
+use Poncho\AdminBundle\Lib\DataTable\ActionRenderer;
+use Poncho\AdminBundle\Lib\DataTable\DataTableRenderer;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Umbrella\AdminBundle\Lib\DataTable\ActionRenderer;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableRenderer;
 
 class DataTableExtension extends AbstractExtension
 {

@@ -1,7 +1,7 @@
 <li class="nav-item dropdown"
-    is="umbrella-notification"
-    data-poll-interval="{{ umbrella_admin.notificationPollInterval() }}"
-    data-refresh-url="{{ path('umbrella_admin_notification_list') }}">
+    is="poncho-notification"
+    data-poll-interval="{{ poncho_admin.notificationPollInterval() }}"
+    data-refresh-url="{{ path('poncho_admin_notification_list') }}">
 
     <a class="nav-icon dropdown-toggle" href="#" data-bs-toggle="dropdown">
         <div class="position-relative">
@@ -12,7 +12,7 @@
 
     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0">
         <div class="dropdown-menu-header">
-            {{ 'label.notifications' | trans({}, 'UmbrellaAdmin') }}
+            {{ 'label.notifications' | trans({}, 'PonchoAdmin') }}
         </div>
         <div class="list-group notification-items">
         </div>

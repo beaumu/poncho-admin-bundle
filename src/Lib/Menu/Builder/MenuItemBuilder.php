@@ -1,8 +1,8 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu\Builder;
+namespace Poncho\AdminBundle\Lib\Menu\Builder;
 
-use Umbrella\AdminBundle\Lib\Menu\DTO\MenuItem;
+use Poncho\AdminBundle\Lib\Menu\DTO\MenuItem;
 
 class MenuItemBuilder
 {

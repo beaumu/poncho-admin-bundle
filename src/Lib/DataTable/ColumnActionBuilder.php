@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable;
+namespace Poncho\AdminBundle\Lib\DataTable;
 
-use Umbrella\AdminBundle\Lib\DataTable\Action\ActionType;
-use Umbrella\AdminBundle\Lib\DataTable\Action\LinkActionType;
-use Umbrella\AdminBundle\Lib\DataTable\Action\RawActionType;
+use Poncho\AdminBundle\Lib\DataTable\Action\ActionType;
+use Poncho\AdminBundle\Lib\DataTable\Action\LinkActionType;
+use Poncho\AdminBundle\Lib\DataTable\Action\RawActionType;
 
 class ColumnActionBuilder
 {
@@ -20,7 +20,7 @@ class ColumnActionBuilder
     {
         return $this->link(array_merge([
             'title' => 'action.show',
-            'translation_domain' => 'UmbrellaAdmin',
+            'translation_domain' => 'PonchoAdmin',
             'icon' => 'mdi mdi-eye-outline'
         ], $options));
     }
@@ -29,7 +29,7 @@ class ColumnActionBuilder
     {
         return $this->link(array_merge([
             'title' => 'action.edit',
-            'translation_domain' => 'UmbrellaAdmin',
+            'translation_domain' => 'PonchoAdmin',
             'icon' => 'mdi mdi-square-edit-outline'
         ], $options));
     }
@@ -70,7 +70,7 @@ class ColumnActionBuilder
     {
         return $this->link(array_merge([
             'title' => 'action.delete',
-            'translation_domain' => 'UmbrellaAdmin',
+            'translation_domain' => 'PonchoAdmin',
             'icon' => 'mdi mdi-delete-outline',
             'xhr' => true,
             'confirm' => 'message.delete_confirm'

@@ -1,7 +1,8 @@
 <?php
 
-namespace Umbrella\AdminBundle\Maker;
+namespace Poncho\AdminBundle\Maker;
 
+use Poncho\AdminBundle\Maker\Utils\MakeHelper;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\DependencyBuilder;
 use Symfony\Bundle\MakerBundle\Generator;
@@ -11,7 +12,6 @@ use Symfony\Bundle\MakerBundle\Util\YamlSourceManipulator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Umbrella\AdminBundle\Maker\Utils\MakeHelper;
 
 class MakeAdminSecurity extends AbstractMaker
 {
@@ -68,7 +68,7 @@ class MakeAdminSecurity extends AbstractMaker
         );
 
         $this->updateRouteConfig($io, $generator);
-        $this->updateUmbrellaAdminConfig($io, $generator, $entity->getFullName());
+        $this->updatePonchoAdminConfig($io, $generator, $entity->getFullName());
         $this->updateSecurityConfig($io, $generator, $entity->getFullName());
 
         $generator->writeChanges();
@@ -82,16 +82,16 @@ class MakeAdminSecurity extends AbstractMaker
         if (!$this->helper->fileExists($configPath)) {
             $io->warning('The file "config/routes.yaml" does not exist. PHP & XML configuration formats are currently not supported. You have to register routes manually :');
             $io->text([
-                'umbrella_admin_profile_:',
-                '    resource: \'@UmbrellaAdminBundle/config/routes/profile.php\'',
+                'poncho_admin_profile_:',
+                '    resource: \'@PonchoAdminBundle/config/routes/profile.php\'',
                 '    prefix: /admin',
                 '',
-                'umbrella_admin_user_:',
-                '    resource: \'@UmbrellaAdminBundle/config/routes/user.php\'',
+                'poncho_admin_user_:',
+                '    resource: \'@PonchoAdminBundle/config/routes/user.php\'',
                 '    prefix: /admin',
                 '',
-                'umbrella_admin_security_:',
-                '    resource: \'@UmbrellaAdminBundle/config/routes/security.php\'',
+                'poncho_admin_security_:',
+                '    resource: \'@PonchoAdminBundle/config/routes/security.php\'',
                 '    prefix: /admin',
                 ''
             ]);
@@ -102,16 +102,16 @@ class MakeAdminSecurity extends AbstractMaker
         $manipulator = new YamlSourceManipulator($this->helper->getFileContents($configPath));
         $data = $manipulator->getData();
 
-        $data['umbrella_admin_profile_'] = [
-            'resource' => '@UmbrellaAdminBundle/config/routes/profile.php',
+        $data['poncho_admin_profile_'] = [
+            'resource' => '@PonchoAdminBundle/config/routes/profile.php',
             'prefix' => '/admin'
         ];
-        $data['umbrella_admin_user_'] = [
-            'resource' => '@UmbrellaAdminBundle/config/routes/user.php',
+        $data['poncho_admin_user_'] = [
+            'resource' => '@PonchoAdminBundle/config/routes/user.php',
             'prefix' => '/admin'
         ];
-        $data['umbrella_admin_security_'] = [
-            'resource' => '@UmbrellaAdminBundle/config/routes/security.php',
+        $data['poncho_admin_security_'] = [
+            'resource' => '@PonchoAdminBundle/config/routes/security.php',
             'prefix' => '/admin'
         ];
 
@@ -119,17 +119,17 @@ class MakeAdminSecurity extends AbstractMaker
         $generator->dumpFile($configPath, $manipulator->getContents());
     }
 
-    private function updateUmbrellaAdminConfig(SymfonyStyle $io, Generator $generator, string $userClass): void
+    private function updatePonchoAdminConfig(SymfonyStyle $io, Generator $generator, string $userClass): void
     {
-        $configPath = 'config/packages/umbrella_admin.yaml';
+        $configPath = 'config/packages/poncho_admin.yaml';
 
         $configContent = $this->helper->fileExists($configPath)
             ? $this->helper->getFileContents($configPath)
-            : 'umbrella_admin:';
+            : 'poncho_admin:';
 
         $manipulator = new YamlSourceManipulator($configContent);
         $data = $manipulator->getData();
-        $data['umbrella_admin']['user']['class'] = $userClass;
+        $data['poncho_admin']['user']['class'] = $userClass;
 
         $manipulator->setData($data);
         $generator->dumpFile($configPath, $manipulator->getContents());
@@ -159,19 +159,19 @@ class MakeAdminSecurity extends AbstractMaker
         // firewall
         $data['security']['firewalls']['admin'] = [
             'pattern' => '^/admin',
-            'user_checker' => 'Umbrella\AdminBundle\Security\UserChecker',
-            'entry_point' => 'Umbrella\AdminBundle\Security\AuthenticationEntryPoint',
+            'user_checker' => 'Poncho\AdminBundle\Security\UserChecker',
+            'entry_point' => 'Poncho\AdminBundle\Security\AuthenticationEntryPoint',
             'provider' => 'admin_entity_provider',
             'lazy' => true,
             'form_login' => [
-                'login_path' => 'umbrella_admin_login',
-                'check_path' => 'umbrella_admin_login',
+                'login_path' => 'poncho_admin_login',
+                'check_path' => 'poncho_admin_login',
                 'default_target_path' => 'app_admin_home_index',
                 'enable_csrf' => true
             ],
             'logout' => [
-                'path' => 'umbrella_admin_logout',
-                'target' => 'umbrella_admin_login'
+                'path' => 'poncho_admin_logout',
+                'target' => 'poncho_admin_login'
             ]
         ];
 
@@ -194,15 +194,15 @@ class MakeAdminSecurity extends AbstractMaker
         $io->text([
             'Next:',
             '  1) Update your database schema with command <fg=yellow>"php bin/console doctrine:schema:update --force"</>.',
-            '  2) Generate an admin user with command <fg=yellow>"php bin/console umbrella_admin:create:user"</>.',
-            '  3) Add section for route <fg=yellow>"umbrella_admin_user_index"</> on your Admin menu.',
+            '  2) Generate an admin user with command <fg=yellow>"php bin/console poncho_admin:create:user"</>.',
+            '  3) Add section for route <fg=yellow>"poncho_admin_user_index"</> on your Admin menu.',
         ]);
 
         $io->newLine();
         $io->writeln('Open your browser, go to "/admin" to login');
         $io->writeln('Once logged, go to "/admin/user" to manage user');
         $io->newLine();
-        $io->writeln('Read more about it on <href=https://acantepie.github.io/umbrella-admin-bundle/#/getting-started/configure_security>Documentation</>');
+        $io->writeln('Read more about it on <href=https://beaumu.github.io/poncho-admin-bundle/#/getting-started/configure_security>Documentation</>');
         $io->newLine();
     }
 }

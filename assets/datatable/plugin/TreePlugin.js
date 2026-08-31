@@ -6,20 +6,20 @@ export default class TreePlugin {
         this.spaceWidth = options.space ?? 40
         this.columnIdx = options.columnIdx
 
-        this.umbrellaDatatable = null
+        this.ponchoDatatable = null
         this.tree = new Tree()
     }
 
     /**
-     * @param {UmbrellaDataTable} umbrellaDatatable
+     * @param {PonchoDataTable} ponchoDatatable
      */
-    configure(umbrellaDatatable) {
-        this.umbrellaDatatable = umbrellaDatatable
-        this.umbrellaDatatable.datatable.on('draw', () => this._drawTree())
+    configure(ponchoDatatable) {
+        this.ponchoDatatable = ponchoDatatable
+        this.ponchoDatatable.datatable.on('draw', () => this._drawTree())
     }
 
     _drawTree() {
-        const $items = this.umbrellaDatatable.tbody.querySelectorAll('tr')
+        const $items = this.ponchoDatatable.tbody.querySelectorAll('tr')
 
         this.tree.populate($items, false)
         this.tree.nodes.forEach(node => this._drawNode(node))

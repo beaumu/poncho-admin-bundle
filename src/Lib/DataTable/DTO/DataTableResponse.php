@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\DTO;
+namespace Poncho\AdminBundle\Lib\DataTable\DTO;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Entity\Trait;
+namespace Poncho\AdminBundle\Entity\Trait;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\Unit\Menu;
+namespace Poncho\AdminBundle\Tests\Unit\Menu;
 
 use PHPUnit\Framework\TestCase;
-use Umbrella\AdminBundle\Lib\Menu\Builder\MenuBuilder;
+use Poncho\AdminBundle\Lib\Menu\Builder\MenuBuilder;
 
 class MenuBuilderTest extends TestCase
 {

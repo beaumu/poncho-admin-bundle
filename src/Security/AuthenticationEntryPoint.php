@@ -1,7 +1,8 @@
 <?php
 
-namespace Umbrella\AdminBundle\Security;
+namespace Poncho\AdminBundle\Security;
 
+use Poncho\AdminBundle\Controller\SecurityController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -9,7 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
-use Umbrella\AdminBundle\Controller\SecurityController;
 
 class AuthenticationEntryPoint implements AuthenticationEntryPointInterface
 {

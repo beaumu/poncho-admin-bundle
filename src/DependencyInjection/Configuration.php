@@ -1,16 +1,16 @@
 <?php
 
-namespace Umbrella\AdminBundle\DependencyInjection;
+namespace Poncho\AdminBundle\DependencyInjection;
 
+use Poncho\AdminBundle\Controller\ProfileController;
+use Poncho\AdminBundle\DataTable\UserTableType;
+use Poncho\AdminBundle\Form\ProfileType;
+use Poncho\AdminBundle\Form\UserType;
+use Poncho\AdminBundle\Menu\BaseAdminMenu;
+use Poncho\AdminBundle\Service\UserManager;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Umbrella\AdminBundle\Controller\ProfileController;
-use Umbrella\AdminBundle\DataTable\UserTableType;
-use Umbrella\AdminBundle\Form\ProfileType;
-use Umbrella\AdminBundle\Form\UserType;
-use Umbrella\AdminBundle\Menu\BaseAdminMenu;
-use Umbrella\AdminBundle\Service\UserManager;
 
 /**
  * This is the class that validates and merges configuration from your app/config files.
@@ -21,13 +21,13 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('umbrella_admin');
+        $treeBuilder = new TreeBuilder('poncho_admin');
         $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
                 ->scalarNode('app_name')
-                    ->defaultValue('umbrella')
+                    ->defaultValue('poncho')
                     ->info('Name of app (Used on mail, sidebar title, login page, ...)')
                     ->end()
                 ->scalarNode('app_logo')
@@ -83,7 +83,7 @@ class Configuration implements ConfigurationInterface
 
         $u->scalarNode('password_reset_from_email')
             ->info('Email of sender for password reset email.')
-            ->defaultValue('no-reply@umbrella.dev');
+            ->defaultValue('no-reply@poncho.dev');
 
         $u->integerNode('password_reset_ttl')
             ->info('Time to live (in s) for request password.')

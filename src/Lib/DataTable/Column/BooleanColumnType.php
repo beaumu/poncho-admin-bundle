@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Column;
+namespace Poncho\AdminBundle\Lib\DataTable\Column;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -40,10 +40,10 @@ class BooleanColumnType extends PropertyColumnType
             ->setDefault('strict_comparison', false)
             ->setAllowedTypes('strict_comparison', 'bool')
 
-            ->setDefault('yes_value', $this->translator->trans('label.yes', [], 'UmbrellaAdmin'))
+            ->setDefault('yes_value', $this->translator->trans('label.yes', [], 'PonchoAdmin'))
             ->setAllowedTypes('yes_value', 'string')
 
-            ->setDefault('no_value', $this->translator->trans('label.no', [], 'UmbrellaAdmin'))
+            ->setDefault('no_value', $this->translator->trans('label.no', [], 'PonchoAdmin'))
             ->setAllowedTypes('no_value', 'string')
 
             ->setDefault('yes_icon', 'mdi mdi-check me-1')

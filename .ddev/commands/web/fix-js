@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Description: Fix JS files with eslint
+## Usage: fix-js
+## Example: ddev fix-js
+
+set -e
+yarn lint-fix

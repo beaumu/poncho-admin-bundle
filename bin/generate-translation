@@ -3,7 +3,7 @@
 
 require_once './vendor/autoload.php';
 
-$translationLoader = new \Umbrella\AdminBundle\Utils\TranslationDumper();
-$translationLoader->writeTranslation(__DIR__ . '/../assets/translator/umbrella-admin-translations.json');
+$translationLoader = new \Poncho\AdminBundle\Utils\TranslationDumper();
+$translationLoader->writeTranslation(__DIR__ . '/../assets/translator/poncho-admin-translations.json');
 
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Adapter;
+namespace Poncho\AdminBundle\Lib\DataTable\Adapter;
 
+use Poncho\AdminBundle\Lib\DataTable\AdapterException;
+use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableResult;
+use Poncho\AdminBundle\Lib\DataTable\DTO\DataTableState;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\DataTable\AdapterException;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTableResult;
-use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTableState;
 
 abstract class AdapterType
 {

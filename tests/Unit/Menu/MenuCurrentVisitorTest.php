@@ -1,13 +1,13 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\Unit\Menu;
+namespace Poncho\AdminBundle\Tests\Unit\Menu;
 
 use PHPUnit\Framework\TestCase;
+use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
+use Poncho\AdminBundle\Lib\Menu\DTO\MenuItem;
+use Poncho\AdminBundle\Lib\Menu\Visitor\MenuCurrentVisitor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Umbrella\AdminBundle\Lib\Menu\DTO\Menu;
-use Umbrella\AdminBundle\Lib\Menu\DTO\MenuItem;
-use Umbrella\AdminBundle\Lib\Menu\Visitor\MenuCurrentVisitor;
 
 class MenuCurrentVisitorTest extends TestCase
 {

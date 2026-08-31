@@ -1,16 +1,16 @@
 <?php
 
-namespace Umbrella\AdminBundle\Service;
+namespace Poncho\AdminBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
+use Poncho\AdminBundle\Entity\BaseAdminUser;
+use Poncho\AdminBundle\Exception\ResetPasswordException;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Umbrella\AdminBundle\Entity\BaseAdminUser;
-use Umbrella\AdminBundle\Exception\ResetPasswordException;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
 
 class UserManager implements UserManagerInterface
 {
@@ -24,7 +24,7 @@ class UserManager implements UserManagerInterface
         protected readonly EntityManagerInterface $em,
         protected readonly MailerInterface $mailer,
         protected readonly UserPasswordHasherInterface $passwordHasher,
-        protected readonly UmbrellaAdminConfiguration $config
+        protected readonly PonchoAdminConfiguration $config
     ) {
         $this->class = $config->userClass();
         $this->repo = $this->em->getRepository($this->class);
@@ -90,10 +90,10 @@ class UserManager implements UserManagerInterface
 
         $email = new TemplatedEmail();
         $email
-            ->subject($this->translator->trans('password_resetting.email.subject', [], 'UmbrellaAdmin'))
+            ->subject($this->translator->trans('password_resetting.email.subject', [], 'PonchoAdmin'))
             ->from($this->config->userPasswordResetEmailAddress())
             ->to($user->email)
-            ->htmlTemplate('@UmbrellaAdmin/email/password_reset.html.twig')
+            ->htmlTemplate('@PonchoAdmin/email/password_reset.html.twig')
             ->context([
                 'user' => $user,
                 'token' => $publicToken

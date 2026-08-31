@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Menu\Builder;
+namespace Poncho\AdminBundle\Lib\Menu\Builder;
 
-use Umbrella\AdminBundle\Lib\Menu\DTO\Menu;
-use Umbrella\AdminBundle\Lib\Menu\Visitor\MenuCurrentVisitor;
-use Umbrella\AdminBundle\Lib\Menu\Visitor\MenuVisibilityVisitor;
+use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
+use Poncho\AdminBundle\Lib\Menu\Visitor\MenuCurrentVisitor;
+use Poncho\AdminBundle\Lib\Menu\Visitor\MenuVisibilityVisitor;
 
 class MenuBuilder
 {

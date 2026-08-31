@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Utils;
+namespace Poncho\AdminBundle\Utils;
 
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -14,7 +14,7 @@ class TranslationDumper
     private string $domain;
     private array $locales = [];
 
-    public function __construct(string $domain = 'UmbrellaAdmin')
+    public function __construct(string $domain = 'PonchoAdmin')
     {
         $this->domain = $domain;
         $this->translator = new Translator('en');

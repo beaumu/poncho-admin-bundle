@@ -1,11 +1,11 @@
 <?php
 
-namespace Umbrella\AdminBundle\Security;
+namespace Poncho\AdminBundle\Security;
 
+use Poncho\AdminBundle\Entity\BaseAdminUser;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAccountStatusException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Umbrella\AdminBundle\Entity\BaseAdminUser;
 
 class UserChecker implements UserCheckerInterface
 {

@@ -1,6 +1,6 @@
 import SimpleBar from 'simplebar';
 
-export default class UmbrellaSidebar extends HTMLElement {
+export default class PonchoSidebar extends HTMLElement {
 
     constructor() {
         super();

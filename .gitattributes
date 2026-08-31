@@ -3,7 +3,6 @@
 /.gitignore export-ignore
 /.php-cs-fixer.dist.php export-ignore
 /tests export-ignore
-/Makefile export-ignore
 /phpunit.xml.dist export-ignore
 /phpstan.neon export-ignore
 /webpack.config.js export-ignore
@@ -14,3 +13,6 @@
 /bin export-ignore
 /docs export-ignore
 /screenshot.png export-ignore
+/.ddev export-ignore
+/.githooks export-ignore
+/CLAUDE.md export-ignore

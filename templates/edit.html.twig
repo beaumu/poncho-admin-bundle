@@ -1,20 +1,20 @@
-{% extends "@UmbrellaAdmin/layout.html.twig" %}
+{% extends "@PonchoAdmin/layout.html.twig" %}
 
 {% block breadcrumb %}
-    {% set admin_breadcrumb = get_breadcrumb(admin_menu, {}, (entity.id ? 'action.edit' : 'action.add') | trans({}, 'UmbrellaAdmin')) %}
+    {% set admin_breadcrumb = get_breadcrumb(admin_menu, {}, (entity.id ? 'action.edit' : 'action.add') | trans({}, 'PonchoAdmin')) %}
     {{ render_breadcrumb(admin_breadcrumb) }}
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-body">
-            {{ umbrella_form_theme(form) }}
+            {{ poncho_form_theme(form) }}
             {{ form_start(form) }}
                 {{ form_errors(form) }}
                 {{ form_rest(form) }}
 
                 <button type="submit" class="btn btn-primary">
-                    <i class="mdi mdi-check"></i> {{ 'action.save' | trans({}, 'UmbrellaAdmin') }}
+                    <i class="mdi mdi-check"></i> {{ 'action.save' | trans({}, 'PonchoAdmin') }}
                 </button>
             {{ form_end(form) }}
         </div>

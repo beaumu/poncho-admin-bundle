@@ -1,0 +1,9 @@
+#!/bin/bash
+
+## Description: Fix all files (PHP + JS)
+## Usage: fix-all
+## Example: ddev fix-all
+
+set -e
+./vendor/bin/php-cs-fixer fix
+yarn lint-fix

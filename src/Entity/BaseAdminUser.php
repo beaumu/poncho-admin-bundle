@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Entity;
+namespace Poncho\AdminBundle\Entity;
 
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;

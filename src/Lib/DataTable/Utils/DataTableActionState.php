@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Utils;
+namespace Poncho\AdminBundle\Lib\DataTable\Utils;
 
 use Symfony\Component\HttpFoundation\Request;
 

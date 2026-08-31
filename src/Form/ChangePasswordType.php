@@ -1,17 +1,17 @@
 <?php
 
-namespace Umbrella\AdminBundle\Form;
+namespace Poncho\AdminBundle\Form;
 
+use Poncho\AdminBundle\Lib\Form\PasswordTogglableType;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\Form\PasswordTogglableType;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
 
 class ChangePasswordType extends AbstractType
 {
-    public function __construct(private readonly UmbrellaAdminConfiguration $config)
+    public function __construct(private readonly PonchoAdminConfiguration $config)
     {
     }
 
@@ -19,7 +19,7 @@ class ChangePasswordType extends AbstractType
     {
         $builder->add('plainPassword', RepeatedType::class, [
             'type' => PasswordTogglableType::class,
-            'translation_domain' => 'UmbrellaAdmin',
+            'translation_domain' => 'PonchoAdmin',
             'first_options' => [
                 'label' => 'label.newpassword',
                 'attr' => [

@@ -1,10 +1,10 @@
 <?php
 
-namespace Umbrella\AdminBundle\Tests\Unit\Menu;
+namespace Poncho\AdminBundle\Tests\Unit\Menu;
 
 use PHPUnit\Framework\TestCase;
-use Umbrella\AdminBundle\Lib\Menu\DTO\Menu;
-use Umbrella\AdminBundle\Lib\Menu\DTO\MenuItem;
+use Poncho\AdminBundle\Lib\Menu\DTO\Menu;
+use Poncho\AdminBundle\Lib\Menu\DTO\MenuItem;
 
 class MenuDTOTest extends TestCase
 {

@@ -1,27 +1,27 @@
 <?php
 
-namespace Umbrella\AdminBundle\Twig;
+namespace Poncho\AdminBundle\Twig;
 
+use Poncho\AdminBundle\PonchoAdminConfiguration;
 use Symfony\Component\Form\FormRendererInterface;
 use Symfony\Component\Form\FormView;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 use Twig\TwigFunction;
 use Twig\TwigTest;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
 
-class UmbrellaAdminTwigExtension extends AbstractExtension implements GlobalsInterface
+class PonchoAdminTwigExtension extends AbstractExtension implements GlobalsInterface
 {
     public function __construct(
         private readonly FormRendererInterface $formRenderer,
-        private readonly UmbrellaAdminConfiguration $configuration,
+        private readonly PonchoAdminConfiguration $configuration,
     ) {
     }
 
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('umbrella_form_theme', $this->applyFormTheme(...))
+            new TwigFunction('poncho_form_theme', $this->applyFormTheme(...))
         ];
     }
 
@@ -35,7 +35,7 @@ class UmbrellaAdminTwigExtension extends AbstractExtension implements GlobalsInt
     public function getGlobals(): array
     {
         return [
-            'umbrella_admin' => $this->configuration
+            'poncho_admin' => $this->configuration
         ];
     }
 
@@ -51,9 +51,9 @@ class UmbrellaAdminTwigExtension extends AbstractExtension implements GlobalsInt
         }
 
         if ('horizontal' === $bootstrapLayout) {
-            $this->formRenderer->setTheme($view, '@UmbrellaAdmin/lib/form/layout_horizontal.html.twig', $useDefaultThemes);
+            $this->formRenderer->setTheme($view, '@PonchoAdmin/lib/form/layout_horizontal.html.twig', $useDefaultThemes);
         } else {
-            $this->formRenderer->setTheme($view, '@UmbrellaAdmin/lib/form/layout.html.twig', $useDefaultThemes);
+            $this->formRenderer->setTheme($view, '@PonchoAdmin/lib/form/layout.html.twig', $useDefaultThemes);
         }
     }
 }

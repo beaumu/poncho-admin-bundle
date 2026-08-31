@@ -8,7 +8,7 @@ import TreePlugin from './plugin/TreePlugin';
 import AjaxUtils from '../utils/AjaxUtils';
 import {Tooltip} from 'bootstrap';
 
-export default class UmbrellaDataTable extends HTMLElement {
+export default class PonchoDataTable extends HTMLElement {
 
     constructor() {
         super()
@@ -109,7 +109,7 @@ export default class UmbrellaDataTable extends HTMLElement {
         if (requestObject.responseJSON && requestObject.responseJSON.error) {
             this.error(requestObject.responseJSON.error);
         } else {
-            this.error(umbrella.translator.trans('datatable.error.load'))
+            this.error(poncho.translator.trans('datatable.error.load'))
         }
     }
 

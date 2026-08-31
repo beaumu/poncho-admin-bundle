@@ -4,13 +4,13 @@ namespace <?= $namespace ?>;
 
 use <?= $entity->getFullName() ?>;
 use Doctrine\ORM\QueryBuilder;
-use Umbrella\AdminBundle\Lib\Form\SearchType;
-use Umbrella\AdminBundle\Lib\DataTable\Action\ButtonAddActionType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\ActionColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\ColumnActionBuilder;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableBuilder;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
+use Poncho\AdminBundle\Lib\Form\SearchType;
+use Poncho\AdminBundle\Lib\DataTable\Action\ButtonAddActionType;
+use Poncho\AdminBundle\Lib\DataTable\Column\ActionColumnType;
+use Poncho\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
+use Poncho\AdminBundle\Lib\DataTable\ColumnActionBuilder;
+use Poncho\AdminBundle\Lib\DataTable\DataTableBuilder;
+use Poncho\AdminBundle\Lib\DataTable\DataTableType;
 
 class <?= $class_name ?> extends DataTableType
 {
@@ -50,7 +50,7 @@ class <?= $class_name ?> extends DataTableType
 
                 // TODO : add closure to filter result depending on $formData['search'] value
                 if (isset($formData['search'])) {
-                    // You can use Umbrella\AdminBundle\Utils\DoctrineUtils to filter results
+                    // You can use Poncho\AdminBundle\Utils\DoctrineUtils to filter results
                     // DoctrineUtils::matchAll($qb, ['e.x', 'e.y'], $formData['search']);
                 }
 

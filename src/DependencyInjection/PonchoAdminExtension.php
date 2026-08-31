@@ -1,31 +1,31 @@
 <?php
 
-namespace Umbrella\AdminBundle\DependencyInjection;
+namespace Poncho\AdminBundle\DependencyInjection;
 
+use Poncho\AdminBundle\Lib\DataTable\Adapter\AdapterType;
+use Poncho\AdminBundle\Lib\DataTable\Column\ColumnType;
+use Poncho\AdminBundle\Lib\DataTable\DataTableConfiguration;
+use Poncho\AdminBundle\Lib\DataTable\DataTableRegistry;
+use Poncho\AdminBundle\Lib\DataTable\DataTableType;
+use Poncho\AdminBundle\Lib\Form\Extension\FormTypeExtension;
+use Poncho\AdminBundle\Lib\Menu\MenuRegistry;
+use Poncho\AdminBundle\Lib\Menu\MenuType;
+use Poncho\AdminBundle\Lib\Menu\Visitor\MenuVisitor;
+use Poncho\AdminBundle\Notification\NotificationProviderInterface;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
+use Poncho\AdminBundle\Service\UserManagerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader;
-use Umbrella\AdminBundle\Lib\DataTable\Adapter\AdapterType;
-use Umbrella\AdminBundle\Lib\DataTable\Column\ColumnType;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableConfiguration;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableRegistry;
-use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
-use Umbrella\AdminBundle\Lib\Form\Extension\FormTypeExtension;
-use Umbrella\AdminBundle\Lib\Menu\MenuRegistry;
-use Umbrella\AdminBundle\Lib\Menu\MenuType;
-use Umbrella\AdminBundle\Lib\Menu\Visitor\MenuVisitor;
-use Umbrella\AdminBundle\Notification\NotificationProviderInterface;
-use Umbrella\AdminBundle\Service\UserManagerInterface;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
 
 /**
  * This is the class that loads and manages your bundle configuration.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class UmbrellaAdminExtension extends Extension
+class PonchoAdminExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -40,7 +40,7 @@ class UmbrellaAdminExtension extends Extension
         $this->configureUser($container, $config, $loader);
         $this->configureNotification($container, $config, $loader);
 
-        $container->getDefinition(UmbrellaAdminConfiguration::class)
+        $container->getDefinition(PonchoAdminConfiguration::class)
             ->setArgument(0, $config);
     }
 
@@ -67,7 +67,7 @@ class UmbrellaAdminExtension extends Extension
     {
         $loader->load('user.php');
         $container->setAlias(UserManagerInterface::class, $config['user']['manager']);
-        $container->setParameter('umbrella_admin.user.class', $config['user']['class']);
+        $container->setParameter('poncho_admin.user.class', $config['user']['class']);
 
         if ($config['user']['profile']['enabled']) {
             $loader->load('userProfile.php');

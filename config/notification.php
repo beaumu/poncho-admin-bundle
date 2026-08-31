@@ -2,7 +2,7 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Umbrella\AdminBundle\Controller\NotificationController;
+use Poncho\AdminBundle\Controller\NotificationController;
 
 return static function (ContainerConfigurator $configurator): void {
 

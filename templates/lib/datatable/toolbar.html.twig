@@ -1,7 +1,7 @@
 <div class="toolbar inline-toolbar">
     {%- if toolbar.form | length > 0 -%}
         <form data-submit="auto" class="toolbar-filters">
-            {{ umbrella_form_theme(toolbar.form) }}
+            {{ poncho_form_theme(toolbar.form) }}
             {%- for form in toolbar.form -%}
                 <div class="toolbar-filter">
                     {{- form_widget(form) -}}

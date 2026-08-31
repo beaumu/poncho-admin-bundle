@@ -1,20 +1,19 @@
 <?php
 
-namespace Umbrella\AdminBundle\Controller;
+namespace Poncho\AdminBundle\Controller;
 
+use Poncho\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\PonchoAdminConfiguration;
+use Poncho\AdminBundle\Service\UserManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use function Symfony\Component\Translation\t;
 
-use Umbrella\AdminBundle\Lib\Controller\AdminController;
-use Umbrella\AdminBundle\Service\UserManagerInterface;
-use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
-
 class UserController extends AdminController
 {
     public function __construct(
-        private readonly UmbrellaAdminConfiguration $config,
+        private readonly PonchoAdminConfiguration $config,
         private readonly UserManagerInterface $userManager,
     ) {
     }
@@ -28,7 +27,7 @@ class UserController extends AdminController
             return $table->getCallbackResponse();
         }
 
-        return $this->render('@UmbrellaAdmin/datatable.html.twig', [
+        return $this->render('@PonchoAdmin/datatable.html.twig', [
             'table' => $table,
         ]);
     }
@@ -55,11 +54,11 @@ class UserController extends AdminController
             return $this->js()
                 ->closeModal()
                 ->reloadTable()
-                ->toastSuccess(t('message.item_updated', [], 'UmbrellaAdmin'));
+                ->toastSuccess(t('message.item_updated', [], 'PonchoAdmin'));
         }
 
         return $this->js()
-            ->modal('@UmbrellaAdmin/user/edit.html.twig', [
+            ->modal('@PonchoAdmin/user/edit.html.twig', [
                 'form' => $form->createView(),
                 'entity' => $entity,
             ]);
@@ -75,6 +74,6 @@ class UserController extends AdminController
         return $this->js()
             ->closeModal()
             ->reloadTable()
-            ->toastSuccess(t('message.item_deleted', [], 'UmbrellaAdmin'));
+            ->toastSuccess(t('message.item_deleted', [], 'PonchoAdmin'));
     }
 }

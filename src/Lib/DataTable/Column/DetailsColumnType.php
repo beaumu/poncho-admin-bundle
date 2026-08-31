@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\DataTable\Column;
+namespace Poncho\AdminBundle\Lib\DataTable\Column;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

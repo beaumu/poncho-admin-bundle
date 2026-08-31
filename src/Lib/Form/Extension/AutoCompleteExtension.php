@@ -1,6 +1,6 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Form\Extension;
+namespace Poncho\AdminBundle\Lib\Form\Extension;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractTypeExtension;
@@ -20,7 +20,7 @@ class AutoCompleteExtension extends AbstractTypeExtension
             $attr = $view->vars['attr'] ?? [];
             unset($attr['placeholder']);
 
-            $attr['is'] = 'umbrella-autocomplete';
+            $attr['is'] = 'poncho-autocomplete';
 
             $attr['data-tom-select-settings'] = json_encode($options['tom_select_settings']);
 
@@ -46,8 +46,8 @@ class AutoCompleteExtension extends AbstractTypeExtension
             ->setAllowedTypes('input_template', ['null', 'string']);
 
         $resolver
-            ->setNormalizer('expanded', fn (Options $options) => false)
-            ->setNormalizer('placeholder', fn (Options $options, $value) => $value);
+            ->setNormalizer('expanded', static fn (Options $options) => false)
+            ->setNormalizer('placeholder', static fn (Options $options, $value) => $value);
 
         $resolver
             ->setDefault('tom_select_settings', [])

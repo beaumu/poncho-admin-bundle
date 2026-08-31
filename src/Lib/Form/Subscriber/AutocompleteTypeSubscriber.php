@@ -1,16 +1,16 @@
 <?php
 
-namespace Umbrella\AdminBundle\Lib\Form\Subscriber;
+namespace Poncho\AdminBundle\Lib\Form\Subscriber;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\Parameter;
 use Doctrine\ORM\Utility\PersisterHelper;
+use Poncho\AdminBundle\Lib\Form\Extension\AutoCompleteExtension;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Umbrella\AdminBundle\Lib\Form\Extension\AutoCompleteExtension;
 
 /**
  * Helps transform AutoCompleteType.php into a EntityType that will not load all options.

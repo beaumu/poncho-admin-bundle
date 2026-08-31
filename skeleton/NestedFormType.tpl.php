@@ -6,7 +6,7 @@ use <?= $entity->getFullName() ?>;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\Form\NestedEntityType;
+use Poncho\AdminBundle\Lib\Form\NestedEntityType;
 
 class <?= $class_name ?> extends AbstractType
 {

@@ -1,5 +1,5 @@
 {
-  "name": "umbrella",
+  "name": "poncho",
   "license": "MIT",
   "dependencies": {
     "@iconscout/unicons": "^4.2.0",
@@ -22,6 +22,7 @@
     "@babel/preset-env": "^7.16.0",
     "@symfony/webpack-encore": "^5.0.0",
     "core-js": "^3.38.0",
+    "docsify-cli": "^4.4.4",
     "eslint": "^8.36.0",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.85.1",
@@ -36,7 +37,8 @@
     "watch": "encore dev --watch",
     "build": "encore production --progress",
     "lint": "eslint assets",
-    "lint-fix": "eslint assets --fix"
+    "lint-fix": "eslint assets --fix",
+    "doc": "docsify serve docs"
   },
   "packageManager": "yarn@4.7.0"
 }
