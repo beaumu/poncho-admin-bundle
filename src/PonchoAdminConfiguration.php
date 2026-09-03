@@ -30,6 +30,14 @@ class PonchoAdminConfiguration
         return $this->config['app_logo'];
     }
 
+    /**
+     * Logo variant for dark surfaces such as the sidebar. Falls back to appLogo().
+     */
+    public function appLogoInverse(): ?string
+    {
+        return $this->config['app_logo_inverse'] ?? $this->config['app_logo'];
+    }
+
     // Menu
 
     public function menuName(): string

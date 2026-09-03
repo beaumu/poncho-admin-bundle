@@ -5,6 +5,20 @@ To display the default values defined by PonchoAdmin on your own project, use :
 php bin/console config:dump-reference PonchoAdminBundle
 ```
 
+## Logo
+
+`app_logo` is drawn on light surfaces (login page, e-mail header). `app_logo_inverse` is drawn on
+the dark sidebar and falls back to `app_logo` when unset — set both when your logo is a single
+colour, so it stays visible on either background:
+
+```yml
+poncho_admin:
+    app_logo:         poncho-black.svg
+    app_logo_inverse: poncho-white.svg
+```
+
+Both are asset paths resolved with Symfony's `asset()`, so they live under your app's `public/`.
+
 Configuration reference :
 
 ```yaml
@@ -13,8 +27,11 @@ poncho_admin:
     # Name of app (Used on mail, sidebar title, login page, ...)
     app_name:             poncho
 
-    # Path of logo
+    # Path of logo, used on light surfaces (login page, emails)
     app_logo:             null
+
+    # Path of logo used on dark surfaces (sidebar). Defaults to app_logo.
+    app_logo_inverse:     null
 
     # Bootstrap container class : container, container-sm, container-fluid, ...
     container_class:      container-fluid

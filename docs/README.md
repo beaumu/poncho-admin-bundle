@@ -1,5 +1,5 @@
 <h1 align="center" style="border-bottom: none">
-    <img src="./poncho.svg" width="25" height="25" alt="Poncho logo"/> Poncho Admin Bundle
+    <img src="./poncho-black.svg" width="25" height="25" alt="Poncho logo"/> Poncho Admin Bundle
 </h1>
 
 > Easiest way to create beautiful administration backends with Symfony.

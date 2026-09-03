@@ -1,5 +1,9 @@
 <h1 align="center" style="border-bottom: none">
-    <img src="./docs/poncho.svg" width="25" height="25" alt="Poncho logo"/> Poncho Admin Bundle
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="./docs/poncho-white.svg">
+        <img src="./docs/poncho-black.svg" width="25" height="25" alt="Poncho logo"/>
+    </picture>
+    Poncho Admin Bundle
 </h1>
 
 <p align="center">
@@ -28,7 +32,7 @@
 
 
 <p align="center">
-    <img src="/screenshot.png" width="100%">
+    <img src="./screenshot.png" width="100%">
     <br/><br/>
 </p>
 

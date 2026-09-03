@@ -18,7 +18,7 @@ class BaseAdminMenu extends MenuType
     {
         $this->defaultRenderOptions = [
             'logo_route' => null,
-            'logo' => $this->configuration->appLogo(),
+            'logo' => $this->configuration->appLogoInverse(),
             'title' => $this->configuration->appName(),
             'searchable' => false,
             'template' => '@PonchoAdmin/menu/sidebar.html.twig'
