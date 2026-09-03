@@ -3,8 +3,8 @@
      role="img" aria-label="Poncho">
   <title>Poncho</title>
   <style>
-    /* Black on light surfaces, white on dark ones. Honoured when the file is
-       embedded, referenced from <img>, or used as an SVG favicon. */
+ <!--   Black on light surfaces, white on dark ones. Honoured when the file is
+       embedded, referenced from <img>, or used as an SVG favicon.-->
     .poncho-ink { fill: #000000; }
     @media (prefers-color-scheme: dark) {
       .poncho-ink { fill: #ffffff; }
