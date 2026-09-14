@@ -10,8 +10,6 @@ Before your first contribution, make sure you'll meet these requirements:
 
 * You have a user account on [GitHub](https://github.com/).
 * You have [DDEV](https://ddev.com/) installed, and have started the project once (`ddev start`).
-* After cloning, run `git config core.hooksPath .githooks` once — this enables a local
-  pre-commit hook that runs php-cs-fixer/eslint on staged files via DDEV.
 
 Proposing New Features
 ----------------------
