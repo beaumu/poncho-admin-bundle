@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         php-version: ['8.2']
-        symfony-version: ['6.4', '7.2']
+        symfony-version: ['6.4', '7.4']
       fail-fast: false
 
     steps:

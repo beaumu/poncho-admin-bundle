@@ -22,6 +22,11 @@ jobs:
         runs-on: ubuntu-24.04
         steps:
             -   uses: actions/checkout@v4
+                with:
+                    # create-version.sh derives the next tag from `git describe --tags`;
+                    # the default shallow checkout fetches no tags, so it would compute
+                    # from the script's 1.0.0 fallback instead of the latest real tag.
+                    fetch-depth: 0
             -   name: Updating version
                 run: |
                     git config --global user.name "github-actions[bot]"

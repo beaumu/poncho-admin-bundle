@@ -2,6 +2,7 @@
 
 namespace Poncho\AdminBundle\DependencyInjection;
 
+use Poncho\AdminBundle\Lib\DataTable\Action\ActionType;
 use Poncho\AdminBundle\Lib\DataTable\Adapter\AdapterType;
 use Poncho\AdminBundle\Lib\DataTable\Column\ColumnType;
 use Poncho\AdminBundle\Lib\DataTable\DataTableConfiguration;
@@ -58,6 +59,7 @@ class PonchoAdminExtension extends Extension
         $container->registerForAutoconfiguration(DataTableType::class)->addTag(DataTableRegistry::TAG_TYPE);
         $container->registerForAutoconfiguration(ColumnType::class)->addTag(DataTableRegistry::TAG_COLUMN_TYPE);
         $container->registerForAutoconfiguration(AdapterType::class)->addTag(DataTableRegistry::TAG_ADAPTER_TYPE);
+        $container->registerForAutoconfiguration(ActionType::class)->addTag(DataTableRegistry::TAG_ACTION_TYPE);
 
         $container->registerForAutoconfiguration(MenuType::class)->addTag(MenuRegistry::TAG_TYPE);
         $container->registerForAutoconfiguration(MenuVisitor::class)->addTag(MenuRegistry::TAG_VISITOR);
