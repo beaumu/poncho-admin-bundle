@@ -3,6 +3,7 @@
 namespace Poncho\AdminBundle\Lib\DataTable\Utils;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class DataTableActionState implements \Serializable
 {
@@ -25,7 +26,7 @@ class DataTableActionState implements \Serializable
             return self::create($request->query->all('state'));
         }
 
-        throw new \InvalidArgumentException('Unable to create state, no state found on request.');
+        throw new BadRequestHttpException('Unable to create state, no state found on request.');
     }
 
     public function disablePagination(): self

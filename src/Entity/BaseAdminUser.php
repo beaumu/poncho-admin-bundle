@@ -47,6 +47,11 @@ abstract class BaseAdminUser implements EquatableInterface, \Serializable, UserI
 
     public function isPasswordResetExpired(): bool
     {
+        // No reset in progress means there is nothing valid to honour.
+        if (null === $this->passwordResetExpiresAt) {
+            return true;
+        }
+
         return $this->passwordResetExpiresAt->getTimestamp() <= time();
     }
 
