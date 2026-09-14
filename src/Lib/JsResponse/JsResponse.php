@@ -193,7 +193,7 @@ class JsResponse extends Response
 
     public function reloadTable(array $options = [], string $cssSelector = 'poncho-datatable'): self
     {
-        return $this->callTable('reload', [$options], $cssSelector);
+        return $this->callTable('reload', $options, $cssSelector);
     }
 
     public function callTable(string $method, array $methodParams = [], string $cssSelector = 'poncho-datatable'): self
