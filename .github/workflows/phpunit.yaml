@@ -49,5 +49,7 @@ jobs:
 
       - name: 'Run tests'
         env:
-          SYMFONY_DEPRECATIONS_HELPER: 'disabled'
+          # Fail the build on deprecations triggered by this bundle's own code.
+          # Dependency-triggered ones stay tolerated.
+          SYMFONY_DEPRECATIONS_HELPER: 'max[self]=0'
         run: vendor/bin/simple-phpunit -v

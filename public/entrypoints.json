@@ -2,7 +2,7 @@
   "entrypoints": {
     "poncho_admin": {
       "css": [
-        "./poncho_admin.7dbc432a.css"
+        "./poncho_admin.c24b30a1.css"
       ],
       "js": [
         "./poncho_admin.5f49dcaf.js"

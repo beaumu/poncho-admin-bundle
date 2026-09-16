@@ -7776,9 +7776,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"poncho@workspace:.":
+"poncho-admin-bundle@workspace:.":
   version: 0.0.0-use.local
-  resolution: "poncho@workspace:."
+  resolution: "poncho-admin-bundle@workspace:."
   dependencies:
     "@babel/core": "npm:^7.17.0"
     "@babel/eslint-parser": "npm:^7.21.3"
@@ -7806,6 +7806,20 @@ __metadata:
     webpack: "npm:^5.74.0"
     webpack-cli: "npm:^5.1.0"
     webpack-dev-server: "npm:^5.2.0"
+  peerDependencies:
+    "@iconscout/unicons": ^4.2.0
+    "@mdi/font": ^7.4.47
+    "@popperjs/core": ^2.11.8
+    bootstrap: ^5.3.3
+    datatables.net: ^2.2.2
+    datatables.net-bs5: ^2.2.2
+    dragula: ^3.7.3
+    flatpickr: ^4.6.13
+    jquery: ^3.7.1
+    mustache: ^4.2.0
+    simplebar: ^6.3.0
+    toastify-js: ^1.12.0
+    tom-select: ^2.4.3
   languageName: unknown
   linkType: soft
 

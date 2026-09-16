@@ -5,13 +5,12 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
-
     .setOutputPath('./public/')
     .setPublicPath('.')
     .setManifestKeyPrefix('')
 
     .addEntry('poncho_admin', './assets/admin.js')
-    
+
     .enableSassLoader((options) => {
         options.sassOptions = {
             quietDeps: true,
