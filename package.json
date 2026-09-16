@@ -44,32 +44,32 @@
     "tom-select": "^2.4.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.0",
-    "@babel/eslint-parser": "^7.21.3",
-    "@babel/preset-env": "^7.16.0",
+    "@babel/core": "^7.29.7",
+    "@babel/eslint-parser": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
     "@iconscout/unicons": "^4.2.0",
     "@mdi/font": "^7.4.47",
     "@popperjs/core": "^2.11.8",
-    "@symfony/webpack-encore": "^5.0.0",
-    "bootstrap": "^5.3.3",
-    "core-js": "^3.38.0",
-    "datatables.net": "^2.2.2",
-    "datatables.net-bs5": "^2.2.2",
+    "@symfony/webpack-encore": "^5.3.1",
+    "bootstrap": "^5.3.8",
+    "core-js": "^3.50.0",
+    "datatables.net": "^2.3.8",
+    "datatables.net-bs5": "^2.3.8",
     "docsify-cli": "^4.4.4",
     "dragula": "^3.7.3",
-    "eslint": "^8.36.0",
+    "eslint": "^8.57.1",
     "flatpickr": "^4.6.13",
     "jquery": "^3.7.1",
     "mustache": "^4.2.0",
-    "regenerator-runtime": "^0.13.9",
-    "sass": "^1.85.1",
-    "sass-loader": "^16.0.1",
-    "simplebar": "^6.3.0",
+    "regenerator-runtime": "^0.13.11",
+    "sass": "^1.104.1",
+    "sass-loader": "^16.0.8",
+    "simplebar": "^6.3.3",
     "toastify-js": "^1.12.0",
-    "tom-select": "^2.4.3",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^5.1.0",
-    "webpack-dev-server": "^5.2.0"
+    "tom-select": "^2.6.2",
+    "webpack": "^5.111.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.2.6"
   },
   "scripts": {
     "dev-server": "encore dev-server",
@@ -80,5 +80,5 @@
     "lint-fix": "eslint assets --fix",
     "doc": "docsify serve docs"
   },
-  "packageManager": "yarn@4.7.0"
+  "packageManager": "yarn@4.18.0"
 }
