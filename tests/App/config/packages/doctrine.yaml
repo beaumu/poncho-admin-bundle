@@ -2,10 +2,11 @@ doctrine:
     dbal:
         driver: pdo_sqlite
         path: "%kernel.cache_dir%/test_database.sqlite"
+        schema_manager_factory: doctrine.dbal.default_schema_manager_factory
+        use_savepoints: true
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
-        report_fields_where_declared: true
         auto_mapping: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         controller_resolver:

@@ -17,9 +17,6 @@ class DbUtils
         $input = new ArrayInput(['command' => 'doctrine:database:drop', '--no-interaction' => true, '--force' => true]);
         $application->run($input, new NullOutput());
 
-        $input = new ArrayInput(['command' => 'doctrine:database:create', '--no-interaction' => true]);
-        $application->run($input, new NullOutput());
-
         $input = new ArrayInput(['command' => 'doctrine:schema:create']);
         $application->run($input, new NullOutput());
 
