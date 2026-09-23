@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Security issue
+    url: https://github.com/beaumu/poncho-admin-bundle/security/advisories/new
+    about: Report security issues privately — never in a public issue.
+  - name: 📖 Documentation
+    url: https://beaumu.github.io/poncho-admin-bundle/
+    about: Read the documentation, including the known issues listed on each page.

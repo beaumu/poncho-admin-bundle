@@ -12,6 +12,38 @@ changes to them are treated as breaking.
 
 ## [Unreleased]
 
+### Deprecated
+- `BaseAdminUser::eraseCredentials()` is deprecated; use the new
+  `erasePlainPassword()`. The method now carries `#[\Deprecated]`, which is how
+  Symfony 7.3+ recognises that the logic lives elsewhere and stops calling it
+  after login. `plainPassword` was already excluded from `__serialize()`, so it
+  never reached the session. See [UPGRADE-1.2.md](UPGRADE-1.2.md).
+
+### Added
+- `BaseAdminUser::erasePlainPassword()`.
+
+### Changed
+- `UserManager::updatePassword()` calls `erasePlainPassword()` instead of
+  `eraseCredentials()`.
+- Transitive dependencies with known advisories are forced to patched releases
+  via `resolutions` (`axios`, `tar`, `nth-check`); build tooling upgraded. All
+  critical advisories in the lockfile are cleared.
+
+### Fixed
+- The Symfony 6.4 test leg no longer fails to boot. 1.1.0 set
+  `framework.property_info.with_constructor_extractor`, an option that only
+  exists since Symfony 7.3; it is now applied conditionally. The five framework
+  options Symfony 6.4 deprecates leaving unset are pinned to their 7.0 defaults.
+  Both CI legs now run with zero deprecations.
+- The PHPUnit workflow also runs when `tests/`, `config/`, `templates/`,
+  `translations/`, `phpunit.xml.dist` or the workflow itself change — the 6.4
+  breakage above went unnoticed because it touched none of `src/` or
+  `composer.json`.
+- CSS minification no longer emits an `SvgoParserError` warning on Bootstrap's
+  percent-encoded inline icons.
+
+## [1.1.0] - 2026-09-16
+
 ### Added
 - `package.json` is now a real, resolvable package (`poncho-admin-bundle`) with
   `exports`, `files` and `peerDependencies`, so an application can compile the
@@ -27,9 +59,6 @@ changes to them are treated as breaking.
 - SCSS imports no longer use the webpack-only `~` prefix (48 occurrences). The
   stylesheets now compile with the plain Dart Sass CLI, Vite or any other
   toolchain, given `node_modules` on the load path.
-- `symfony/maker-bundle` moved to `require-dev`. The makers are private tagged
-  services, so the container builds without it; applications that relied on it
-  being installed transitively should require it themselves.
 
 ### Fixed
 - Test suite no longer emits avoidable deprecations: a schema manager factory
@@ -78,7 +107,8 @@ First release under the Poncho name, forked from
   and `symfony/var-exporter` are required explicitly rather than relied on
   transitively.
 
-[Unreleased]: https://github.com/beaumu/poncho-admin-bundle/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/beaumu/poncho-admin-bundle/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/beaumu/poncho-admin-bundle/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/beaumu/poncho-admin-bundle/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/beaumu/poncho-admin-bundle/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/beaumu/poncho-admin-bundle/releases/tag/v1.0.0

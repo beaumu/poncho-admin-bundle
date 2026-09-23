@@ -119,9 +119,29 @@ abstract class BaseAdminUser implements EquatableInterface, \Serializable, UserI
         return $this->password;
     }
 
-    public function eraseCredentials(): void
+    /**
+     * Clears the plain-text password once it has been hashed.
+     *
+     * plainPassword is never serialized (see __serialize()), so it cannot leak
+     * into the session; this only drops it from the in-memory object.
+     */
+    public function erasePlainPassword(): void
     {
         $this->plainPassword = null;
+    }
+
+    /**
+     * Symfony 7.3+ no longer calls this method when it carries #[\Deprecated],
+     * which is the signal that its logic lives elsewhere (here: __serialize()
+     * and erasePlainPassword()). Symfony 6.4 still calls it after login, so it
+     * keeps clearing the plain password rather than becoming a no-op.
+     *
+     * @deprecated since poncho/admin-bundle 1.2, use erasePlainPassword() instead
+     */
+    #[\Deprecated(message: 'use erasePlainPassword() instead', since: 'poncho/admin-bundle 1.2')]
+    public function eraseCredentials(): void
+    {
+        $this->erasePlainPassword();
     }
 
     public function getUserIdentifier(): string

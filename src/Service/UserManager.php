@@ -51,7 +51,7 @@ class UserManager implements UserManagerInterface
         if (!empty($user->plainPassword)) {
             $user->setPassword($this->passwordHasher->hashPassword($user, $user->plainPassword));
 
-            $user->eraseCredentials();
+            $user->erasePlainPassword();
             $user->erasePasswordReset();
         }
     }

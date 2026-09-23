@@ -1,108 +1,122 @@
-# How create a new Menu
+# Menu
 
-First, build it :
+The admin sidebar and its breadcrumb are both built from one menu class.
+
+## The admin menu
+
+Extend `BaseAdminMenu` and describe the tree in `buildMenu()`:
 
 ```php
-// namespace App\Menu
+namespace App\Menu;
 
-class MyMenu extends MenuType
+use Poncho\AdminBundle\Lib\Menu\Builder\MenuBuilder;
+use Poncho\AdminBundle\Menu\BaseAdminMenu;
+
+class AdminMenu extends BaseAdminMenu
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function buildMenu(MenuBuilder $builder, array $options)
+    public function buildMenu(MenuBuilder $builder, array $options): void
     {
         $root = $builder->root();
-        
-        // Create a new entry with route
-        $root->add('welcome')
-            ->icon('uil-home') // Icon of entry
-            ->route('app_welcome'); // Route of entry
 
-        // Create a new entry with url
-        $root->add('google')
-            ->icon('mdi mdi-google') // Icon of entry
-            ->url('https://www.google.com/'); // Url of entry
-            
-        // Create a nested entry
-        $root->add('app')
-            ->icon('uil-apps')
-            ->add('app_1')
-                ->route('app1_index')
+        $root->add('dashboard')
+            ->icon('mdi mdi-view-dashboard')
+            ->route('app_admin_home');
+
+        $root->add('missions')
+            ->icon('mdi mdi-rocket')
+            ->add('all')
+                ->label('All missions')
+                ->route('app_admin_mission_index')
                 ->end()
-            ->add('app_2')
-                ->route('app2_index')
+            ->add('failed')
+                ->route('app_admin_mission_index', ['status' => 'failed'])
+                ->badge('3', 'bg-danger')
                 ->end();
-    }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function renderMenu(Menu $menu, array $options): string
-    {
-        // render menu using twig template for example
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function renderBreadcrumb(Breadcrumb $breadcrumb, array $options): string
-    {
-        // render breadcrumb using twig template for example
+        $root->add('documentation')
+            ->icon('mdi mdi-book-open-variant')
+            ->url('https://example.com/docs')
+            ->target('_blank');
     }
 }
 ```
 
-### Render menu on twig :
+and register it:
 
-Method 1 :
-```twig
-{# -- build menu -- #}
-{# options are passed to buildMenu() function #}
-{% set my_menu = get_menu('App\\Menu\\MyMenu', { ...options }) %}
-
-{# -- render menu -- #}
-{# options are passed to renderMenu() function #}
-{{ render_menu(my_menu, { ...options }) }}
+```yaml
+# config/packages/poncho_admin.yaml
+poncho_admin:
+    menu: App\Menu\AdminMenu
 ```
 
-Method 2 :
-```twig
-{# -- render menu -- #}
-{# options are passed to renderMenu() function #}
-{{ render_menu('App\\Menu\\MyMenu', { ...options }) }}
+`make:admin:home` generates both for you.
+
+## Building the tree
+
+`$builder->root()` returns the root item. `add(string $id)` creates a child and returns **the child**,
+so calls chain downwards; `end()` climbs back to the parent.
+
+```php
+$root->add('a')          // → a
+    ->add('a1')          // → a1, child of a
+        ->end()          // → a
+    ->add('a2')          // → a2, child of a
+        ->end();         // → a
 ```
 
-### Render breadcrumb on twig :
+Ids must be unique among siblings. An item without `label()` is labelled from its id, humanized:
+`add('failed_missions')` shows *Failed missions*.
 
-Method 1 :
-```twig
-{# -- build menu -- #}
-{# options are passed to buildMenu() function #}
-{% set my_menu = get_menu('App\\Menu\\MyMenu', { ...options }) %}
+| Method | |
+| --- | --- |
+| `add(string $id)` | Add a child and return it |
+| `get(string $id)`, `has(string $id)` | Access a child built earlier |
+| `end()` | Return to the parent |
+| `label(string $label)` | Text. Translated with the item's domain |
+| `translationDomain(?string $domain)` | Default `messages`. `null` disables translation |
+| `icon(?string $icon)` | CSS classes of an `<i>`, e.g. `mdi mdi-rocket` |
+| `route(string $route, array $params = [])` | Link target, and a route that makes the item current |
+| `url(?string $url)` | Link target, for external links |
+| `target(?string $target)` | e.g. `_blank` |
+| `badge(string $label, ?string $class = null)` | A badge next to the label |
+| `matchRoute(string $route, array $params = [])` | An extra route that makes the item current |
+| `show(bool $show = true)` | Visibility |
+| `current(bool $current = true)` | Force this item to be the current one |
 
-{# -- build breadcrumb -- #}
-{% set my_breadcrumb = get_breadcrumb(my_menu, {}, ...children) %}
+## Hiding items
 
-{# -- render breadcrumb -- #}
-{# options are passed to renderBreadcrumb() function #}
-{{ render_breadcrumb(my_breadcrumb, { ...options }) }}
+Visibility is set with `show()`. There is no built-in role check, so inject what you need:
+
+```php
+use Poncho\AdminBundle\PonchoAdminConfiguration;
+use Symfony\Bundle\SecurityBundle\Security;
+use Twig\Environment;
+
+class AdminMenu extends BaseAdminMenu
+{
+    public function __construct(Environment $twig, PonchoAdminConfiguration $configuration, private readonly Security $security)
+    {
+        parent::__construct($twig, $configuration);
+    }
+
+    public function buildMenu(MenuBuilder $builder, array $options): void
+    {
+        $builder->root()
+            ->add('users')
+                ->icon('mdi mdi-account-group')
+                ->route('poncho_admin_user_index')
+                ->show($this->security->isGranted('ROLE_ADMIN'));
+    }
+}
 ```
 
-Method 2 :
-```twig
-{# -- build breadcrumb -- #}
-{# options are passed to buildMenu() function #}
-{% set my_breadcrumb = get_breadcrumb('App\\Menu\\MyMenu', { ...options }, ...children) %}
+A parent whose children are **all** hidden is hidden too, so an empty section never shows.
 
-{# -- render breadcrumb -- #}
-{# options are passed to renderBreadcrumb() function #}
-{{ render_breadcrumb(my_breadcrumb, { ...options }) }}
-```
+!> Hiding an item only removes it from the menu. It does not protect the route — do that with
+`access_control` or `#[IsGranted]`.
 
-Method 3 :
-```twig
-{# -- render breadcrumb -- #}
-{# options are passed to renderBreadcrumb() function #}
-{{ render_breadcrumb('App\\Menu\\MyMenu', { ...options }) }}
-```
+## Next
+
+- [Rendering and customising the admin menu](component/menu/admin_menu)
+- [How the current item is found](component/menu/current_strategy)
+- [Menus other than the admin sidebar](component/menu/custom_menu)

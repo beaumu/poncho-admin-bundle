@@ -1,19 +1,62 @@
 - **Overview**
     - [Introduction](/README)
-    - [Contributing](contributing)
+    - [Architecture](concepts/architecture)
+    - [Security](security)
     - [Changelog](changelog)
 - **Getting Started**
     - [Quick Start](getting-started/quick_start)
     - [Create your first page](getting-started/create_home)
     - [Configure security](getting-started/configure_security)
-    - [Create your first CRUD](getting-started/crud)
+    - [Create a CRUD](getting-started/crud)
 - **Components**
-    - Menu
-        - [Quick Start](component/menu/quick_start)
-        - [Build Admin Menu](component/menu/admin_menu)
-        - [Current item strategy](component/menu/current_strategy)
-    - [Notifications](component/notification)
+    - [AdminController](controller)
+    - DataTable
+        - [Introduction](component/datatable/index)
+        - [Table options](component/datatable/options)
+        - [Columns](component/datatable/columns)
+        - [Actions](component/datatable/actions)
+        - [Filters](component/datatable/filters)
+        - [Adapters](component/datatable/adapters)
+        - [Selection & bulk actions](component/datatable/selection)
+        - [Tree tables](component/datatable/tree)
+        - [JavaScript](component/datatable/javascript)
+    - JsResponse
+        - [Server side](component/jsresponse/index)
+        - [Client side](component/jsresponse/client)
     - Form
         - [Theme](component/form/theme)
-- [Configuration reference](config/poncho_admin)
-
+        - [Types](component/form/types)
+        - [Extensions](component/form/extensions)
+    - Menu
+        - [Quick Start](component/menu/quick_start)
+        - [The admin menu](component/menu/admin_menu)
+        - [Current item](component/menu/current_strategy)
+        - [Other menus](component/menu/custom_menu)
+    - [Notifications](component/notification)
+- **Users**
+    - [User management](user/index)
+    - [Password reset](user/password_reset)
+- **Frontend & templates**
+    - [Frontend](frontend/index)
+    - [Theming](frontend/theming)
+    - [Twig](twig)
+    - [Translations](translations)
+- **Tools**
+    - [Makers](makers)
+    - [Configuration reference](config/poncho_admin)
+- **Extending**
+    - [Overview](extending/index)
+    - [DataTable types](extending/datatable)
+    - [Menus](extending/menu)
+    - [Form widgets](extending/form)
+    - [Users](extending/user)
+- **Contributing**
+    - [Overview](contributing/index)
+    - [Reporting a bug](contributing/bugs)
+    - [Submitting a patch](contributing/pull_requests)
+    - [Coding standards](contributing/standards)
+    - [Backward compatibility](contributing/bc)
+    - [Deprecations](contributing/deprecations)
+    - [Documentation](contributing/documentation)
+    - [Security issues](contributing/security)
+    - [Releases](contributing/releases)
