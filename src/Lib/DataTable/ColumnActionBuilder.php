@@ -5,6 +5,7 @@ namespace Poncho\AdminBundle\Lib\DataTable;
 use Poncho\AdminBundle\Lib\DataTable\Action\ActionType;
 use Poncho\AdminBundle\Lib\DataTable\Action\LinkActionType;
 use Poncho\AdminBundle\Lib\DataTable\Action\RawActionType;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 class ColumnActionBuilder
 {
@@ -12,8 +13,36 @@ class ColumnActionBuilder
 
     protected int $idx = 0;
 
-    public function __construct(protected readonly DataTableFactory $factory)
+    public function __construct(
+        protected readonly DataTableFactory $factory,
+        protected readonly ?CsrfTokenManagerInterface $csrfTokenManager = null
+    ) {
+    }
+
+    /**
+     * The intention a controller must check the "_token" query parameter of a
+     * deleteLink()/moveUpLink()/moveDownLink() request against, with
+     * isCsrfTokenValid(). Only meaningful when the link was built with a
+     * "route" option — url()-based links carry no token.
+     */
+    public static function csrfIntention(string $route, array $routeParams = []): string
     {
+        return \sprintf('poncho_dt_action_%s%s', $route, isset($routeParams['id']) ? '_' . $routeParams['id'] : '');
+    }
+
+    private function withCsrfToken(array $options): array
+    {
+        if (null === $this->csrfTokenManager || empty($options['route'])) {
+            return $options;
+        }
+
+        $routeParams = $options['route_params'] ?? [];
+        $intention = self::csrfIntention($options['route'], $routeParams);
+
+        $options['route_params'] = $routeParams;
+        $options['route_params']['_token'] = $this->csrfTokenManager->getToken($intention)->getValue();
+
+        return $options;
     }
 
     public function showLink(array $options = []): self
@@ -43,7 +72,7 @@ class ColumnActionBuilder
 
         $options['route_params']['direction'] = 'up';
 
-        return $this->link($options);
+        return $this->link($this->withCsrfToken($options));
     }
 
     public function moveDownLink(array $options = []): self
@@ -55,7 +84,7 @@ class ColumnActionBuilder
 
         $options['route_params']['direction'] = 'down';
 
-        return $this->link($options);
+        return $this->link($this->withCsrfToken($options));
     }
 
     public function moveLinks(array $options = []): self
@@ -68,13 +97,15 @@ class ColumnActionBuilder
 
     public function deleteLink(array $options = []): self
     {
-        return $this->link(array_merge([
+        $options = array_merge([
             'title' => 'action.delete',
             'translation_domain' => 'PonchoAdmin',
             'icon' => 'mdi mdi-delete-outline',
             'xhr' => true,
             'confirm' => 'message.delete_confirm'
-        ], $options));
+        ], $options);
+
+        return $this->link($this->withCsrfToken($options));
     }
 
     public function link(array $options = []): self

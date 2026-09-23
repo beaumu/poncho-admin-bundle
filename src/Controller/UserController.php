@@ -3,6 +3,7 @@
 namespace Poncho\AdminBundle\Controller;
 
 use Poncho\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\Lib\DataTable\ColumnActionBuilder;
 use Poncho\AdminBundle\PonchoAdminConfiguration;
 use Poncho\AdminBundle\Service\UserManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,8 +65,13 @@ class UserController extends AdminController
             ]);
     }
 
-    public function delete(int $id): Response
+    public function delete(Request $request, int $id): Response
     {
+        $intention = ColumnActionBuilder::csrfIntention('poncho_admin_user_delete', ['id' => $id]);
+        if (!$this->isCsrfTokenValid($intention, $request->query->getString('_token'))) {
+            throw $this->createAccessDeniedException('Invalid CSRF token.');
+        }
+
         $entity = $this->userManager->find($id);
         $this->throwNotFoundExceptionIfNull($entity);
 

@@ -28,6 +28,9 @@
     "./scss/*": "./assets/scss/*",
     "./package.json": "./package.json"
   },
+  "dependencies": {
+    "@ungap/custom-elements": "^1.3.0"
+  },
   "peerDependencies": {
     "@iconscout/unicons": "^4.2.0",
     "@mdi/font": "^7.4.47",

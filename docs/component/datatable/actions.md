@@ -68,9 +68,12 @@ Each shortcut's defaults are merged under your options, so any of them can be ov
 },
 ```
 
-!> `deleteLink()` sends a request with **no CSRF token**, and the routes it is usually pointed at —
-including the ones `make:admin:table` generates — accept `GET`. Protect your delete endpoints
-yourself. See [Security](security).
+`deleteLink()`, `moveUpLink()`, `moveDownLink()` and `moveLinks()` attach a CSRF token to
+`route_params['_token']` automatically (when CSRF protection is enabled), computed from the
+`route` option and, when present, `route_params['id']`. The routes these generate — including the
+ones `make:admin:table` and `make:admin:tree` generate — accept `GET` but check that token. A
+plain `link()` you build yourself does neither; see [Security](security#csrf-on-delete-move-and-bulk-action-routes)
+for how to add the same protection to it.
 
 ## Action types
 

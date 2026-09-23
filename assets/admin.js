@@ -1,5 +1,9 @@
 import './scss/admin.scss'
 
+// Polyfills customElements.define()'s {extends: …} (customised built-ins), which Safari does not
+// support natively. Must run before any customElements.define() call below.
+import '@ungap/custom-elements'
+
 import Translator from './translator/Translator';
 import Spinner from './ui/Spinner'
 import ConfirmModal from './ui/ConfirmModal'

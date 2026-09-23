@@ -108,11 +108,8 @@ poncho_admin_profile_:
 | `poncho_admin_security_passwordreset` | `/password-reset/{token}` | |
 | `poncho_admin_user_index` | `/user` | The user table |
 | `poncho_admin_user_edit` | `/user/edit/{id}` | Add (no `id`) or edit, in a modal |
-| `poncho_admin_user_delete` | `/user/delete/{id}` | |
+| `poncho_admin_user_delete` | `/user/delete/{id}` | Accepts any HTTP method, but checks a CSRF token — see [Security](security#csrf-on-delete-move-and-bulk-action-routes) |
 | `poncho_admin_profile_index` | `/profile` | |
-
-!> `poncho_admin_user_delete` accepts any HTTP method and checks no CSRF token. Restrict access to it
-until that is fixed — see [Security](security#csrf-on-delete-routes).
 
 Link the CRUD from your menu:
 
@@ -150,18 +147,17 @@ security:
                 target: poncho_admin_login
     access_control:
         - { path: ^/admin/login$, roles: PUBLIC_ACCESS }
-        - { path: ^/admin/password_request, roles: PUBLIC_ACCESS }
-        - { path: ^/admin/password_reset, roles: PUBLIC_ACCESS }
+        - { path: ^/admin/password-reset, roles: PUBLIC_ACCESS }
+        - { path: ^/admin/profile, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
 ```
 
-!> **Known issue: the generated `access_control` locks out password reset.** The two
-`password_` rules use underscores, but the routes are `/admin/password-reset…` with a hyphen, so
-they fall through to `^/admin` and require `ROLE_ADMIN` — a logged-out user asking for a reset, or
-following the e-mailed link, is sent back to the login page. Replace those two lines with:
-```yaml
-        - { path: ^/admin/password-reset, roles: PUBLIC_ACCESS }
-```
+The `password-reset` rule covers the request form, the check-your-e-mail page and the
+`/password-reset/{token}` link itself, so a logged-out visitor can reach the whole flow.
+
+The `profile` rule requires a fresh login, not just a remembered session — the profile page changes
+the password and e-mail without asking for the current one, so a stolen remember-me cookie should
+not be enough to reach it. See [Security](security#the-profile-page).
 
 - **`UserChecker`** refuses inactive users with *Account is disabled.*
 - **`AuthenticationEntryPoint`** redirects anonymous visitors to the login page — except XHR
@@ -184,15 +180,6 @@ php bin/console poncho_admin:create:user
 ```
 
 asks for a first name, last name, e-mail and password.
-
-!> **Known issue:** in 1.1 this command fails with *Column 'password' cannot be null* — it stores the
-user without hashing the password. Until it is fixed, hash the password with Symfony and insert the
-row yourself:
-```bash
-php bin/console security:hash-password 'your-password' 'App\Entity\AdminUser'
-php bin/console dbal:run-sql "INSERT INTO admin_user (email, password, active, created_at) VALUES ('you@example.com', '<the hash>', 1, NOW())"
-```
-Adjust the table name to your entity's.
 
 ## Customising
 

@@ -41,18 +41,16 @@ on jQuery and the stylesheets on Sass.
 
 ## Loaded from third parties
 
-Every admin page makes two requests outside your domain:
+Every admin page makes one request outside your domain, from `_stylesheets.html.twig`:
+`https://fonts.googleapis.com/css2?family=Inter…`, the *Inter* font.
 
-| Request | From | Why |
-| --- | --- | --- |
-| `https://unpkg.com/@ungap/custom-elements` | the layout's `<head>` | A polyfill: Safari does not support [customised built-in elements](#custom-elements) |
-| `https://fonts.googleapis.com/css2?family=Inter…` | `_stylesheets.html.twig` | The *Inter* font |
+The [customised built-in elements](#custom-elements) polyfill Safari needs is bundled into
+`poncho_admin.js` itself — no separate request.
 
-!> Both matter in production. The polyfill is loaded **unversioned and without an integrity hash**,
-so whatever unpkg serves runs with your admins' privileges. Both requests send each visitor's IP
-address to a third party — a GDPR concern in the EU, where courts have ruled embedding Google Fonts
-this way unlawful — and both break under a strict `Content-Security-Policy` or on an offline
-network. See [Security](security#third-party-requests) for how to self-host them.
+!> The font request matters in production: it sends each visitor's IP address to a third party — a
+GDPR concern in the EU, where courts have ruled embedding Google Fonts this way unlawful — and it
+breaks under a strict `Content-Security-Policy` or on an offline network. See
+[Security](security#third-party-requests) for how to self-host it.
 
 ## The `poncho` global
 

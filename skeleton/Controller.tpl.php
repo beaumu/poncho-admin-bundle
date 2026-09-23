@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Poncho\AdminBundle\Lib\Controller\AdminController;
+use Poncho\AdminBundle\Lib\DataTable\ColumnActionBuilder;
 <?php if ($tree_table) { ?>
 use <?= $repository->getFullName() ?>;
 <?php } ?>
@@ -79,8 +80,12 @@ class <?= $class_name ?> extends AdminController
 
 <?php if ($tree_table) { ?>
     #[Route('/move/{id}/{direction}', requirements: ['id' => '\d+'])]
-    public function move(<?php if ($tree_table) { ?><?= $repository->getShortName() ?> $repository, <?php } ?>int $id, string $direction): Response
+    public function move(<?php if ($tree_table) { ?><?= $repository->getShortName() ?> $repository, <?php } ?>Request $request, int $id, string $direction): Response
     {
+        if (!$this->isCsrfTokenValid(ColumnActionBuilder::csrfIntention('<?= $route['name_prefix'] ?>_move', ['id' => $id]), $request->query->getString('_token'))) {
+            throw $this->createAccessDeniedException('Invalid CSRF token.');
+        }
+
         $entity = $this->findOrNotFound(<?= $entity->getShortName() ?>::class, $id);
 
         if ('up' === $direction) {
@@ -95,8 +100,12 @@ class <?= $class_name ?> extends AdminController
 <?php } ?>
 
     #[Route('/delete/{id}', requirements: ['id' => '\d+'])]
-    public function delete(int $id): Response
+    public function delete(Request $request, int $id): Response
     {
+        if (!$this->isCsrfTokenValid(ColumnActionBuilder::csrfIntention('<?= $route['name_prefix'] ?>_delete', ['id' => $id]), $request->query->getString('_token'))) {
+            throw $this->createAccessDeniedException('Invalid CSRF token.');
+        }
+
         $entity = $this->findOrNotFound(<?= $entity->getShortName() ?>::class, $id);
         $this->removeAndFlush($entity);
 

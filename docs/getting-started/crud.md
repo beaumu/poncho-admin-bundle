@@ -44,9 +44,10 @@ a `move` action for reordering.
 
 ## Before production
 
-!> The generated `delete` action accepts **any HTTP method** and checks **no CSRF token**, so a
-logged-in admin who follows a crafted link deletes the record. The tree maker's `move` action has the
-same exposure. Protect them before deploying — see [Security](security#csrf-on-delete-routes).
+The generated `delete` action, and the tree maker's `move` action, accept any HTTP method but check
+a CSRF token — the table's `deleteLink()`/`moveLinks()` attach one automatically. If you add your
+own action to a generated table, or wire a route by hand, it gets no such protection for free — see
+[Security](security#csrf-on-delete-move-and-bulk-action-routes).
 
 The generated toasts (*Item updated*, *Item deleted*) are plain English strings; translate them as
 you see fit.

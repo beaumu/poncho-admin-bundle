@@ -34,6 +34,7 @@ class CreateAdminUserCommand extends Command
         $u->email = $this->io->askQuestion(new Question('Email (must be unique)'));
         $u->plainPassword = $this->io->askHidden('Password');
 
+        $this->userManager->updatePassword($u);
         $this->userManager->save($u);
 
         $this->io->success('User created');

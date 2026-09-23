@@ -105,12 +105,18 @@ public function buildRowView(RowView $view, DataTable $dataTable, array $options
 ## Reordering
 
 `moveUpLink()`, `moveDownLink()` and `moveLinks()` send an XHR to your route with
-`direction: up|down` added to `route_params`. With Gedmo's `NestedTreeRepository`:
+`direction: up|down` added to `route_params`, plus a CSRF token — check it the same way the
+controller `make:admin:tree` generates does. With Gedmo's `NestedTreeRepository`:
 
 ```php
 #[Route('/category/move/{id}/{direction}')]
-public function move(CategoryRepository $repository, int $id, string $direction): Response
+public function move(CategoryRepository $repository, Request $request, int $id, string $direction): Response
 {
+    $intention = ColumnActionBuilder::csrfIntention('category_move', ['id' => $id]);
+    if (!$this->isCsrfTokenValid($intention, $request->query->getString('_token'))) {
+        throw $this->createAccessDeniedException('Invalid CSRF token.');
+    }
+
     $category = $this->findOrNotFound(Category::class, $id);
 
     'up' === $direction ? $repository->moveUp($category) : $repository->moveDown($category);
