@@ -62,6 +62,12 @@ changes to them are treated as breaking.
   `composer.json`.
 - CSS minification no longer emits an `SvgoParserError` warning on Bootstrap's
   percent-encoded inline icons.
+- The Eslint workflow no longer fails on every pull request that touches JS.
+  It ran `npm install`, but the project is managed with Yarn (`packageManager`
+  in `package.json`, `yarn.lock` committed); npm resolves peer dependencies
+  strictly and aborted on the `sass-loader`/`@symfony/webpack-encore` version
+  mismatch that Yarn only warns about. It now installs with Yarn via Corepack,
+  and also runs when `package.json`, `yarn.lock` or the workflow itself change.
 
 ### Security
 - `deleteLink()`, `moveUpLink()`, `moveDownLink()` and `moveLinks()` — and so
