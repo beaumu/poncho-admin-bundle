@@ -1,83 +1,98 @@
-# Current item strategy
+# Current item
 
-By default, when you render the menu the current item is the menu item matching the current request route.
+The **current** item is the one highlighted in the sidebar; it and its ancestors are also marked
+**active**, which expands their sections, and the trail from the root to it forms the breadcrumb
+and the page title.
 
-For example, if you have build your menu like this :
+## How it is found
+
+If no item was forced with `current()`, the menu is walked depth-first and the **first** item whose
+matching routes fit the request becomes current.
+
+An item matches when:
+
+1. one of its matching routes equals the request's `_route`, **and**
+2. every parameter declared for that route is present in the request — as a route attribute or in
+   the query string — with an equal value.
+
+`route()` registers its route as a matching route, so a plain item matches its own page:
+
 ```php
-  public function buildMenu(MenuBuilder $builder, array $options)
-    {
-        $r = $builder->root();
-
-        $r->add('foo')
-            ->add('foo1')
-                ->route('app_foo1')
+public function buildMenu(MenuBuilder $builder, array $options): void
+{
+    $builder->root()
+        ->add('missions')
+            ->add('all')
+                ->route('app_mission_index')
                 ->end()
-            ->add('foo2')
-                ->route('app_foo2')
+            ->add('failed')
+                ->route('app_mission_index', ['status' => 'failed'])
                 ->end();
-    }
+}
 ```
 
-If your current route is `app_foo1`, the current menu item should be `foo1`.
+| Request | Current item |
+| --- | --- |
+| `/mission` | `all` |
+| `/mission?status=failed` | `all` — it comes first, and declares no parameter to rule it out |
+| `/mission/42` (another route) | none |
 
-You can change manually this behaviour with `current()` method :
+Order matters: put the **more specific** item first when routes overlap:
+
 ```php
-
-  private RequestStack $request;
-
-  public function buildMenu(MenuBuilder $builder, array $options)
-    {
-        $r = $builder->root();
-
-        $r->add('foo')
-            ->add('foo1')
-                ->route('app_foo1')
-                ->current($this->requestStack->getMainRequest()->attributes->get('_route') === 'app_foo3')
-                ->end()
-            ->add('foo2')
-                ->route('app_foo2')
-                ->end();
-    }
+->add('failed')
+    ->route('app_mission_index', ['status' => 'failed'])
+    ->end()
+->add('all')
+    ->route('app_mission_index')
+    ->end();
 ```
 
-Now, if your current route is `app_foo1` or `app_foo3`, the current menu item should be `foo1`.
+Now `?status=failed` selects `failed`, and a plain `/mission` selects `all` — `failed` does not match
+it, because a declared parameter that is **absent** from the request never matches.
 
+Values are compared loosely (`!=`), so `['id' => 1]` matches `?id=1`.
 
-On previous example, instead of injecting `RequestStack`, you can directly use method `matchingRoute()` :
+## Matching more routes
+
+A mission's edit page should keep *Missions* highlighted. Add its route with `matchRoute()`:
+
 ```php
-
-  public function buildMenu(MenuBuilder $builder, array $options)
-    {
-        $r = $builder->root();
-
-        $r->add('foo')
-            ->add('foo1')
-                ->route('app_foo1')
-                ->matchingRoute('app_foo3')
-                ->end()
-            ->add('foo2')
-                ->route('app_foo2')
-                ->end();
-    }
+->add('missions')
+    ->route('app_mission_index')
+    ->matchRoute('app_mission_edit')
+    ->matchRoute('app_mission_show');
 ```
 
-Moreover, The current menu item depends on request parameters :
+Parameters work the same way: `matchRoute('app_mission_edit', ['type' => 'crewed'])`.
+
+## Forcing it
+
+`current()` sets the current item outright and skips matching altogether:
+
 ```php
+use Symfony\Component\HttpFoundation\RequestStack;
 
-  public function buildMenu(MenuBuilder $builder, array $options)
+class AdminMenu extends BaseAdminMenu
+{
+    public function __construct(Environment $twig, PonchoAdminConfiguration $configuration, private readonly RequestStack $requestStack)
     {
-        $r = $builder->root();
-
-        $r->add('foo')
-            ->add('foo1')
-                ->route('app_foo1', ['id' => 1])
-                ->end()
-            ->add('foo1bis')
-                ->route('app_foo1', ['id' => 2])
-                ->end();
+        parent::__construct($twig, $configuration);
     }
+
+    public function buildMenu(MenuBuilder $builder, array $options): void
+    {
+        $isArchive = 'archive' === $this->requestStack->getMainRequest()?->query->get('view');
+
+        $builder->root()
+            ->add('missions')
+                ->route('app_mission_index')
+                ->current($isArchive);
+    }
+}
 ```
 
-If your current route is `app_foo1` and request has parameter `id` with value `1`, the current menu item should be `foo1`.
+`current(false)` only unsets the current item if it was this one.
 
-Note, if the current route `app_foo1` and request has no parameter `id`, both menu item `foo1` and `foo1bis` can match. In this case, the current menu item is the first one.
+Prefer `matchRoute()` when a route is all you need: it keeps the rule inside the menu and needs no
+injection.

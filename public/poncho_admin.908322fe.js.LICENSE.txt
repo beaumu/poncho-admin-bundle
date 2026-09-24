@@ -28,6 +28,10 @@
  * http://github.com/janl/mustache.js
  */
 
+/*! (c) Andrea Giammarchi - ISC */
+
+/*! (c) Andrea Giammarchi @webreflection ISC */
+
 /*! DataTables Bootstrap 5 integration
  * © SpryMedia Ltd - datatables.net/license
  */

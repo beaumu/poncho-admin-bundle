@@ -1,13 +1,14 @@
-name: Bug Report
-description: Create a report for this project
+name: 🐞 Bug Report
+description: Report a bug. For a security issue, use the private advisory form instead
 labels: [bug]
 
 body:
   - type: input
-    id: affected-poncho-versions
+    id: affected-versions
     attributes:
-      label: Poncho version affected
-      placeholder: x.y
+      label: Poncho version(s) affected
+      description: The exact version — `composer show poncho/admin-bundle | grep versions`
+      placeholder: 1.2.0
     validations:
       required: true
 
@@ -15,7 +16,7 @@ body:
     id: description
     attributes:
       label: Description
-      description: Explain what you wanted to do and the wrong result you got.
+      description: What you wanted to do, what you expected, and what happened instead. Paste errors and stack traces as text.
     validations:
       required: true
 
@@ -23,12 +24,20 @@ body:
     id: how-to-reproduce
     attributes:
       label: How to reproduce
-      description: Steps to reproduce this error and also, the php version used.
+      description: |
+        The smallest code and steps that show the bug, with your PHP and Symfony versions.
+        Best: a link to a small repository (a fresh Symfony app with the bundle) that reproduces it.
     validations:
       required: true
+
+  - type: textarea
+    id: possible-solution
+    attributes:
+      label: Possible Solution
+      description: "Optional: if you have an idea of the cause or a fix, describe it — or open a pull request."
 
   - type: textarea
     id: additional-context
     attributes:
       label: Additional Context
-      description: "Optional: any other context about the problem: log messages, screenshots, etc."
+      description: "Optional: logs, screenshots, browser and version for JavaScript bugs, etc."

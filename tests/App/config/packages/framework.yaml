@@ -1,9 +1,18 @@
 framework:
     default_locale: en
     http_method_override: false
-    property_info:
-        with_constructor_extractor: true
     test: true
+
+    # Symfony 6.4 deprecates leaving these unset; the values are the defaults
+    # Symfony 7.0 adopted, so behaviour is identical on every supported version.
+    handle_all_throwables: true
+    php_errors:
+        log: true
+    validation:
+        email_validation_mode: html5
+
     session:
         handler_id: null
         storage_factory_id: session.storage.factory.mock_file
+        cookie_secure: auto
+        cookie_samesite: lax

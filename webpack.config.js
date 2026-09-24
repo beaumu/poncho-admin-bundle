@@ -21,6 +21,16 @@ Encore
         }
     })
 
+    // cssnano runs svgo over inline SVG data URIs. Bootstrap emits its icons
+    // percent-encoded via escape-svg(), which svgo cannot parse, producing a
+    // SvgoParserError warning on every build. The CSS is correct either way,
+    // so skip that one plugin rather than carry a permanent warning.
+    .configureCssMinimizerPlugin((options) => {
+        options.minimizerOptions = {
+            preset: ['default', { svgo: false }],
+        }
+    })
+
     .disableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
 

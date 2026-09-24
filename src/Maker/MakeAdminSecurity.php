@@ -178,8 +178,10 @@ class MakeAdminSecurity extends AbstractMaker
         // access control
         $data['security']['access_control'] = [
             ['path' => '^/admin/login$', 'roles' => 'PUBLIC_ACCESS'],
-            ['path' => '^/admin/password_request', 'roles' => 'PUBLIC_ACCESS'],
-            ['path' => '^/admin/password_reset', 'roles' => 'PUBLIC_ACCESS'],
+            ['path' => '^/admin/password-reset', 'roles' => 'PUBLIC_ACCESS'],
+            // The profile page changes the password and e-mail without asking for the current
+            // password, so it requires a fresh login rather than only a remembered session.
+            ['path' => '^/admin/profile', 'roles' => 'IS_AUTHENTICATED_FULLY'],
             ['path' => '^/admin', 'roles' => 'ROLE_ADMIN'],
         ];
 

@@ -10,13 +10,15 @@ use Poncho\AdminBundle\Lib\DataTable\DTO\Column;
 use Poncho\AdminBundle\Lib\DataTable\DTO\DataTable;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 class DataTableFactory
 {
     public function __construct(
         protected readonly DataTableRegistry $registry,
         protected readonly FormFactoryInterface $formFactory,
-        protected readonly DataTableConfiguration $config
+        protected readonly DataTableConfiguration $config,
+        protected readonly ?CsrfTokenManagerInterface $csrfTokenManager = null
     ) {
     }
 
@@ -47,7 +49,7 @@ class DataTableFactory
 
     public function createColumnActionBuilder(): ColumnActionBuilder
     {
-        return new ColumnActionBuilder($this);
+        return new ColumnActionBuilder($this, $this->csrfTokenManager);
     }
 
     public function createAction(string $name, string $type = ActionType::class, array $options = []): Action

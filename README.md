@@ -48,7 +48,7 @@ following command to install it in your application:
 Read [Documentation](https://beaumu.github.io/poncho-admin-bundle/) to getting started.
 
 ## Contributing
-Want to contribute ? Check out the [contributing guidelines](https://beaumu.github.io/poncho-admin-bundle//#/contributing) to get involved.
+Want to contribute ? Check out the [contributing guidelines](CONTRIBUTING.md) to get involved.
 
 ## License
 This software is published under the [MIT License](LICENSE.md)

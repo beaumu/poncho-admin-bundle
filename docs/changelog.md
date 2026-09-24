@@ -1,5 +1,13 @@
-CHANGELOG
-=========
+# Changelog
+
+Releases of Poncho Admin Bundle are listed in
+[CHANGELOG.md](https://github.com/beaumu/poncho-admin-bundle/blob/main/CHANGELOG.md), and the
+changes that need action when upgrading in the `UPGRADE-*.md` files next to it.
+
+This page keeps the history of [Umbrella Admin Bundle](https://github.com/acantepie/umbrella-admin-bundle),
+which Poncho was forked from, up to the fork. Its version numbers are Umbrella's, not Poncho's.
+
+## Umbrella Admin Bundle
 
 1.x
 ---

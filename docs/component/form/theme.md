@@ -1,31 +1,67 @@
 # Form theme
 
-Poncho bundle adding new form types and form extensions (for select or collection).
-If you plan to use it on your project, you have to apply one of the following form theme :
- - `@PonchoAdmin/lib/form/layout_horizontal.html.twig` (extends `bootstrap_5_horizontal_layout.html.twig` symfony form theme)
- - `@PonchoAdmin/lib/form/layout.html.twig` (extends `bootstrap_5_layout.html.twig` symfony form theme)
+Poncho's form types and extensions need one of its form themes to render correctly. Both extend
+Symfony's Bootstrap 5 themes:
 
-Check out [Symfony documentation](https://symfony.com/doc/current/form/form_themes.html) to apply a form theme.
+| Theme | Extends |
+| --- | --- |
+| `@PonchoAdmin/lib/form/layout.html.twig` | `bootstrap_5_layout.html.twig` |
+| `@PonchoAdmin/lib/form/layout_horizontal.html.twig` | `bootstrap_5_horizontal_layout.html.twig` |
 
-Additionally, you can use `poncho_form_theme()` twig function to apply a theme to a single form :
+## For every form
 
-Bootstrap 5 Default theme :
-```twig
-{{ poncho_form_theme(my_form, 'default')
-{{ form_rest(my_form) }}
+```yaml
+# config/packages/twig.yaml
+twig:
+    form_themes: ['@PonchoAdmin/lib/form/layout.html.twig']
 ```
 
-Boostrap 5 Horizontal theme :
+## For one form: `poncho_form_theme()`
+
 ```twig
-{{ poncho_form_theme(my_form, 'horizontal')
-{{ form_rest(my_form) }}
+{{ poncho_form_theme(form) }}
+{{ form_start(form) }}
+    {{ form_rest(form) }}
+{{ form_end(form) }}
 ```
 
-`horizontal` or `default` is an optional parameter and can be configured globally :
+```
+poncho_form_theme(FormView $form, ?string $layout = null, bool $useDefaultThemes = true)
+```
+
+| Argument | |
+| --- | --- |
+| `$layout` | `'default'` or `'horizontal'`. `null` uses `poncho_admin.form.layout` |
+| `$useDefaultThemes` | Keep the globally configured themes as fallbacks, as Twig's own `form_theme` does |
+
+The bundle's templates — the edit page, every form modal, the datatable toolbar, the login and
+profile pages — already call it, so their forms follow your configured layout.
+
+## Horizontal layout
+
+In the horizontal layout, labels and fields sit side by side in a Bootstrap grid. The column classes
+default from configuration:
 
 ```yaml
 # config/packages/poncho_admin.yaml
 poncho_admin:
-  form:
-    layout: 'default' # or 'horizontal'
+    form:
+        layout: horizontal       # default | horizontal
+        label_class: col-sm-2
+        group_class: col-sm-10
 ```
+
+and can be overridden per form or per field with the `label_class` and `group_class` options.
+A value set on the root form applies to all its fields:
+
+```php
+$form = $this->createForm(MissionType::class, $mission, [
+    'label_class' => 'col-md-3',
+    'group_class' => 'col-md-9',
+]);
+
+// or on a single field
+$builder->add('description', TextareaType::class, ['label_class' => 'col-12', 'group_class' => 'col-12']);
+```
+
+See [Form extensions](component/form/extensions).

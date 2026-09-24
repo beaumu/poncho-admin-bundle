@@ -1,14 +1,28 @@
 name: PhpUnit
 
+# Everything the test kernel loads counts: a config-only change in tests/App
+# once broke the Symfony 6.4 leg without this workflow ever running.
 on:
   push:
     paths:
       - 'src/**'
+      - 'config/**'
+      - 'templates/**'
+      - 'translations/**'
+      - 'tests/**'
       - 'composer.json'
+      - 'phpunit.xml.dist'
+      - '.github/workflows/phpunit.yaml'
   pull_request:
     paths:
       - 'src/**'
+      - 'config/**'
+      - 'templates/**'
+      - 'translations/**'
+      - 'tests/**'
       - 'composer.json'
+      - 'phpunit.xml.dist'
+      - '.github/workflows/phpunit.yaml'
 
 jobs:
   phpunit:

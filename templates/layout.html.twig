@@ -14,8 +14,6 @@
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         {% endblock %}
 
-        <script src="//unpkg.com/@ungap/custom-elements"></script>
-
         {% block title %}
             {% set menu_page_title = get_page_title_from_menu(admin_menu) %}
             <title>{{ (menu_page_title ? menu_page_title ~ ' | ') ~ poncho_admin.appName() }}</title>

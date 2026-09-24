@@ -1,4 +1,4 @@
-name: Suggest an idea for this project
+name: 🚀 Feature Request
 description: Suggest an idea for this project
 labels: [Feature]
 
@@ -7,7 +7,7 @@ body:
     id: description
     attributes:
       label: Description
-      description: Short description of wanted feature
+      description: The problem you want to solve, and the feature you propose for it.
     validations:
       required: true
 
@@ -16,4 +16,5 @@ body:
     attributes:
       label: Example
       description: |
-        A simple example of the new feature in action (include PHP code, YAML config, etc.)
+        A simple example of the new feature in action (include PHP code, YAML config, Twig, etc.)
+        If the new feature changes an existing feature, include a simple before/after comparison.

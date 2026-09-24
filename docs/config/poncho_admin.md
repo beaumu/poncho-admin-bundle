@@ -1,15 +1,27 @@
-# PonchoAdmin Configuration Reference
+# Configuration reference
 
-To display the default values defined by PonchoAdmin on your own project, use :
+All configuration lives under the `poncho_admin` key, usually in
+`config/packages/poncho_admin.yaml`. Every key is optional except where noted. The full tree, with
+defaults, is [at the bottom of this page](#full-reference); your application can print it too:
+
 ```bash
-php bin/console config:dump-reference PonchoAdminBundle
+php bin/console config:dump-reference poncho_admin
 ```
 
-## Logo
+and show the values currently in effect with `php bin/console debug:config poncho_admin`.
 
-`app_logo` is drawn on light surfaces (login page, e-mail header). `app_logo_inverse` is drawn on
-the dark sidebar and falls back to `app_logo` when unset — set both when your logo is a single
-colour, so it stays visible on either background:
+## Application
+
+| Key | Default | |
+| --- | --- | --- |
+| `app_name` | `poncho` | Shown in the sidebar, on the login and reset pages, in e-mails, and appended to page titles |
+| `app_logo` | `null` | Asset path of the logo for light surfaces — the login page, e-mails |
+| `app_logo_inverse` | `app_logo` | Asset path of the logo for the dark sidebar |
+| `container_class` | `container-fluid` | Class of the layout's content container |
+| `menu` | `BaseAdminMenu` | Class of the sidebar menu — see [The admin menu](component/menu/admin_menu) |
+
+`app_logo` and `app_logo_inverse` are resolved with `asset()`, so they are paths under `public/`.
+Set both when your logo is a single colour, so it stays visible on either background:
 
 ```yml
 poncho_admin:
@@ -17,9 +29,66 @@ poncho_admin:
     app_logo_inverse: poncho-white.svg
 ```
 
-Both are asset paths resolved with Symfony's `asset()`, so they live under your app's `public/`.
+The e-mail header uses `app_logo` too — see
+[Password reset](user/password_reset) for what mail clients require of it.
 
-Configuration reference :
+## `user`
+
+The admin users, login and password reset — see [Users](user/index).
+
+| Key | Default | |
+| --- | --- | --- |
+| `class` | `App\Entity\AdminUser` | Your user entity, extending `BaseAdminUser`. **Set it** if yours is named otherwise |
+| `manager` | `UserManager` | Service id of the [user manager](extending/user) |
+| `table` | `UserTableType` | Table type of the users screen |
+| `form` | `UserType` | Form type of the create/edit dialog |
+| `password_reset_from_email` | `no-reply@poncho.dev` | Sender of reset e-mails. **Set it** to a domain you control — see [Password reset](user/password_reset) |
+| `password_reset_from_name` | `''` | Sender name |
+| `password_reset_ttl` | `86400` | Lifetime of a reset link, in seconds |
+| `profile.enabled` | `true` | Registers the profile page and shows it in the user menu |
+| `profile.route` | `poncho_admin_profile_index` | Route the user menu links to for the profile |
+| `profile.form` | `ProfileType` | Form type of the profile page |
+
+!> `user.enabled` has **no effect**: the user services and controllers are always registered, and
+what exposes the screens is importing their routes. Leave it unset.
+
+## `notification`
+
+The notification bell — see [Notifications](component/notification).
+
+| Key | Default | |
+| --- | --- | --- |
+| `enabled` | `false` | Shows the bell |
+| `provider` | `null` | Service id of your `NotificationProviderInterface`. **Required** when enabled |
+| `poll_interval` | `10` | Seconds between refreshes; `0` disables polling |
+
+## `form`
+
+| Key | Default | |
+| --- | --- | --- |
+| `layout` | `default` | `default` or `horizontal` — see [Form theme](component/form/theme#horizontal-layout) |
+| `label_class` | `col-sm-2` | Label column class in the horizontal layout |
+| `group_class` | `col-sm-10` | Field column class in the horizontal layout |
+
+## `datatable`
+
+Defaults for every table; each can be overridden per table — see
+[Table options](component/datatable/options).
+
+| Key | Default | |
+| --- | --- | --- |
+| `page_length` | `25` | Rows per page |
+| `container_class` | `''` | Class of the element around the table |
+| `class` | `table-centered` | Class of the `<table>` |
+| `dom` | *see below* | datatables.net [`dom`](https://datatables.net/reference/option/dom) layout |
+
+!> `datatable.reset_paging_on_reload` has **no effect**: no code reads it. `reloadTable()` always returns
+to the first page; `reloadTable([false])` keeps the current one — see
+[JsResponse](component/jsresponse/index).
+
+## Full reference
+
+Generated from `Configuration.php` by `ddev doc-update-config` — do not edit below this line.
 
 ```yaml
 poncho_admin:

@@ -2,10 +2,10 @@
   "entrypoints": {
     "poncho_admin": {
       "css": [
-        "./poncho_admin.3445a804.css"
+        "./poncho_admin.1be73c1b.css"
       ],
       "js": [
-        "./poncho_admin.c514a069.js"
+        "./poncho_admin.908322fe.js"
       ]
     }
   }
