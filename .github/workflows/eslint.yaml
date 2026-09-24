@@ -22,8 +22,7 @@ jobs:
           node-version: 20
 
       # The project is managed with Yarn (packageManager in package.json, yarn.lock committed),
-      # not npm — `npm install` resolves peer dependencies strictly and fails on the sass-loader
-      # / @symfony/webpack-encore mismatch that yarn only warns about.
+      # not npm — install with the tool that's actually pinned and tested locally.
       - name: 'Enable corepack'
         run: corepack enable
 

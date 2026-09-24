@@ -62,12 +62,18 @@ changes to them are treated as breaking.
   `composer.json`.
 - CSS minification no longer emits an `SvgoParserError` warning on Bootstrap's
   percent-encoded inline icons.
+- `sass-loader` is pinned back to `^16.0.1`, the version
+  `@symfony/webpack-encore@5.3.1` actually certifies (checked at every
+  `encore` run: `enableSassLoader()` warned "Your version 17.0.1 is too new"
+  on every build). It had drifted to `^17.0.1` as a side effect of a broader
+  `yarn up`, not for a security fix — `sass-loader` carried no advisory — and
+  the compiled output is byte-identical at either version.
 - The Eslint workflow no longer fails on every pull request that touches JS.
   It ran `npm install`, but the project is managed with Yarn (`packageManager`
   in `package.json`, `yarn.lock` committed); npm resolves peer dependencies
-  strictly and aborted on the `sass-loader`/`@symfony/webpack-encore` version
-  mismatch that Yarn only warns about. It now installs with Yarn via Corepack,
-  and also runs when `package.json`, `yarn.lock` or the workflow itself change.
+  strictly and aborted on the version mismatch above, which Yarn only warns
+  about. It now installs with Yarn via Corepack, and also runs when
+  `package.json`, `yarn.lock` or the workflow itself change.
 
 ### Security
 - `deleteLink()`, `moveUpLink()`, `moveDownLink()` and `moveLinks()` — and so
