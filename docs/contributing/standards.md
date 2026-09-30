@@ -21,9 +21,12 @@ with a leading `\`; the fixer adds it.
 **Static analysis** is PHPStan at level 5 on `src/`, with the Symfony and Doctrine extensions
 (`ddev analyse`). New code must not add errors, and must not add entries to `ignoreErrors`.
 
-**Language level.** Code runs on PHP 8.2 and Symfony 6.4 — the lowest versions `composer.json`
-allows. Don't use a newer feature, and check a Symfony API exists in 6.4 before using it. When
-behaviour must differ per Symfony version, test `Kernel::VERSION_ID` as the test application does.
+**Language level.** Code runs on PHP 8.4 and Symfony 8.1 — the lowest versions `composer.json`
+allows (only one Symfony minor is currently supported; see
+[the CI matrix note](contributing/pull_requests#step-4-submit-the-pull-request)). Don't use a
+feature newer than that floor. A `Kernel::VERSION_ID` branch that only mattered for the 1.x line's
+Symfony 6.4/7.x range is dead code now that a single minor is supported — remove it if you find one
+while touching the surrounding code.
 
 ### Conventions
 

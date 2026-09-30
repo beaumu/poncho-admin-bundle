@@ -19,7 +19,7 @@
   [recompile with your own colours](frontend/theming).
 - **Makers** that generate a [CRUD in one command](makers).
 
-Requires PHP 8.2+ and Symfony 6.4 or 7.x.
+Requires PHP 8.4+ and Symfony 8.x.
 
 ## Where to start <!-- {docsify-ignore} -->
 

@@ -2,15 +2,15 @@
 
 ## Technical requirements
 
-- PHP 8.2 or higher
+- PHP 8.4 or higher
 - PHP extensions: `json`, `mbstring`, `xml`
-- Symfony 6.4 or 7.x
+- Symfony 8.x
 - [Composer](https://getcomposer.org/)
 
 If you plan to use Poncho on a new project, [create a new Symfony app first](https://symfony.com/doc/current/setup.html#creating-symfony-applications):
 
 ```bash
-composer create-project symfony/skeleton:"7.2.x" my_project_directory
+composer create-project symfony/skeleton:"8.1.x" my_project_directory
 cd my_project_directory
 composer require webapp
 ```
