@@ -187,24 +187,27 @@ Each pull request runs:
 
 | Check | Local equivalent |
 | --- | --- |
-| PHPUnit on Symfony 6.4 and 7.4 | `ddev test` |
+| PHPUnit on PHP 8.4 / Symfony 8.1 | `ddev test` |
 | PHPStan | `ddev analyse` |
 | PHP CS Fixer | `ddev fix-php` |
 | ESLint, when JavaScript changed | `ddev fix-js` |
 
 CI fails on any deprecation triggered by the bundle's own code (`SYMFONY_DEPRECATIONS_HELPER:
-max[self]=0`). To test the Symfony 6.4 leg locally:
+max[self]=0`). Only one Symfony minor is tested right now — see the comment in
+`.github/workflows/phpunit.yaml` for why 8.0 is excluded — so `ddev test` already covers it; there is
+no separate leg to test locally. To pin a *specific* Symfony minor once more than one is supported
+again, install Flex globally and set `SYMFONY_REQUIRE`:
 
 ```bash
 ddev exec composer global config --no-plugins allow-plugins.symfony/flex true
 ddev exec composer global require symfony/flex
-ddev exec 'SYMFONY_REQUIRE="6.4.*" composer update'
+ddev exec 'SYMFONY_REQUIRE="8.1.*" composer update'
 ddev test
 ```
 
 Flex must be installed globally for `SYMFONY_REQUIRE` to have any effect; without it Composer
-silently resolves the latest Symfony. Run `ddev composer update` afterwards to return to the latest
-versions — `composer.lock` is not committed.
+silently resolves the latest allowed version. Run `ddev composer update` afterwards to return to the
+latest versions — `composer.lock` is not committed.
 
 ## Step 5: follow up
 
@@ -223,4 +226,4 @@ Reviews by other users are as valuable as code. To review a pull request:
 - **Check the fix works**: reproduce the bug on `main`, then confirm it is gone on the branch.
 - **Check the table**: tests present, CHANGELOG entry, documentation, no unannounced BC break.
 - **Comment** with what you tested and how, and approve if everything holds. A review saying
-  "works for me on Symfony 7.4 with a tree table" is useful.
+  "works for me on Symfony 8.1 with a tree table" is useful.

@@ -40,7 +40,7 @@ ddev doc                 # yarn doc (docsify serve docs) — served on the expos
 ddev doc-update-config    # bin/update-doc-config — regenerates docs/config/poncho_admin.md from Configuration.php
 ```
 
-CI (GitHub Actions) runs phpunit across the PHP 8.2 / Symfony 6.4 & 7.2 matrix, phpstan, php-cs-fixer (`--dry-run`), and eslint — each only on PRs touching the relevant paths (`src/**`, `**.php`, `**.js`). Match these before considering a change done (`ddev check` covers phpunit/phpstan/php-cs-fixer/eslint together).
+CI (GitHub Actions) runs phpunit on PHP 8.4 / Symfony 8.1 (8.0 is excluded — see the comment in `phpunit.yaml`: a DBAL 4.5 API dependency in symfony/doctrine-bridge that isn't released yet), phpstan, php-cs-fixer (`--dry-run`), and eslint — each only on PRs touching the relevant paths (`src/**`, `**.php`, `**.js`). Match these before considering a change done (`ddev check` covers phpunit/phpstan/php-cs-fixer/eslint together).
 
 ## Architecture
 

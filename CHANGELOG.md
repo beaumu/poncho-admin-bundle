@@ -12,6 +12,16 @@ changes to them are treated as breaking.
 
 ## [Unreleased]
 
+### Changed (breaking)
+- **PHP 8.4 and Symfony 8.1 are now the minimum** (`^6.4|^7.0` support is
+  dropped). Symfony 8.0.x is explicitly excluded — `doctrine:schema:create`
+  fails outright on it, an upstream `symfony/doctrine-bridge` issue fixed in
+  8.1. `doctrine/doctrine-bundle` now requires `^3.0` and `doctrine/dbal`
+  `^4.0`. See [UPGRADE-2.0.md](UPGRADE-2.0.md) — in particular, several
+  `doctrine.yaml` options your application may set (`use_savepoints`,
+  `auto_generate_proxy_classes`, `enable_lazy_ghost_objects`) no longer exist
+  under doctrine-bundle 3.x and must be removed.
+
 ### Deprecated
 - `BaseAdminUser::eraseCredentials()` is deprecated; use the new
   `erasePlainPassword()`. The method now carries `#[\Deprecated]`, which is how

@@ -3,8 +3,7 @@ framework:
     http_method_override: false
     test: true
 
-    # Symfony 6.4 deprecates leaving these unset; the values are the defaults
-    # Symfony 7.0 adopted, so behaviour is identical on every supported version.
+    # Explicit for clarity; these already match Symfony 8's own defaults.
     handle_all_throwables: true
     php_errors:
         log: true

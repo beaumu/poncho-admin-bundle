@@ -14,8 +14,8 @@
 
 <div align="center">
 
-[![Symfony version](https://img.shields.io/badge/Symfony->=6.4-red?style=for-the-badge)](https://symfony.com/)
-[![PHP version](https://img.shields.io/badge/php->=8.2-blue?style=for-the-badge)](https://www.php.net/)
+[![Symfony version](https://img.shields.io/badge/Symfony->=8.0-red?style=for-the-badge)](https://symfony.com/)
+[![PHP version](https://img.shields.io/badge/php->=8.4-blue?style=for-the-badge)](https://www.php.net/)
 [![Bootstrap version](https://img.shields.io/badge/Bootstrap-5-purple?style=for-the-badge)](https://getbootstrap.com/)
 
 </div>
@@ -37,7 +37,7 @@
 </p>
 
 ## Installation
-PonchoAdmin requires PHP 8.2 or higher and Symfony 6.4 or higher. Run the
+PonchoAdmin requires PHP 8.4 or higher and Symfony 8.0 or higher. Run the
 following command to install it in your application:
 
 ```
