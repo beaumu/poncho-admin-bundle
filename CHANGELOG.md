@@ -16,11 +16,20 @@ changes to them are treated as breaking.
 - **PHP 8.4 and Symfony 8.1 are now the minimum** (`^6.4|^7.0` support is
   dropped). Symfony 8.0.x is explicitly excluded — `doctrine:schema:create`
   fails outright on it, an upstream `symfony/doctrine-bridge` issue fixed in
-  8.1. `doctrine/doctrine-bundle` now requires `^3.0` and `doctrine/dbal`
-  `^4.0`. See [UPGRADE-2.0.md](UPGRADE-2.0.md) — in particular, several
-  `doctrine.yaml` options your application may set (`use_savepoints`,
+  8.1. `doctrine/doctrine-bundle` now requires `^3.0`, `doctrine/dbal`
+  `^4.0`, and `doctrine/orm` is capped `<3.7.0` (3.7.x has the same unreleased
+  DBAL `Schema::edit()` dependency as the doctrine-bridge issue above). See
+  [UPGRADE-2.0.md](UPGRADE-2.0.md) — in particular, several `doctrine.yaml`
+  options your application may set (`use_savepoints`,
   `auto_generate_proxy_classes`, `enable_lazy_ghost_objects`) no longer exist
   under doctrine-bundle 3.x and must be removed.
+- `make:admin:security`, `make:admin:notification` and `make:admin:home` now
+  write new, bundle-owned config and route files instead of merging into your
+  application's `config/routes.yaml` and `config/packages/poncho_admin.yaml`.
+  `make:admin:security` also no longer replaces your whole `access_control`
+  list — that edit, still made in your own `security.yaml` (Symfony does not
+  allow it to be split across files), is now a real merge. See
+  [UPGRADE-2.0.md](UPGRADE-2.0.md).
 
 ### Deprecated
 - `BaseAdminUser::eraseCredentials()` is deprecated; use the new

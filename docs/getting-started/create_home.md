@@ -68,11 +68,13 @@ class AdminMenu extends BaseAdminMenu
 }
 ```
 
-and registers it:
+and registers it in a new file of its own, rather than touching any `poncho_admin.yaml` you
+already have:
 
 ```yaml
-# config/packages/poncho_admin.yaml
+# config/packages/poncho_admin_home.yaml
 poncho_admin:
+    app_name: Admin
     menu: App\Menu\AdminMenu
 ```
 

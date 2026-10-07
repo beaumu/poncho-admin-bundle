@@ -10,10 +10,12 @@ notification is and who sees it.
 php bin/console make:admin:notification
 ```
 
-generates a notification entity and repository, and a provider, then:
+generates a notification entity and repository, and a provider, then writes two new files of its
+own — never touching any `config/routes.yaml` or `config/packages/poncho_admin.yaml` you already
+have:
 
-- imports `@PonchoAdminBundle/config/routes/notification.php` in `config/routes.yaml`, under `/admin`,
-- sets `poncho_admin.notification.provider` and `poll_interval` in `config/packages/poncho_admin.yaml`.
+- `config/routes/poncho_admin_notification.yaml` imports `@PonchoAdminBundle/config/routes/notification.php`, under `/admin`,
+- `config/packages/poncho_admin_notification.yaml` sets `poncho_admin.notification.provider` and `poll_interval`.
 
 Update the schema, then create one:
 
@@ -29,8 +31,10 @@ $this->persistAndFlush($notification);
 
 ### By hand
 
+Either add these to the files the maker generates, or to any file of your own under
+`config/packages/` and `config/routes/` — Symfony merges them all:
+
 ```yaml
-# config/packages/poncho_admin.yaml
 poncho_admin:
     notification:
         provider: App\Notification\AdminNotificationProvider
@@ -38,7 +42,6 @@ poncho_admin:
 ```
 
 ```yaml
-# config/routes.yaml
 poncho_admin_notification_:
     resource: '@PonchoAdminBundle/config/routes/notification.php'
     prefix: /admin

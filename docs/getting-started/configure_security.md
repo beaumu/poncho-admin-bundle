@@ -4,21 +4,24 @@
 php bin/console make:admin:security
 ```
 
-It asks for the name of your user entity, then:
+It asks for the name of your user entity, then creates it (extending `BaseAdminUser`) and its
+repository, and writes three new files of its own:
 
-- creates the entity, extending `BaseAdminUser`, and its repository,
-- sets `poncho_admin.user.class`,
-- imports the login, profile and user-management routes under `/admin`,
-- adds a password hasher, a user provider, an `admin` firewall and `access_control` rules to
-  `config/packages/security.yaml`.
+| File | Contents |
+| --- | --- |
+| `config/routes/poncho_admin_security.yaml` | Imports the login, profile and user-management routes under `/admin` |
+| `config/packages/poncho_admin_security.yaml` | `poncho_admin.user.class`, a password hasher and a user provider |
+| `config/packages/security.yaml` | An `admin` firewall and four `access_control` rules — merged in, see below |
 
-Two fixes are needed afterwards.
+The first two are files the maker owns entirely — re-running the command regenerates them, and
+nothing you already had is ever read from or merged into either one. `security.yaml` is the one
+exception: Symfony does not allow a firewall or an `access_control` rule to be defined in a second
+file once another file already has one of its own, so that edit has to land in your existing file.
+It is a real merge, not a replacement — whatever firewalls and `access_control` rules you already
+had survive; the maker's own four rules are added ahead of them.
 
-**1. Firewall order.** The `admin` firewall is appended after `main`, but Symfony uses the first
-firewall that matches. Move it above `main`.
-
-**2. Your existing rules.** The maker replaces the whole `access_control` list. If you had rules,
-restore them.
+One fix is still needed afterwards: **firewall order.** The `admin` firewall is appended after
+`main`, but Symfony uses the first firewall whose pattern matches — move it above `main`.
 
 Then update the schema:
 
@@ -49,5 +52,4 @@ $builder->root()
 Everything about users — the entity, the options, the CRUD, the profile page — is under
 [User management](user/index).
 
-!> Before going to production, read [Security](security): the built-in delete route has no CSRF
-protection.
+!> Before going to production, read [Security](security).

@@ -64,6 +64,34 @@ fresh `doctrine:schema:create` (or booting the app) will, with an
    If it is set to `true`, remove it and adapt: automatic entity-to-controller-argument mapping via
    the class name alone is no longer supported at all.
 
+The makers write different files now
+--------------------------------------
+
+`make:admin:security`, `make:admin:notification` and `make:admin:home` used to merge into your
+application's existing `config/routes.yaml` and `config/packages/poncho_admin.yaml` (and, for
+security, `config/packages/security.yaml`'s `firewalls`/`access_control` too — replacing the
+*whole* `access_control` list, discarding anything you already had there). They now write new,
+bundle-owned files instead:
+
+| Maker | New files |
+| --- | --- |
+| `make:admin:security` | `config/routes/poncho_admin_security.yaml`, `config/packages/poncho_admin_security.yaml` |
+| `make:admin:notification` | `config/routes/poncho_admin_notification.yaml`, `config/packages/poncho_admin_notification.yaml` |
+| `make:admin:home` | `config/packages/poncho_admin_home.yaml` |
+
+Nothing already in `config/routes.yaml` or `config/packages/poncho_admin.yaml` is read or at risk
+of being overwritten by re-running one of these makers.
+
+The one exception is `config/packages/security.yaml`'s `firewalls` and `access_control`: Symfony's
+SecurityBundle does not allow either to be defined in more than one config file once another file
+already has one, so `make:admin:security` still edits that file — but it is now a genuine merge.
+Whatever firewalls and `access_control` rules you already had are kept; the four the maker adds are
+placed ahead of them.
+
+This only affects **re-running** a maker. If you already ran one under 1.x, its output stays where
+it is — nothing migrates your existing `config/routes.yaml` or `config/packages/poncho_admin.yaml`
+content into the new files, and nothing needs to.
+
 `doctrine/orm` version pin
 ---------------------------
 

@@ -84,10 +84,11 @@ kept only so existing configuration stays valid.
 
 ## Routes
 
-Import the ones you use:
+`make:admin:security` imports these for you, into a new `config/routes/poncho_admin_security.yaml`
+of its own. To wire them up by hand instead, import the ones you use — into any file under
+`config/routes/`, or your own `config/routes.yaml`:
 
 ```yaml
-# config/routes.yaml
 poncho_admin_security_:
     resource: '@PonchoAdminBundle/config/routes/security.php'
     prefix: /admin
@@ -119,9 +120,14 @@ $builder->root()->add('users')->icon('mdi mdi-account-group')->route('poncho_adm
 
 ## The firewall
 
-`make:admin:security` adds this to `config/packages/security.yaml`:
+`make:admin:security` writes most of this into a new `config/packages/poncho_admin_security.yaml`
+— the password hasher and the user provider:
 
 ```yaml
+poncho_admin:
+    user:
+        class: App\Entity\AdminUser
+
 security:
     password_hashers:
         App\Entity\AdminUser: auto
@@ -130,6 +136,15 @@ security:
             entity:
                 class: App\Entity\AdminUser
                 property: email
+```
+
+The firewall and the `access_control` rules are the exception: Symfony does not allow either to be
+split across files once another file already defines one, so these two are merged into your
+existing `config/packages/security.yaml` instead — a real merge (whatever you already had stays),
+not a replacement:
+
+```yaml
+security:
     firewalls:
         admin:
             pattern: ^/admin
@@ -150,6 +165,7 @@ security:
         - { path: ^/admin/password-reset, roles: PUBLIC_ACCESS }
         - { path: ^/admin/profile, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
+        # …whatever access_control rules your application already had, preserved below these four
 ```
 
 The `password-reset` rule covers the request form, the check-your-e-mail page and the
@@ -168,10 +184,6 @@ not be enough to reach it. See [Security](security#the-profile-page).
 
 The `admin` firewall must come **before** `main`: Symfony uses the first firewall whose pattern
 matches, and the maker appends it at the end.
-
-!> The maker **replaces** your whole `access_control` list rather than adding to it. If your
-application already had rules, restore them afterwards — `git diff config/packages/security.yaml`
-shows what was lost.
 
 ## The first user
 
