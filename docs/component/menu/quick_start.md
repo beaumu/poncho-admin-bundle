@@ -44,12 +44,12 @@ class AdminMenu extends BaseAdminMenu
 and register it:
 
 ```yaml
-# config/packages/poncho_admin.yaml
 poncho_admin:
     menu: App\Menu\AdminMenu
 ```
 
-`make:admin:home` generates both for you.
+`make:admin:home` generates both for you, in a `config/packages/poncho_admin_home.yaml` of its own
+— see [Create your first page](getting-started/create_home).
 
 ## Building the tree
 

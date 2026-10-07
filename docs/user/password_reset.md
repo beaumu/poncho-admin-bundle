@@ -2,10 +2,6 @@
 
 A logged-out user can ask for a reset link by e-mail from the login page's *Forgot password?* link.
 
-!> In an application configured by `make:admin:security`, the reset pages are unreachable for
-logged-out users until you fix the generated `access_control`. See
-[The firewall](user/index#the-firewall).
-
 ## The flow
 
 1. `/password-reset` — the user enters an e-mail address.
