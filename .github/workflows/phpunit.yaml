@@ -33,10 +33,8 @@ jobs:
     strategy:
       matrix:
         php-version: ['8.4']
-        # 8.0.x is excluded: symfony/doctrine-bridge's schema listener there calls a DBAL
-        # Schema::edit() API that only exists in doctrine/dbal ^4.5, which is not released yet
-        # (verified against a clean install — 8.0.15 fails doctrine:schema:create outright,
-        # 8.1.7 does not). Add 8.0 back once DBAL 4.5 ships, and 8.2 once it's released.
+        # 8.0.x is excluded: every 8.0.x symfony/http-foundation release is flagged by security
+        # advisories, so Composer refuses to install it at all (verified). Add 8.2 once released.
         symfony-version: ['8.1']
       fail-fast: false
 

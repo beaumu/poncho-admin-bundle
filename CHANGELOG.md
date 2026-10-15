@@ -14,11 +14,10 @@ changes to them are treated as breaking.
 
 ### Changed (breaking)
 - **PHP 8.4 and Symfony 8.1 are now the minimum** (`^6.4|^7.0` support is
-  dropped). Symfony 8.0.x is explicitly excluded — `doctrine:schema:create`
-  fails outright on it, an upstream `symfony/doctrine-bridge` issue fixed in
-  8.1. `doctrine/doctrine-bundle` now requires `^3.0`, `doctrine/dbal`
-  `^4.0`, and `doctrine/orm` is capped `<3.7.0` (3.7.x has the same unreleased
-  DBAL `Schema::edit()` dependency as the doctrine-bridge issue above). See
+  dropped). Symfony 8.0.x is excluded — all its `http-foundation` releases are
+  blocked by security advisories. `doctrine/doctrine-bundle` now requires
+  `^3.0`, `doctrine/dbal` `^4.5` and `doctrine/orm` `^3.7` (the ORM and
+  `symfony/doctrine-bridge` call a DBAL 4.5 `Schema::edit()` API). See
   [UPGRADE-2.0.md](UPGRADE-2.0.md) — in particular, several `doctrine.yaml`
   options your application may set (`use_savepoints`,
   `auto_generate_proxy_classes`, `enable_lazy_ghost_objects`) no longer exist

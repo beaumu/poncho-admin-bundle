@@ -10,16 +10,12 @@ Requirements
  * **Symfony 8.1 is now the minimum**, up from 6.4. `^6.4|^7.0` support is dropped entirely —
    `composer.json` now requires `^8.1`.
 
-   Symfony **8.0.x is explicitly not supported**, even though it is a stable release: in that
-   version, `symfony/doctrine-bridge`'s schema-cache listener calls a `doctrine/dbal`
-   `Schema::edit()` API that only exists in `doctrine/dbal ^4.5`, which is not released yet. Running
-   `doctrine:schema:create` (or anything that generates a schema — migrations included) fails
-   outright on 8.0.x as a result. This was fixed by 8.1.0; if your application is stuck on 8.0 for
-   another reason, wait for either a Symfony 8.0 patch or a DBAL 4.5 release before upgrading this
-   bundle.
+   Symfony **8.0.x is explicitly not supported**: every 8.0.x `symfony/http-foundation` release is
+   affected by published security advisories, so Composer refuses to install it, and fixes landed
+   in 8.1.
 
  * **`doctrine/doctrine-bundle` now requires `^3.0`** (was `^2.13.2`), and **`doctrine/dbal` now
-   requires `^4.0`** (was `^3.9.4`). These follow from the Symfony bump — `doctrine-bundle ^3.0`
+   requires `^4.5`** (was `^3.9.4`). These follow from the Symfony bump — `doctrine-bundle ^3.0`
    itself requires `dbal ^4.0` — but you need to run `composer update` and expect other
    Doctrine-adjacent packages (migrations, fixtures, extensions) to need their own major bumps too.
 
@@ -92,15 +88,15 @@ This only affects **re-running** a maker. If you already ran one under 1.x, its 
 it is — nothing migrates your existing `config/routes.yaml` or `config/packages/poncho_admin.yaml`
 content into the new files, and nothing needs to.
 
-`doctrine/orm` version pin
----------------------------
+`doctrine/dbal` and `doctrine/orm` floors
+-------------------------------------------
 
-This bundle pins `doctrine/orm` to `^3.3.2,<3.7.0`. `doctrine/orm 3.7.x` introduced a runtime
-dependency on the same unreleased `doctrine/dbal ^4.5` `Schema::edit()` API mentioned above (its own
-`composer.json` doesn't declare this, so Composer's solver won't catch it — you only find out when
-`doctrine:schema:create` throws). If your application requires `doctrine/orm` directly with a wider
-range, add the same upper bound, or accept the risk until DBAL 4.5 ships. This pin will be lifted
-once `doctrine/dbal ^4.5` is released and this bundle's own floor is raised to match.
+This bundle requires `doctrine/dbal ^4.5` and `doctrine/orm ^3.7`. `doctrine/orm 3.7` (and
+`symfony/doctrine-bridge 8.x`'s schema listener) call a DBAL `Schema::edit()` API that only exists
+from DBAL 4.5 — with an older DBAL, `doctrine:schema:create` throws. Neither package declares that
+in its own `composer.json`, so Composer will not warn you. (An earlier 2.0.x release capped
+`doctrine/orm` below 3.7 while DBAL 4.5 was unreleased; that cap is gone, and it conflicted with any
+application already on ORM 3.7.)
 
 Local development
 ------------------
